@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
 @import "tailwindcss";
+
 :root {
   --background: #f3ecd2;
   --foreground: #f3ecd2;
@@ -13,6 +14,7 @@
   --font-mono: var(--font-normal-text);
   --font-heading-bold: var(--font-heading-bold);
   --font-heading-xbold: var(--font-heading-xbold);
+
 }
 
 @media (prefers-color-scheme: dark) {
