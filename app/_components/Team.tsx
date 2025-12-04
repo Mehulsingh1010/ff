@@ -75,7 +75,7 @@ function Team() {
 
   return (
     <>
-<div className="px-[67px] h-[1865px] rounded-bl-[60px] rounded-br-[60px] flex text-black mb-[-60px] relative  bg-[#F3ECD2]">
+<div className="px-[67px] mt-[-34px] h-[1865px] rounded-bl-[60px] rounded-br-[60px] flex text-black mb-[-60px] relative  bg-[#F3ECD2]">
         <div className="w-[422px] border-l-[3px] border-r-[3px] border-[#D2CCB6]">
           <div className="pt-[278px] pl-[33px] pr-[122px]">
             <h2 className="cursor-write text-[68.9722px] font-heading-bold text-nowrap leading-[62.075px]">
