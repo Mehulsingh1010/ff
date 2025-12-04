@@ -117,46 +117,17 @@ const PreloaderSideStrokes = ({ onComplete }) => {
   );
 
   return (
-    <div className="preloader-container">
-      <style>{`
-        .preloader-container {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          z-index: 9999;
-          background: #f3ecd2;
-          overflow: hidden; 
-        }
-        body {
-          overflow: hidden;
-          height: 100vh;
-        }
-        .rainbow-sides__right {
-          width: 20.0625em;
-          position: fixed;
-          top: 0;
-          right: -4.75em;
-          display: none;
-        }
-        .rainbow-sides__left {
-          width: 20.0625em;
-          position: fixed;
-          display: none;
-        }
-        @media (min-width: 1025px) {
-          .rainbow-sides__right {
-            display: block;
-          }
-          .rainbow-sides__left {
-            display: block;
-          }
-        }
-      `}</style>
-      
-      {isDesktop && <SideStrokesSVG sideClass="rainbow-sides__right" isLeft={false} calculateStyles={getPreloaderStyles} />}
-      {isDesktop && <SideStrokesSVG sideClass="rainbow-sides__left" isLeft={true} calculateStyles={getPreloaderStyles} />}
+    <div className="fixed inset-0 w-screen h-screen z-50 bg-yellow-50 overflow-hidden">
+      {isDesktop && (
+        <>
+          <div className="hidden lg:block w-80 fixed top-0 right-0">
+            <SideStrokesSVG sideClass="rainbow-sides__right" isLeft={false} calculateStyles={getPreloaderStyles} />
+          </div>
+          <div className="hidden lg:block w-80 fixed top-0 left-0">
+            <SideStrokesSVG sideClass="rainbow-sides__left" isLeft={true} calculateStyles={getPreloaderStyles} />
+          </div>
+        </>
+      )}
     </div>
   );
 };
@@ -226,14 +197,14 @@ const SvgVerticalStrokes = ({ scrollPercent }) => {
   );
   
   return (
-    <div className="rainbow-vertical__1">
+    <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-screen z-5 overflow-visible" style={{ width: '28.25em' }}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         viewBox="0 0 452 600"
         fill="none"
         preserveAspectRatio="none"
-        className="ranbow-vertical__1-svg"
+        className="w-full h-full"
       >
         {centerPathData.map((path, index) => {
           const baseLength = centerBaseLength;
@@ -279,74 +250,27 @@ const HeroTwinStrokes = () => {
 
   return (
     <>
-      <style>{`
-        * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-        }
-        
-        body {
-          background: #f3ecd2;
-          overflow-x: hidden;
-        }
+      <div className="relative h-screen bg-yellow-50 overflow-x-hidden">
+        <div className="relative" style={{ height: '400vh' }}>
+          
+          <SvgVerticalStrokes scrollPercent={scrollPercent} />
 
-        .rainbow-sides__right {
-          width: 20.0625em;
-          position: fixed;
-          top: 0;
-          right: -4.75em;
-          z-index: 10;
-          display: none;
-        }
-        
-        .rainbow-sides__left {
-          width: 20.0625em;
-          position: fixed;
-          z-index: 10;
-          display: none;
-        }
-
-        .ranbow-vertical__1-svg {
-          width: 28.25em;
-          height: 100%;
-        }
-
-        .rainbow-vertical__1 {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            height: 100vh;
-            z-index: 5;
-            overflow: visible;
-        }
-
-        @media (min-width: 1025px) {
-          .rainbow-sides__right {
-            display: block;
-          }
-          .rainbow-sides__left {
-            display: block;
-          }
-        }
-      `}</style>
-      
-      <div className="scroll-container" style={{ height: '400vh', position: 'relative' }}>
-        
-        <SvgVerticalStrokes scrollPercent={scrollPercent} />
-
-        <SideStrokesSVG 
-          sideClass="rainbow-sides__right" 
-          isLeft={false} 
-          calculateStyles={getHeroSideStyles} 
-        />
-        
-        <SideStrokesSVG 
-          sideClass="rainbow-sides__left" 
-          isLeft={true} 
-          calculateStyles={getHeroSideStyles} 
-        />
+          <div className="hidden lg:block w-80 fixed top-0 right-0 z-10">
+            <SideStrokesSVG 
+              sideClass="rainbow-sides__right" 
+              isLeft={false} 
+              calculateStyles={getHeroSideStyles} 
+            />
+          </div>
+          
+          <div className="hidden lg:block w-80 fixed top-0 left-0 z-10">
+            <SideStrokesSVG 
+              sideClass="rainbow-sides__left" 
+              isLeft={true} 
+              calculateStyles={getHeroSideStyles} 
+            />
+          </div>
+        </div>
       </div>
     </>
   );
