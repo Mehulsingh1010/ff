@@ -1281,7 +1281,7 @@ const HomeContent = React.forwardRef<
 
       
 
-      {/* <div
+      <div
         className="flex justify-center items-center w-full relative mt-[-12px] md:mt-[1px] mb-[-30px] lg:mb-[-40px]"
         style={{  }}
       >
@@ -1296,7 +1296,7 @@ const HomeContent = React.forwardRef<
 
       <div className="absolute left-1/2 -translate-x-1/2 flex justify-center items-center text-black pt-[-px] z-[500] ">
         <ShuffleCards />
-      </div> */}
+      </div>
     </div>
   </div>
 ));
