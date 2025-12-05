@@ -33,6 +33,7 @@ const HeroTwinStrokes = () => {
 
   return (
     <>
+    <div className="hidden md:hidden lg:block">
       <style>{`
         .rainbow-sides__right {
           position: fixed;
@@ -51,6 +52,7 @@ const HeroTwinStrokes = () => {
           display: block;
         }
       `}</style>
+      
 
       <SideStrokesSVG
         sideClass="rainbow-sides__right relative"
@@ -62,6 +64,7 @@ const HeroTwinStrokes = () => {
         isLeft={true}
         calculateStyles={getHeroSideStyles}
       />
+      </div>
     </>
   );
 };

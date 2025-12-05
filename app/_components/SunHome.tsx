@@ -96,7 +96,7 @@ function SunHomeInline() {
       {/* Sun SVG Container (Interactive Area) */}
       <div
         ref={sunContainerRef}
-        className="w-[67.9px] h-[67.9px]  pointer-events-auto relative flex-shrink-0"
+        className= " h-[45.94px] w-[45.94px] md:w-[67.9px] md:h-[67.9px]  pointer-events-auto relative flex-shrink-0"
       >
         {/* Rotating Sun Image (Always Visible) */}
         <div className="animate-[spin_20s_linear_infinite] w-full h-full">

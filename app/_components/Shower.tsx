@@ -117,8 +117,7 @@ export default function ScrollTriggerStrips() {
     <div className="flex flex-col  ">
       <motion.div
         ref={verticalContainerRef}
-        className="flex justify-center "
-        style={{ width: "480px", margin: "0 auto" }}
+        className="flex justify-center m-0 w-[299px] md:w-[480px] "   
       >
         <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
       </motion.div>

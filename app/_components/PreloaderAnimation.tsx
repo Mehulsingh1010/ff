@@ -47,6 +47,12 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
     }
   }, []);
 
+  const getResponsiveTop = () => {
+  if (window.innerWidth < 768) return "132px";
+  if (window.innerWidth < 1024) return "196px";
+  return "224px";
+};
+
   useEffect(() => {
     // Lock scroll during preloader
     document.body.style.overflow = "hidden";
@@ -116,11 +122,11 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
       .to({}, { duration: 0.7 })
       .call(() => setPreloaderBgVisible(false))
       .to(
-        containerRef.current,
-        { top: "224px", duration: 1.2, ease: "power2.inOut" },
-        "slideIn"
-      )
-      // Slide navbar down from top
+  containerRef.current,
+  { top: getResponsiveTop(), duration: 1.2, ease: "power2.inOut" },
+  "slideIn"
+)
+     
       .to(
         navbarRef.current,
         { y: 0, duration: 1.2, ease: "power2.inOut" },
@@ -178,7 +184,7 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
       )}
 
       {/* Stripes layer - Hidden on mobile, shown on medium screens and up */}
-      <div className="fixed inset-0 w-screen h-screen z-[70] pointer-events-none hidden md:block">
+      <div className="fixed inset-0 w-screen h-screen z-[70] pointer-events-none hidden  md:hidden lg:block">
         <style>{`
           .preloader-rainbow-sides__right {
             position: fixed;
@@ -222,7 +228,7 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
         className="fixed left-1/2 -translate-x-1/2 -translate-y-1/2 z-[80] flex items-center gap-[6px]"
         style={{ top: "50vh" }}
       >
-        <div className="w-[73px] h-[73px] flex-shrink-0">
+        <div className=" flex-shrink-0">
           <FloatingSunMinimal />
         </div>
         <OrangeBox

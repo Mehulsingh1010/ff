@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client'
-import { div } from 'framer-motion/client';
 import React, { useState } from 'react';
 
 // Use this updated SVG definition
@@ -129,48 +128,50 @@ function AccordionItem({ question, isOpen, onClick, children, contentHeight = 22
           }}
         >
           <div 
-  className="bg-white border-[1.6px] rounded-t-[18px] px-[16.9778px] pt-[16.9778px] overflow-auto shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)]" 
-  style={{ 
-    height: `${contentHeight}px`,
-    transform: isOpen 
-      ? (isButtonHovered ? 'rotate(-1deg) translateY(5px)' : 'rotate(-1deg)')
-      : 'rotate(0deg)',
-    transition: `transform 0.2s cubic-bezier(0.4, 0, 0.6, 1) 0.1s `,
-  }}
->
-  {children}
-</div>
+              className="bg-white border-[1.6px] rounded-t-[18px] px-[16.9778px] pt-[16.9778px] overflow-auto shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)]" 
+              style={{ 
+                height: `${contentHeight}px`,
+                transform: isOpen 
+                  ? (isButtonHovered ? 'rotate(-1deg) translateY(5px)' : 'rotate(-1deg)')
+                  : 'rotate(0deg)',
+                transition: `transform 0.2s cubic-bezier(0.4, 0, 0.6, 1) 0.1s `,
+              }}
+            >
+              {children}
+          </div>
         </div>
         
         {/* Main button */}
         <div 
-          className="relative h-[71px] w-[647px] bg-[#F3A20F] border-[1.6px] rounded-lg pl-[25px] pr-[16px] py-[16px] text-[16.9778px] flex items-center justify-between cursor-pointer overflow-visible"
+          className="
+            relative h-[71px] w-full lg:w-[647px] 
+            bg-[#F3A20F] border-[1.6px] rounded-lg pl-[25px] pr-[16px] py-[16px] 
+            text-[16.9778px] flex items-center justify-between cursor-pointer 
+            overflow-visible"
           onClick={onClick}
           onMouseEnter={() => setIsButtonHovered(true)}
           onMouseLeave={() => setIsButtonHovered(false)}
           style={{ zIndex: 20 }}
         >
           
-                  <div
-  className="
-    absolute left-[25px] right-[16px] bg-white rounded-t-lg
-    border-t-[1.6px] border-r-[1.6px] border-l-[1.6px]
-  "
-  style={{
-    bottom: '67.2px',
-    height: !isOpen && isHovered ? '7px' : '0px',
-    opacity: 1,
-    zIndex: -0,
-    transition: `height ${twistTransition}`,
-    borderBottom: !isOpen && isHovered ? '1.6px solid black' : 'none',
-  }}
-/>
-
-
+          <div
+            className="
+              absolute left-[25px] right-[16px] bg-white rounded-t-lg
+              border-t-[1.6px] border-r-[1.6px] border-l-[1.6px]
+            "
+            style={{
+              bottom: '67.2px',
+              height: !isOpen && isHovered ? '7px' : '0px',
+              opacity: 1,
+              zIndex: -0,
+              transition: `height ${twistTransition}`,
+              borderBottom: !isOpen && isHovered ? '1.6px solid black' : 'none',
+            }}
+          />
           
-          <span>{question}</span>
+          {/* Changed this span to explicitly set text-left */}
+          <span className="text-left">{question}</span> 
           <div className="pr-[9px] flex items-center justify-center">
-            {/* Replace the <span> with the new PlusIcon component */}
             <PlusIcon rotation={plusRotation} />
           </div>
         </div>
@@ -188,40 +189,40 @@ export default function FAQ() {
       contentHeight: 220,
       content: (
       <div>
-  <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-[559.2px]'>
-    This is a <span className="font-bold">non-profit</span> event, and our goal is to make FlowFest as 
-    <span className="font-bold"> affordable</span> as we possibly can whilst delivering a 
-    <span className="font-bold"> quality</span> day that you'll never forget. Due to last year's feedback we are 
-    investing more in <span className="font-bold">comfort</span> and 
-    <span className="font-bold"> quality</span> this year.
-  </p>
+    <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-full lg:w-[559.2px]'>
+      This is a <span className="font-bold">non-profit</span> event, and our goal is to make FlowFest as 
+      <span className="font-bold"> affordable</span> as we possibly can whilst delivering a 
+      <span className="font-bold"> quality</span> day that you'll never forget. Due to last year's feedback we are 
+      investing more in <span className="font-bold">comfort</span> and 
+      <span className="font-bold"> quality</span> this year.
+    </p>
 
-  <p className='text-[14.8556px] pt-[10px] pb-[10px] leading-[22.2833px] font-quicksand w-[559.2px]'>
-    To keep ticket prices as <span className="font-bold">low</span> as we can for 
-    <span className="font-bold"> everyone</span>, we are 
-    <span className="font-bold"> unable</span> to offer discounts and appreciate your 
-    <span className="font-bold"> support</span> for this community event.
-  </p>
+    <p className='text-[14.8556px] pt-[10px] pb-[10px] leading-[22.2833px] font-quicksand w-full lg:w-[559.2px]'>
+      To keep ticket prices as <span className="font-bold">low</span> as we can for 
+      <span className="font-bold"> everyone</span>, we are 
+      <span className="font-bold"> unable</span> to offer discounts and appreciate your 
+      <span className="font-bold"> support</span> for this community event.
+    </p>
 
-  <button
-    className="
-      cursor-pointer flex items-center justify-center
-      border-2 border-[#121212]
-      rounded-[170.667px]
-      w-[138.5px] h-[46.925px]
-      px-[21.3333px] py-[1.70667px]
-      text-[#12112] text-[17.0667px] font-normal leading-[17.0667px]
-      bg-[#f489a3]
-      whitespace-nowrap
-      shadow-[0px_4.26667px_0px_0px_rgba(0,0,0,0.15)]
-      transition-all duration-200 ease-out
-      hover:translate-y-[4.26667px] hover:shadow-none
-      active:translate-y-[4.26667px] active:shadow-none
-    "
-  >
-    Buy Tickets
-  </button>
-</div>
+    <button
+      className="
+        cursor-pointer flex items-center justify-center
+        border-2 border-[#121212]
+        rounded-[170.667px]
+        w-[138.5px] h-[46.925px]
+        px-[21.3333px] py-[1.70667px]
+        text-[#12112] text-[17.0667px] font-normal leading-[17.0667px]
+        bg-[#f489a3]
+        whitespace-nowrap
+        shadow-[0px_4.26667px_0px_0px_rgba(0,0,0,0.15)]
+        transition-all duration-200 ease-out
+        hover:translate-y-[4.26667px] hover:shadow-none
+        active:translate-y-[4.26667px] active:shadow-none
+      "
+    >
+      Buy Tickets
+    </button>
+  </div>
 
       )
     },
@@ -229,17 +230,16 @@ export default function FAQ() {
       question: "How do I get there?",
       contentHeight: 160,
       content: (
-           <div>
-  <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-[559.2px]'>
-    FlowFest is hosted in <span className="font-bold">Media City Gardens</span>
-    (you'll find it by searching the Blue Peter Garden on Google Maps), which is an
-    <span className="font-bold"> outdoor</span> venue. It's directly in front of Media City
-    <span className="font-bold"> tram</span> stop, which is a great way to get to the venue if
-    you're travelling from the city centre or other parts of Manchester. There is also a
-    <span className="font-bold"> multi-story car park</span> just round the corner for those driving.
-  </p>
-</div>
-
+        <div>
+    <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-full lg:w-[559.2px]'>
+      FlowFest is hosted in <span className="font-bold">Media City Gardens</span>
+      (you'll find it by searching the Blue Peter Garden on Google Maps), which is an
+      <span className="font-bold"> outdoor</span> venue. It's directly in front of Media City
+      <span className="font-bold"> tram</span> stop, which is a great way to get to the venue if
+      you're travelling from the city centre or other parts of Manchester. There is also a
+      <span className="font-bold"> multi-story car park</span> just round the corner for those driving.
+    </p>
+  </div>
 
 
       )
@@ -249,26 +249,26 @@ export default function FAQ() {
       contentHeight: 100,
       content: (
         <div>
-  <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-[559.2px]'>
-    Yes, a banging <span className='font-bold'>lunch</span> courtesy of Kargo on the Docks is <span className='font-bold'>included</span> in your ticket, as well as <span className='font-bold'>drinks</span> tokens.
-  </p>
-</div>
+    <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-full lg:w-[559.2px]'>
+      Yes, a banging <span className='font-bold'>lunch</span> courtesy of Kargo on the Docks is <span className='font-bold'>included</span> in your ticket, as well as <span className='font-bold'>drinks</span> tokens.
+    </p>
+  </div>
       )
     },
     {
       question: "What should I bring?",
       contentHeight: 140,
       content: (
-       <div>
-  <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-[559.2px]'>
-    Good vibes and <span className="font-bold">layers</span>.
-    This is an all day <span className="font-bold">outdoor</span> event in
-    <span className="font-bold"> Manchester</span>, so check the weather closer to the time
-    and <span className="font-bold">dress accordingly</span>. Also, we've taken your
-    feedback onboard and there are no hands on workshops, so
-    <span className="font-bold"> no need</span> to bring a <span className="font-bold">laptop</span>.
-  </p>
-</div>
+        <div>
+    <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-full lg:w-[559.2px]'>
+      Good vibes and <span className="font-bold">layers</span>.
+      This is an all day <span className="font-bold">outdoor</span> event in
+      <span className="font-bold"> Manchester</span>, so check the weather closer to the time
+      and <span className="font-bold">dress accordingly</span>. Also, we've taken your
+      feedback onboard and there are no hands on workshops, so
+      <span className="font-bold"> no need</span> to bring a <span className="font-bold">laptop</span>.
+    </p>
+  </div>
 
 
       )
@@ -278,55 +278,106 @@ export default function FAQ() {
       contentHeight: 160,
       content: (
         <div >
-<p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-[559.2px] '>
-  As it was last year, there isn't an <span className="font-bold">official</span> or planned afterparty, but FlowFest 
-  folks know the party <span className="font-bold">never stops</span>. We usually have the venue until 6 or 7pm, and 
-  last year we headed to Kargo Food Market to get some <span className="font-bold">dinner</span> and headed into town 
-  for <span className="font-bold">karaoke</span>. After party <span className="font-bold">planners</span> welcome, 
-  FlowFest is on a Friday after all so it would be rude not to get a bit <span className="font-bold">lairy</span>.
-</p>
+  <p className='text-[14.8556px] leading-[22.2833px] font-quicksand w-full lg:w-[559.2px] '>
+    As it was last year, there isn't an <span className="font-bold">official</span> or planned afterparty, but FlowFest 
+    folks know the party <span className="font-bold">never stops</span>. We usually have the venue until 6 or 7pm, and 
+    last year we headed to Kargo Food Market to get some <span className="font-bold">dinner</span> and headed into town 
+    for <span className="font-bold">karaoke</span>. After party <span className="font-bold">planners</span> welcome, 
+    FlowFest is on a Friday after all so it would be rude not to get a bit <span className="font-bold">lairy</span>.
+  </p>
         </div>
-     
-         
       )
     }
   ];
 
   return (
-    <div className="mt-[10px] px-[67px] text-black">
-      <div className="px-[450px] pb-[67px]">
-        <div className="h-[137px] font-heading-bold text-black text-[68.9722px] text-nowrap leading-[62.075px]">
+    // Applied mx-auto and text-center to center content on mobile/tablet
+    <div className="mt-[10px] px-4 md:px-8 lg:px-[67px] text-black text-center"> 
+      
+      {/* FAQ Heading Section - Centered on mobile/tablet */}
+      <div className="
+        pb-8 lg:pb-[67px] 
+        flex flex-col items-center 
+        w-full 
+        lg:px-0 xl:px-[450px]" 
+      >
+        <div className="
+          h-auto lg:h-[137px] 
+          font-heading-bold text-black 
+          text-4xl sm:text-5xl lg:text-[68.9722px] 
+          leading-tight lg:leading-[62.075px] 
+          text-center lg:text-nowrap /* Set text-center for mobile/tablet */
+          w-full
+        ">
           Frequently Asked
-          <div className="text-center mx-auto rotate-[2deg] shadow-[#CFC9B3] shadow-[0px_6px_0px_0px_#000] text-white bg-[#F97028] w-[288.66px] border-2 border-black rounded-md text-[62.075px] leading-[55.8675px] pt-[9.31125px] pb-[3.10375px] px-[15.5188px]">
+          {/* Questions box - mx-auto ensures it stays centered */}
+          <div className="
+            text-center 
+            mx-auto /* Center box */
+            rotate-[2deg] 
+            shadow-[#CFC9B3] shadow-[0px_6px_0px_0px_#000] 
+            text-white bg-[#F97028] 
+            w-full sm:w-[288.66px] max-w-full /* Ensures it respects container limits */
+            border-2 border-black rounded-md 
+            text-[40px] sm:text-[62.075px] 
+            leading-[40px] sm:leading-[55.8675px] 
+            pt-[9.31125px] pb-[3.10375px] px-[15.5188px]
+            mt-2 lg:mt-0
+          ">
             Questions
           </div>
         </div>
       </div>
-      <div className="px-[96px] flex">
-        <div className="h-[541px] w-[485px] rounded-[50px] border-[1.6px] overflow-hidden">
+      
+      {/* Content Section: Accordions and Image - Flex container centered, items centered */}
+      <div className="
+        w-full 
+        flex flex-col lg:flex-row 
+        gap-8 lg:gap-0 
+        lg:px-[96px]
+        items-center lg:items-start /* items-center for mobile/tablet centering */
+        justify-center lg:justify-start /* Center alignment for mobile/tablet */
+        mx-auto /* Center the entire block */
+      ">
+        
+        {/* Accordions (Mobile/Tablet: First, Desktop: Second column with margin) */}
+        <div className="
+          w-full max-w-[647px] lg:w-auto 
+          lg:ml-0 lg:mt-0 
+          order-1 lg:order-2
+        ">
+          {accordionData.map((item, index) => (
+            <div
+              key={index}
+              className="bg-[#EFEEEC] mb-[12px] rounded-t-lg"
+            >
+              <AccordionItem
+                question={item.question}
+                isOpen={openIndex === index}
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                contentHeight={item.contentHeight}
+              >
+                {item.content}
+              </AccordionItem>
+            </div>
+          ))}
+        </div>
+
+        {/* Image Container - Reverted to PC Styling, centered on mobile/tablet */}
+        <div className="
+          h-[300px] sm:h-[400px] lg:h-[541px] 
+          w-full max-w-[485px] lg:w-[485px] 
+          rounded-[50px] border-[1.6px] overflow-hidden 
+          order-2 lg:order-1 
+          lg:ml-0 lg:mr-[69px] 
+          mx-auto lg:mx-0 /* Center the image container on mobile/tablet */
+        ">
           <img
             src="https://cdn.prod.website-files.com/682310547ba9eeb97324a89e/682dc19153bdaa746c0b423a_event-image-7.avif"
             alt=""
             className="w-full h-full object-cover"
           />
         </div>
-        <div className="ml-[69px]">
-  {accordionData.map((item, index) => (
-    <div
-      key={index}
-      className="bg-[#EFEEEC] mb-[12px] rounded-t-lg"
-    >
-      <AccordionItem
-        question={item.question}
-        isOpen={openIndex === index}
-        onClick={() => setOpenIndex(openIndex === index ? null : index)}
-        contentHeight={item.contentHeight}
-      >
-        {item.content}
-      </AccordionItem>
-    </div>
-  ))}
-</div>
 
       </div>
     </div>

@@ -119,14 +119,14 @@ const [cards, setCards] = useState([...items]);
     <div className=" flex items-center justify-center z-[10] ">
       <div className=" relative flex justify-center items-center mx-auto text-black">
         <div
-          className="h-[498.712px] w-[424.438px]"
+          className="h-[305px] lg:h-[498.712px] w-[264px] lg:w-[424.438px]"
           style={{ perspective: config.perspective }}
         >
           {cards.map((card, index) => (
   <DraggableCard
     key={card.id}
     onSendToBack={() => sendToBack(card.id)}
-    className="absolute  h-[498.712px] w-[424.438px] cursor-open z-[1]"
+    className="absolute  h-[305px] lg:h-[498.712px] mx-auto w-[264px] lg:w-[424.438px] cursor-open z-[1]"
     isTopCard={index === cards.length - 1}
     shuffleDirection={shuffleDirection}
     isShuffling={isShuffling}
@@ -146,7 +146,7 @@ const [cards, setCards] = useState([...items]);
         
       <button
   onClick={handleShuffle}
-  className="absolute shadow-[rgba(0,0,0,0.2)] shadow-[0px_6px_0px_0px] flex gap-[6px] top-[470px] h-[51px] w-[123px] cursor-pointer rounded-3xl border-black border-[1.6px] left-1/2 -translate-x-1/2 text-black px-[21px] items-center justify-center bg-white  transition-colors font-medium text-sm"
+  className="absolute shadow-[rgba(0,0,0,0.2)] shadow-[0px_6px_0px_0px] flex gap-[6px] top-[280px] lg:top-[470px] h-[51px] w-[123px] cursor-pointer rounded-3xl border-black border-[1.6px] left-1/2 -translate-x-1/2 text-black px-[21px] items-center justify-center bg-white  transition-colors font-medium text-sm"
 >
   <div className="h-[16.975px] w-[16.975px]">
     <svg
