@@ -112,17 +112,17 @@ export default function ScrollTriggerStrips() {
       calculateVerticalStripStyles(baseLength, index, verticalScrollPercent),
     [verticalScrollPercent]
   );
+return (
+  <div className="flex flex-col items-center">
+    <motion.div
+      ref={verticalContainerRef}
+      className="mx-auto flex justify-center m-0 w-[299px] md:w-[480px]"
+    >
+      <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
+    </motion.div>
 
-  return (
-    <div className="flex flex-col  ">
-      <motion.div
-        ref={verticalContainerRef}
-        className="flex justify-center m-0 w-[299px] md:w-[480px] "   
-      >
-        <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
-      </motion.div>
+    <div className="h-96" />
+  </div>
+);
 
-      <div className="h-96" />
-    </div>
-  );
 }
