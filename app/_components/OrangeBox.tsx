@@ -1,5 +1,3 @@
-import React from "react";
-import { ORANGE_BOX_STYLES } from "../constants/stripeConstants";
 
 const OrangeBox = ({
   message,
@@ -11,15 +9,15 @@ const OrangeBox = ({
     <div
       className={`
     flex items-center justify-center
-    bg-[#F97028] text-white border border-black
+    bg-[#F97028] text-white border border-black border-[1.6px]
     whitespace-nowrap
-    rounded-[9px] md:rounded-[14.86px]
+    rounded-[9px] md:rounded-[12px] lg:rounded-[14.86px]
     tracking-[-0.287179px] md:tracking-normal
-    h-[23.41px] md:h-[35.6px]
-    px-[8.61539px] md:px-[12.7333px]
-    text-[11.4872px] md:text-[16.9778px] leading-[14.9333px] md:leading-[22.0711px]
+    h-[23.41px] md:h-[31.1875px] lg:h-[35.6px]
+    px-[8.61539px] md:px-[11.0504px] lg:px-[12.7333px]
+    text-[11.4872px] md:text-[14.7338px] lg:text-[16.9778px] leading-[14.9333px] md:leading-[19.154px] lg:leading-[22.0711px]
     transition-[width] ${isPreloader ? "duration-75 ease-out" : "duration-0"}
-    ${!isPreloader ? " md:w-[298.025px]" : "w-auto"}
+    ${!isPreloader ? " lg:w-[298.025px]" : "w-auto"}
   `}
     >
       <p className="m-0 p-0 tracking-[-0.424444px] z-[10]">{message}</p>

@@ -40,20 +40,20 @@ function App() {
     <div>
    
 
-      {/* <SunPage svgSrc="/svg/sun.svg" /> */}
+      <SunPage svgSrc="/svg/sun.svg" />
       <StripesHomeMain onPreloaderComplete={()=>{setPreloaderComplete(true)}} />
    
-      {/* <About onPopupChange={setIsPopupOpen} /> */}
+      <About onPopupChange={setIsPopupOpen} />
       
-      {/* <Team /> 
+      <Team /> 
       <WTE />
-      <Community/>   */}
+      <Community/>  
 
       
-      {/* <Testimonial /> */}
-      {/* <FAQ/>
-      <CTO/>  */}
-      {/* <Footer/> */}
+      <Testimonial />
+      <FAQ/>
+      <CTO/> 
+      <Footer/>
 
         <>
         {/* <ScrollTriggerStrips/> */}

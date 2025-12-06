@@ -48,8 +48,8 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
   }, []);
 
   const getResponsiveTop = () => {
-  if (window.innerWidth < 768) return "132px";
-  if (window.innerWidth < 1024) return "196px";
+  if (window.innerWidth < 768) return "106px";
+  if (window.innerWidth < 1024) return "190px";
   return "224px";
 };
 
@@ -225,10 +225,10 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
       {/* Preloader Message Container */}
       <div
         ref={containerRef}
-        className="fixed left-1/2 -translate-x-1/2 -translate-y-1/2 z-[80] flex items-center gap-[6px]"
+        className="fixed left-1/2 -translate-x-1/2 -translate-y-1/2 z-[80] flex items-center gap-[6px] md:gap-[10px] lg:gap-[10px]"
         style={{ top: "50vh" }}
       >
-        <div className=" flex-shrink-0">
+        <div className=" md:max-h-[59px] lg:max-h-[64px]">
           <FloatingSunMinimal />
         </div>
         <OrangeBox

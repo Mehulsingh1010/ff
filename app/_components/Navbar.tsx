@@ -47,7 +47,7 @@ const Navbar = React.forwardRef<HTMLDivElement, any>((props, ref) => (
           md:ml-auto 
         "
       >
-        <button className="cursor-pointer flex items-center justify-center border-2 border-[#121212] rounded-[170.667px] h-[36px] md:h-[41px] lg:h-[46.925px] md:w-[119.988px] lg:w-[139px]  px-[18px] md:px-[13px] lg:px-[21.3333px] py-[9px]  text-[#121212] text-[13.1282px] md:text-[14.7338px] lg:text-[17.0667px] tracking-[-0.131282px]   font-normal leading-[17.0667px] bg-[#f489a3] whitespace-nowrap lg:shadow-[0px_4.26667px_0px_0px_rgba(0,0,0,0.15)] transition-all duration-200 ease-out hover:translate-y-[4.26667px] hover:shadow-none active:translate-y-[4.26667px] active:shadow-none">
+        <button className="cursor-pointer flex items-center justify-center border-2 border-[#121212] rounded-[170.667px] h-[36px] md:h-[41px] lg:h-[46.925px] md:w-[119.988px] lg:w-[139px]  px-[18px] md:px-[13px] lg:px-[21.3333px] py-[9px]  text-[#121212] text-[13.1282px] md:text-[14.7338px] lg:text-[17.0667px] tracking-[-0.131282px]   font-normal leading-[17.0667px] bg-[#f489a3] whitespace-nowrap md:shadow-[0px_4.26667px_0px_0px_rgba(0,0,0,0.15)] transition-all duration-200 ease-out hover:translate-y-[4.26667px] hover:shadow-none active:translate-y-[4.26667px] active:shadow-none">
           Buy Tickets
         </button>
       </div>
