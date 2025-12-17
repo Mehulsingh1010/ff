@@ -16,6 +16,7 @@ function Testimonial() {
     isAnimating: false,
     scrollDirection: "down",
   });
+  const touchStartRef = useRef(0);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -28,13 +29,11 @@ function Testimonial() {
       }
     });
 
-    const handleWheel = (e) => {
+    const animateCard = (isScrollingDown) => {
       const state = animationStateRef.current;
 
-      if (!state.isLocked) return;
-      if (state.isAnimating) return;
-
-      const isScrollingDown = e.deltaY > 0;
+      if (!state.isLocked) return false;
+      if (state.isAnimating) return false;
 
       // Scrolling DOWN - cards come in
       if (isScrollingDown) {
@@ -42,10 +41,9 @@ function Testimonial() {
           // All cards are stacked, allow scrolling down to leave
           document.body.style.overflow = "auto";
           state.isLocked = false;
-          return;
+          return false;
         }
 
-        e.preventDefault();
         state.isAnimating = true;
 
         gsap.to(cardsRef.current[state.currentIndex], {
@@ -58,6 +56,7 @@ function Testimonial() {
             state.isAnimating = false;
           },
         });
+        return true;
       }
       // Scrolling UP - cards go away
       else {
@@ -65,10 +64,9 @@ function Testimonial() {
           // All cards are hidden, allow normal scrolling up to leave component
           document.body.style.overflow = "auto";
           state.isLocked = false;
-          return;
+          return false;
         }
 
-        e.preventDefault();
         state.isAnimating = true;
         state.currentIndex -= 1;
 
@@ -86,6 +84,41 @@ function Testimonial() {
             }
           },
         });
+        return true;
+      }
+    };
+
+    const handleWheel = (e) => {
+      const isScrollingDown = e.deltaY > 0;
+      const handled = animateCard(isScrollingDown);
+      if (handled) {
+        e.preventDefault();
+      }
+    };
+
+    // Touch event handlers for mobile
+    const handleTouchStart = (e) => {
+      touchStartRef.current = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      const state = animationStateRef.current;
+      
+      if (!state.isLocked) return;
+      if (state.isAnimating) return;
+
+      const touchEnd = e.touches[0].clientY;
+      const diff = touchStartRef.current - touchEnd;
+
+      // Minimum swipe distance to trigger (50px)
+      if (Math.abs(diff) > 50) {
+        const isScrollingDown = diff > 0;
+        const handled = animateCard(isScrollingDown);
+        
+        if (handled) {
+          e.preventDefault();
+          touchStartRef.current = touchEnd; // Reset for next swipe
+        }
       }
     };
 
@@ -94,7 +127,6 @@ function Testimonial() {
     const handleScrollTrigger = () => {
       const state = animationStateRef.current;
       const currentScrollY = window.scrollY;
-      const isScrollingDown = currentScrollY > lastScrollY;
       
       state.isAnimating = false;
       state.isLocked = true;
@@ -107,16 +139,21 @@ function Testimonial() {
     const trigger = ScrollTrigger.create({
       trigger: container,
       start: "top center",
-      end: " center - [150px]",
+      end: "center - [150px]",
       onEnter: handleScrollTrigger,
       onEnterBack: handleScrollTrigger,
     });
 
+    // Add both wheel (desktop) and touch (mobile) event listeners
     window.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       document.body.style.overflow = "auto";
       window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
       trigger.kill();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
