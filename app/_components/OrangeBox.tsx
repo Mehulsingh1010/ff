@@ -9,15 +9,15 @@ const OrangeBox = ({
     <div
       className={`
     flex items-center justify-center
-    bg-[#F97028] text-white border border-black border-[1.6px]
+    bg-[#F97028] text-white border border-black border-[1.6px] 
     whitespace-nowrap
-    rounded-[9px] md:rounded-[12px] lg:rounded-[14.86px]
+    rounded-[9px] md:rounded-[12px] lg:rounded-[9.95556px] xl:rounded-[14px] 2xl:rounded-[14.86px]
     tracking-[-0.287179px] md:tracking-normal
-    h-[23.41px] md:h-[31.1875px] lg:h-[35.6px]
-    px-[8.61539px] md:px-[11.0504px] lg:px-[12.7333px]
-    text-[11.4872px] md:text-[14.7338px] lg:text-[16.9778px] leading-[14.9333px] md:leading-[19.154px] lg:leading-[22.0711px]
+    h-[23.41px] md:h-[31.1875px] lg:h-[23.21px] xl:h-[33.6px] 2xl:h-[35.6px]
+    px-[8.61539px] md:px-[11.0504px] lg:px-[8.53333px] xl:px-[12px] 2xl:px-[12.7333px]
+    text-[11.4872px] md:text-[14.7338px] lg:text-[11.378px] xl:text-[16px] 2xl:text-[16.9778px] leading-[14.9333px] md:leading-[19.154px] lg: xl: 2xl:leading-[22.0711px]
     transition-[width] ${isPreloader ? "duration-75 ease-out" : "duration-0"}
-    ${!isPreloader ? " lg:w-[298.025px]" : "w-auto"}
+    ${!isPreloader ? " lg: xl: 2xl:w-[298.025px]" : "w-auto"}
   `}
     >
       <p className="m-0 p-0 tracking-[-0.424444px] z-[10]">{message}</p>
@@ -39,8 +39,8 @@ const OrangeBox = ({
       viewBox="0 0 22 13"
       fill="none"
       className={`
-  absolute z-[1] w-[14px] md:w-[22px]
-  left-[-5px] md:left-[-8px] bottom-[-0.6px] md:bottom-[-0.5px]
+  absolute z-[1] w-[14px] md:w-[22px] lg:w-[17px]
+  left-[-5px] md:left-[-8px] lg:left-[-5.9px] xl:left-[-6px] bottom-[-0.6px] md:bottom-[-0.5px]
   ${
     isPreloader
       ? "transition-all duration-[700ms] ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"

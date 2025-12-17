@@ -116,7 +116,7 @@ return (
   <div className="flex flex-col items-center">
     <motion.div
       ref={verticalContainerRef}
-      className="mx-auto flex justify-center m-0 w-[299px] md:w-[480px]"
+      className="mx-auto  flex justify-center m-0 w-[247.238px] md:w-[480px] lg:w-[321.413px] xl:w-[482.125px]"
     >
       <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
     </motion.div>

@@ -48,9 +48,13 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
   }, []);
 
   const getResponsiveTop = () => {
-  if (window.innerWidth < 768) return "106px";
-  if (window.innerWidth < 1024) return "190px";
-  return "224px";
+   const w = window.innerWidth;
+
+   if (w < 640) return "130px";     // mobile
+  if (w < 1024) return "189px";    // md
+  if (w < 1280) return "165px";    // lg
+  if (w < 1536) return "196px";    // xl
+  return "216px"; 
 };
 
   useEffect(() => {
