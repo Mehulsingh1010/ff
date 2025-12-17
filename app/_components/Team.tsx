@@ -153,12 +153,12 @@ function Team() {
                 <div className="absolute -bottom-[10px] -left-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
                 <div className="absolute -bottom-[10px] -right-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
 
-                <div className="relative w-[285.8px] h-[326.862px] md:w-[306.138px] lg:w-[274.513px] xl:w-[389.087px] 2xl:w-[416.1px] max-w-[416.1px] md:h-[350.75px] lg:h-[317.625px] xl:h-[439.937px] 2xl:h-[467.5px]">
+                <div className=" w-[285.8px] h-[326.862px] md:w-[306.138px] lg:w-[274.513px] xl:w-[389.087px] 2xl:w-[416.1px] max-w-[416.1px] md:h-[350.75px] lg:h-[317.625px] xl:h-[439.937px] 2xl:h-[467.5px]">
                   <Image
                     src="/t3.avif"
                     alt="Casie Evans"
                     fill
-                    className="object-cover"
+                    className="object-cover h-gull "
                   />
                 </div>
               </div>
@@ -213,12 +213,12 @@ function Team() {
                 <div className="absolute -top-[8px] -right-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
                 <div className="absolute -bottom-[10px] -left-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
                 <div className="absolute -bottom-[10px] -right-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
-                <div className="relative w-[285.8px] h-[326.862px] md:w-[306.138px] lg:w-[274.513px] xl:w-[389.087px] 2xl:w-[416.1px] max-w-[416.1px] md:h-[350.75px] lg:h-[317.625px] xl:h-[439.937px] 2xl:h-[467.5px]">
+                <div className="w-[285.8px] h-[326.862px] md:w-[306.138px] lg:w-[274.513px] xl:w-[389.087px] 2xl:w-[416.1px] max-w-[416.1px] md:h-[350.75px] lg:h-[317.625px] xl:h-[439.937px] 2xl:h-[467.5px]">
                   <Image
                     src="/t1.avif"
                     alt="Vlad Magdalin"
                     fill
-                    className="object-cover"
+                    className="object-cover h-gull "
                   />
                 </div>
               </div>
@@ -276,7 +276,7 @@ function Team() {
                     src="/t4.avif"
                     alt="Stephanie Bruce"
                     fill
-                    className="object-cover"
+                    className="object-cover  "
                   />
                 </div>
               </div>
@@ -331,12 +331,12 @@ function Team() {
                 <div className="absolute -top-[8px] -right-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
                 <div className="absolute -bottom-[10px] -left-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
                 <div className="absolute -bottom-[10px] -right-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
-                <div className="relative w-[285.8px] h-[326.862px] md:w-[306.138px] lg:w-[274.513px] xl:w-[389.087px] 2xl:w-[416.1px] max-w-[416.1px] md:h-[350.75px] lg:h-[317.625px] xl:h-[439.937px] 2xl:h-[467.5px]">
+                <div className="w-[285.8px] h-[326.862px] md:w-[306.138px] lg:w-[274.513px] xl:w-[389.087px] 2xl:w-[416.1px] max-w-[416.1px] md:h-[350.75px] lg:h-[317.625px] xl:h-[439.937px] 2xl:h-[467.5px]">
                   <Image
                     src="/t2.avif"
                     alt="Ilja van Eck"
                     fill
-                    className="object-cover"
+                    className="object-cover h-gull "
                   />
                 </div>
               </div>
@@ -391,12 +391,12 @@ function Team() {
                 <div className="absolute -top-[8px] -right-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
                 <div className="absolute -bottom-[10px] -left-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
                 <div className="absolute -bottom-[10px] -right-[10px] w-[14.7625px] h-[14.7625px] md:w-[16.575px] md:h-[16.575px] lg:w-[12.8px] lg:h-[12.8px] xl:h-[18px] xl:w-[18px] 2xl:w-[20px] 2xl:h-[20px] bg-white border-[1.6px] border-black z-20"></div>
-                <div className="relative w-[285.8px] h-[326.862px] md:w-[306.138px] lg:w-[274.513px] xl:w-[389.087px] 2xl:w-[416.1px] max-w-[416.1px] md:h-[350.75px] lg:h-[317.625px] xl:h-[439.937px] 2xl:h-[467.5px]">
+                <div className=" w-[285.8px] h-[326.862px] md:w-[306.138px] lg:w-[274.513px] xl:w-[389.087px] 2xl:w-[416.1px] max-w-[416.1px] md:h-[350.75px] lg:h-[317.625px] xl:h-[439.937px] 2xl:h-[467.5px]">
                   <Image
                     src="/t5.avif"
                     alt="Ross Plaskow"
                     fill
-                    className="object-cover"
+                    className="object-cover h-gull "
                   />
                 </div>
               </div>
