@@ -1,3 +1,5 @@
+/* eslint-disable prefer-const */
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
@@ -370,7 +372,7 @@ const handleFaceMouseLeave = () => {
       {/* Sun SVG Container */}
       <div
         ref={sunContainerRef}
-        className="w-[67.9px] h-[67.9px] cursor-pointer pointer-events-auto relative flex-shrink-0 mr-[12.8px]"
+        className="h-[45.9375px] w-[45.9375px] md:w-[58.925px] md:h-[58.925px] lg:w-[45.5px] lg:h-[45.5px] xl:h-[64px] xl:w-[64px] 2xl:w-[67.9px] 2xl:h-[67.9px] cursor-pointer pointer-events-auto relative flex-shrink-0 mr-[12.8px]"
       >
         {/* Rotating Sun Image (Always Visible) */}
         <div className="animate-[spin_20s_linear_infinite] w-full h-full">

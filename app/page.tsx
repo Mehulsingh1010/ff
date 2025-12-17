@@ -37,7 +37,7 @@ function App() {
   const isNavbarVisible = navVisible && !isPopupOpen
 
   return (
-    <div>
+    <div className='overflow-hidden'>
    
 
       <SunPage svgSrc="/svg/sun.svg" />
@@ -52,7 +52,8 @@ function App() {
       
       <Testimonial />
       <FAQ/>
-      <CTO/> 
+      <CTO/>
+    
       <Footer/>
 
         <>

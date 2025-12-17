@@ -100,9 +100,7 @@ body::-webkit-scrollbar {
   transform-origin: left;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+
 
 img,
 svg {

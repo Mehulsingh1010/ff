@@ -5,6 +5,7 @@ import "./globals.css";
 
 
 
+
 const normalText = localFont({
 
   src: "../public/fonts/normal-text.woff2",
@@ -40,9 +41,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-  
+        
         className={`${normalText.variable} ${headingBold.variable} ${headingXBold.variable} antialiased`}
       >
+        
         {children}
    
       </body>

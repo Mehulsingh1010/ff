@@ -113,24 +113,33 @@ export default function ScrollTriggerStrips2() {
   );
 
   return (
-    <div style={{ perspective: "355px" }}>
-      <motion.div
-        ref={verticalContainerRef}
-        className="relative justify-start pb-[270px]"
-        style={{
-          width: "612px",
-          margin: "auto",
-          height: "190px",
-          position: "relative",
-          transform: "rotateX(45deg)",
-          transformStyle: "preserve-3d",
-          overflow: "hidden",
-        }}
-      >
-        <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
-      </motion.div>
+   <div className="[perspective:355px]">
+  <motion.div
+    ref={verticalContainerRef}
+    className="
+      relative
+      mx-auto
+      ml-[-24px]
+      md:ml-auto
+      w-[340px]
+      md:w-[564px]
+      lg:w-[500px]
+      xl:w-[700px]
+      2xl:w-[612px]
+      h-[200px]
+      md:h-[180px]
+      lg:h-[151.8px]
+      xl:h-[200px]
+      2xl:h-[190px]
+      pb-[270px]
+      overflow-hidden
+      [transform-style:preserve-3d]
+      [transform:rotateX(45deg)]
+    "
+  >
+    <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
+  </motion.div>
+</div>
 
-      {/* <div className="h-96" /> */}
-    </div>
   );
 }
