@@ -55,9 +55,9 @@ function Testimonial() {
   const cardContainerStyle = "absolute left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 w-[293.75px] md:w-[412.538px] lg:w-[432.35px] xl:w-[604.8px] 2xl:w-[641.95px] h-[175.35px] md:h-[245.725px] lg:h-[256.812px] xl:h-[358.337px] 2xl:h-[380.35px]";
 
   return (
-    <div ref={containerRef} className="px-[13px] md:px-[44.2px] lg:px-[45px] xl:px-[67px] mt-[98.46px] lg:mt-[165px] md:mt-[185.338px] text-black">
+    <div ref={containerRef} className="px-[13px] md:px-[44.2px] lg:px-[45px] xl:px-[67px] mt-[0px] lg:mt-[165px] md:mt-[185.338px] text-black">
       {/* 2nd Fix: Removed overflow-hidden */}
-      <div ref={pinWrapperRef} className="h-screen flex items-center justify-center">
+      <div ref={pinWrapperRef} className="   flex items-center justify-center">
         <div className="relative lg:px-[72px] xl:px-[101px] 2xl:px-[109px] w-full max-w-[1440px] mx-auto">
           
           {/* 1st Fix: High Z-index for all cards to stay on top of text */}
