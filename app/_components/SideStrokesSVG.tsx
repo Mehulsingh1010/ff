@@ -6,12 +6,15 @@ const SideStrokesSVG = ({ sideClass, isLeft, calculateStyles, isPreloader = fals
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 321 626"
     fill="none"
-    className={sideClass}
-    style={
-      isLeft
-        ? { top: "23.17em", left: "-4.5em", transform: "scale(-1.05)", width: "20.0625em", height: "auto" }
-        : { top: "1.05rem", right: "-4.3em", transform: "scale(1.07)", width: "20.0625em", height: "auto" }
-    }
+    className={`
+      absolute
+      ${sideClass}
+      2xl:w-[342.4px] xl:w-[321px] lg:w-[228.262px] 
+      ${isLeft
+        ? "2xl:top-[22.2em]  lg:ml-[19px] 2xl:ml-[-10px] lg:top-[17.3em] xl:top-[20.9em]  xl:ml-[-5px]    xl:scale-[-1] 2xl:scale-[-1] lg:scale-[-1]"
+        : "   xl:m-0  xl:top-[1.05rem] lg:mr-[19.7px] xl:mr-0 2xl:mr-[-5px]   2xl:scale-[1]"
+      }
+    `}
   >
     {sidePaths.map((path, index) => {
       const baseLength = index < 4 ? [809.204, 730.653, 652.102, 573.551][index] : 0;
