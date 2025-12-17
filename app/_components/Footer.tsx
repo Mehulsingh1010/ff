@@ -154,7 +154,7 @@ function Footer() {
   }, [isSubmitted]);
 
   return (
-    <footer className="text-black 2xl:mt-[212px] h-[53vh] md:h-[70.7vh] lg:h-[48vh] xl:h-[60vh]  2xl:h-[532px] overflow-hidden">
+    <footer className="text-black 2xl:mt-[212px]  overflow-hidden">
       <div className="px-[13px] lg:px-[64px]  xl:px-[64px] 2xl:px-[67px]  flex justify-center">
         <div className=" lg:px-[62px] xl:px-[62px] 2xl:px-[93px]  h-[139px] mb-[83px] lg:mb-0  lg:flex lg:gap-[182px] xl:gap-[260px] 2xl:gap-[270px]">
           <div className="mb-[40px] md:mb-[45px] lg:mb-0 mx-auto flex flex-col items-center lg:items-start">
