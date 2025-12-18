@@ -148,14 +148,14 @@ function WTE() {
 
         <div className="lg:pl-[45px] xl:pl-[64px] 2xl:pl-[68px]"></div>
 
-        <div className="flex flex-col relative " style={{ zIndex: 10 }}>
+        <div className="flex flex-col relative w-full" style={{ zIndex: 10 }}>
           {bars.map((bar, index) => (
             <div
               key={index}
               ref={(el) => {
                 barsRef.current[index] = el;
               }}
-              className={`h-[74.76px] md:h-[88.4px] lg:h-[68px] xl:h-[96px] 2xl:h-[102px] lg:w-[791px] xl:w-[1148px] 2xl:w-[1200px] pt-[10px] px-[74px] lg:px-[284px] 2xl:px-[426px]  lg:pt-[20px] 2xl:pt-[30px] cursor-pointer relative flex items-center lg:block ${
+              className={`h-[74.76px] md:h-[88.4px] lg:h-[68px] xl:h-[96px] 2xl:h-[102px] w-full pt-[10px] px-[74px] lg:px-[284px] 2xl:px-[426px]  lg:pt-[20px] 2xl:pt-[30px] cursor-pointer relative flex items-center lg:block ${
                 index === 0 ? "rounded-t-[40px] lg:rounded-none" : ""
               }`}
               style={{
