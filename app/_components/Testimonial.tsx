@@ -21,7 +21,7 @@ function Testimonial() {
       if (index === 0) {
         gsap.set(card, { y: 0, opacity: 1 });
       } else {
-        gsap.set(card, { y: "100%", opacity: 0 }); // Use 100% instead of vh for better containment
+        gsap.set(card, { y: "100%", opacity: 0 }); 
       }
     });
 
@@ -29,10 +29,10 @@ function Testimonial() {
       scrollTrigger: {
         trigger: pinWrapper,
         start: "top top",
-        end: "+=300%", // Reduced for tighter scrolling
+        end: "+=300%", 
         scrub: 1,
         pin: true,
-        pinSpacing: true, // This ensures the component below stays below
+        pinSpacing: true, 
         anticipatePin: 1,
       },
     });
@@ -52,23 +52,20 @@ function Testimonial() {
     };
   }, []);
 
-  // Card container: removed absolute from here to put it on the individual wrapper
   const cardContainerStyle = "absolute left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 w-[293.75px] md:w-[412.538px] lg:w-[432.35px] xl:w-[604.8px] 2xl:w-[641.95px] h-[175.35px] md:h-[245.725px] lg:h-[256.812px] xl:h-[358.337px] 2xl:h-[380.35px]";
 
   return (
-    // Added overflow-hidden here to prevent cards from bleeding into the next section
     <section ref={containerRef} className="pt-0 mt-0 relative overflow-hidden px-[13px] md:px-[44.2px] lg:px-[45px] xl:px-[67px] lg:mt-[165px] md:mt-[185.338px] text-black">
       
       <div ref={pinWrapperRef} className="min-h-screen flex items-center justify-center">
         <div className="relative lg:px-[72px] xl:px-[101px] 2xl:px-[109px] w-full max-w-[1440px] mx-auto">
           
-          {/* Cards Group - Kept z-indexes local (10-50) so they don't beat the rest of your site */}
           {[1, 2, 3, 4, 5].map((num, i) => (
             <div 
               key={num}
               ref={(el) => {(cardsRef.current[i] = el)}} 
               className={`${cardContainerStyle}`}
-              style={{ zIndex: 20 + i }} // Lowered Z-index
+              style={{ zIndex: 20 + i }} 
             >
               <img
                 src={`/twitter/${num}.jpg`}

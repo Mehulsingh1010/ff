@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Navbar from './Navbar';
 import PreloaderAnimation from './PreloaderAnimation';

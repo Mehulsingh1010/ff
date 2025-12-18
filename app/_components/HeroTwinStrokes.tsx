@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 import React, { useState, useCallback, useEffect } from 'react';
 import { calculateSidePathStyles } from '../utils/stripeCalculations';
 import SideStrokesSVG from './SideStrokesSVG';

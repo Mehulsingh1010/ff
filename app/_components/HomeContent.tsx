@@ -2,7 +2,7 @@
 import React from "react";
 import FloatingSunMinimal from "./SunHome";
 import OrangeBox from "./OrangeBox";
-import ScrollTriggerStrips from "./Shower";
+import ScrollTriggerStrips from "./VerticalStripsHome";
 import ShuffleCards from "./ShuffleCards";
 
 const HomeContent = React.forwardRef<

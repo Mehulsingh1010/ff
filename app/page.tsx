@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 import { useState, useEffect } from "react";
@@ -32,7 +33,11 @@ function App() {
 
   return (
     <div className="overflow-hidden">
-      <SunPage svgSrc="/svg/sun.svg" />
+      <SunPage 
+        svgSrc="/svg/sun.svg" 
+        isPreloaderComplete={preloaderComplete}
+      />
+      
       <StripesHomeMain
         onPreloaderComplete={() => {
           setPreloaderComplete(true);

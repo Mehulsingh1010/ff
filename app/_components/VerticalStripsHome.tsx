@@ -1,25 +1,15 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
+import { verticalStrips } from "../constants/stripeConstants";
 
 const verticalStripBaseLengths = [600, 600, 600, 600, 600, 600, 600, 600, 600];
-const verticalStripTriggerOffset = 1000;
+const verticalStripTriggerOffset = 100;
 const VERTICAL_STRIP_COUNT = verticalStripBaseLengths.length;
 
-const verticalStrips = [
-  { x: 426, color: "black", colorFill: "#F97028" },
-  { x: 376, color: "black", colorFill: "#F489A3" },
-  { x: 326, color: "black", colorFill: "#F0BB0D" },
-  { x: 276, color: "black", colorFill: "#F3A20F" },
-  { x: 226, color: "black", colorFill: "#F97028" },
-  { x: 176, color: "black", colorFill: "#F489A3" },
-  { x: 126, color: "black", colorFill: "#F0BB0D" },
-  { x: 76, color: "black", colorFill: "#F3A20F" },
-  { x: 26, color: "black", colorFill: "#F97028" },
-];
 
 const calculateVerticalStripStyles = (baseLength, index, scrollPercent) => {
-  const verticalScrollMultiplier = 4.0;
+  const verticalScrollMultiplier = 8.7;
   const amplifiedScroll = scrollPercent * verticalScrollMultiplier;
 
   const totalAnimationDistance =
@@ -45,9 +35,9 @@ const VerticalScrollStripsSVG = ({ calculateStyles }) => (
     viewBox="0 0 452 600"
     fill="none"
     preserveAspectRatio="none"
-    style={{ height: "600px" }}
+    style={{ height: "1200px" }}
   >
-   
+    {/* Black strokes (background) */}
     {verticalStrips.map((strip, index) => {
       const baseLength = verticalStripBaseLengths[index];
       const styles = calculateStyles(baseLength, index);
@@ -64,6 +54,7 @@ const VerticalScrollStripsSVG = ({ calculateStyles }) => (
       );
     })}
 
+    {/* Colored strokes (foreground) */}
     {verticalStrips.map((strip, index) => {
       const baseLength = verticalStripBaseLengths[index];
       const styles = calculateStyles(baseLength, index);
@@ -82,7 +73,7 @@ const VerticalScrollStripsSVG = ({ calculateStyles }) => (
   </svg>
 );
 
-export default function ScrollTriggerStrips2() {
+export default function ScrollTriggerStrips() {
   const [verticalScrollPercent, setVerticalScrollPercent] = useState(0);
   const verticalContainerRef = useRef(null);
 
@@ -111,35 +102,17 @@ export default function ScrollTriggerStrips2() {
       calculateVerticalStripStyles(baseLength, index, verticalScrollPercent),
     [verticalScrollPercent]
   );
+return (
+  <div className="flex flex-col items-center">
+    <motion.div
+      ref={verticalContainerRef}
+      className="mx-auto  flex justify-center m-0 w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px]"
+    >
+      <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
+    </motion.div>
 
-  return (
-   <div className="[perspective:355px]">
-  <motion.div
-    ref={verticalContainerRef}
-    className="
-      relative
-      mx-auto
-      ml-[-24px]
-      md:ml-auto
-      w-[340px]
-      md:w-[564px]
-      lg:w-[500px]
-      xl:w-[700px]
-      2xl:w-[612px]
-      h-[200px]
-      md:h-[180px]
-      lg:h-[151.8px]
-      xl:h-[200px]
-      2xl:h-[190px]
-      pb-[270px]
-      overflow-hidden
-      [transform-style:preserve-3d]
-      [transform:rotateX(45deg)]
-    "
-  >
-    <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
-  </motion.div>
-</div>
+    <div className="h-96" />
+  </div>
+);
 
-  );
 }

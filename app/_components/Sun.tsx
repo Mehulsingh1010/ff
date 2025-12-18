@@ -7,7 +7,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 
 gsap.registerPlugin(TextPlugin);
 
-function SunPage({ svgSrc }) {
+function SunPage({ svgSrc, isPreloaderComplete = true }) {
   const faceRef = useRef(null);
   const rightEyeRef = useRef(null);
   const winkRef = useRef(null);
@@ -531,6 +531,12 @@ function SunPage({ svgSrc }) {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [isVisible, targetPhrase, isOpen]);
+
+  // Don't render the component at all while preloader is running
+  // This is placed AFTER all hooks to comply with Rules of Hooks
+  if (!isPreloaderComplete) {
+    return null;
+  }
 
   return (
     <div

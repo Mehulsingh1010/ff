@@ -6,7 +6,7 @@ function Footer() {
   const faceRef = useRef(null);
   const leftEyeRef = useRef(null);
   const rightEyeRef = useRef(null); // Normal Right Eye (Circle)
-  const winkRef = useRef(null); // NEW: The specific Wink SVG
+  const winkRef = useRef(null); //The specific Wink SVG
   const sunContainerRef = useRef(null);
   const mouthRef = useRef(null); // Normal Smile
   const teethMouthRef = useRef(null); // Teeth Smile
@@ -44,7 +44,7 @@ function Footer() {
   useEffect(() => {
     const face = faceRef.current;
     const rightEye = rightEyeRef.current; // Normal Right Eye
-    const winkEye = winkRef.current; // New Wink SVG
+    const winkEye = winkRef.current; // Wink SVG
     const sunContainer = sunContainerRef.current;
     const mouth = mouthRef.current;
     const teethMouth = teethMouthRef.current;
@@ -78,17 +78,16 @@ function Footer() {
 
     // Hover handlers - wink effect on face hover (on sunContainer)
     const handleFaceMouseEnter = () => {
-      // WINK: Quick switch to Wink SVG (opacity: 1) and hide Normal Eye (opacity: 0)
+      //  Quick switch to Wink SVG
       gsap.to(rightEye, { opacity: 0, duration: 0 });
       gsap.to(winkEye, { opacity: 1, duration: 0 });
     };
 
     const handleFaceMouseLeave = () => {
-      // WINK: Quick switch back to Normal Eye (opacity: 1) and hide Wink SVG (opacity: 0)
+      //  Quick switch back to Normal Eye (opacity: 1)
       gsap.to(rightEye, { opacity: 1, duration: 0 });
       gsap.to(winkEye, { opacity: 0, duration: 0 });
 
-      // Restore default smile
       gsap.to(mouth, {
         attr: { d: "M240 290 Q262 315 284 290" },
         duration: 0.3,

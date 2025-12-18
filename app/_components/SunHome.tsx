@@ -2,12 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 
-/**
- * A standalone component with a sun and an interactive face that follows the cursor 
- * and winks on hover.
- * * 🚨 NOTE: The component's position is now inline ('relative'/'static' flow) 
- * and determined by where it is rendered in the parent component.
- */
 function SunHomeInline() {
   const faceRef = useRef(null);
   const rightEyeRef = useRef(null);
@@ -16,24 +10,25 @@ function SunHomeInline() {
   const componentRef = useRef(null);
   const [isVisible, setIsVisible] = useState(true); 
 
-  // --- HARDCODED SVG PATH ---
+
   const SVG_SRC = '/svg/sun.svg'; 
 
-  // --- Mouse Interaction Effects (Face Follow and Wink ONLY) ---
   useEffect(() => {
     const face = faceRef.current;
     const rightEye = rightEyeRef.current;
     const winkEye = winkRef.current;
     const sunContainer = sunContainerRef.current;
+    const component = componentRef.current;
 
-    if (!face || !sunContainer) return;
+    if (!face || !sunContainer || !component) return;
 
-    // Initial state: Set wink to invisible
+    // Initial state: Set face to center and wink to invisible
+    gsap.set(face, { x: 0, y: 0 });
     if (winkEye) {
       gsap.set(winkEye, { opacity: 0 });
     }
 
-    // Mouse move handler - face follows cursor
+    // Mouse move handler - face follows cursor when anywhere on the page component
     const handleMouseMove = (e) => {
       const sunRect = sunContainer.getBoundingClientRect();
       const sunCenterX = sunRect.left + sunRect.width / 2;
@@ -42,36 +37,36 @@ function SunHomeInline() {
       const deltaX = e.clientX - sunCenterX;
       const deltaY = e.clientY - sunCenterY;
 
-      const maxMove = 300;
-      const divisor = 6;
+      const maxMove = 60;
+      const divisor = 7;
       const moveX = Math.max(-maxMove, Math.min(maxMove, deltaX / divisor));
       const moveY = Math.max(-maxMove, Math.min(maxMove, deltaY / divisor));
 
       gsap.to(face, {
         x: moveX,
-        y: moveY -20,
-        // Tilt is now applied via static `style` prop for initial state,
-        // and we ensure GSAP only animates x and y for movement.
+        y: moveY,
         duration: 0.3,
         ease: "power2.out"
       });
     };
 
-    // Hover in: Wink
+    // Hover in sun: Wink
     const handleFaceMouseEnter = () => {
       // Hide normal eye, show wink
-      gsap.to(rightEye, { opacity: 0, duration: 0 });
-      gsap.to(winkEye, { opacity: 1, duration: 0 });
+      gsap.to(rightEye, { opacity: 0, duration: 0.15 });
+      gsap.to(winkEye, { opacity: 1, duration: 0.15 });
     };
 
-    // Hover out: Normal Eye
+    // Hover out sun: Normal Eye
     const handleFaceMouseLeave = () => {
       // Show normal eye, hide wink
-      gsap.to(rightEye, { opacity: 1, duration: 0 });
-      gsap.to(winkEye, { opacity: 0, duration: 0 });
+      gsap.to(rightEye, { opacity: 1, duration: 0.15 });
+      gsap.to(winkEye, { opacity: 0, duration: 0.15 });
     };
 
+    // Listen to mousemove on window (tracks everywhere)
     window.addEventListener("mousemove", handleMouseMove);
+    // Only wink when hovering over the sun itself
     sunContainer.addEventListener("mouseenter", handleFaceMouseEnter);
     sunContainer.addEventListener("mouseleave", handleFaceMouseLeave);
 
@@ -85,18 +80,16 @@ function SunHomeInline() {
   return (
     <div
       ref={componentRef}
-      // POSITIONING CHANGE: Removed fixed, bottom-[33px], left-[33px]
-      // It now uses default static/relative positioning in the flow.
+
       className="inline-flex items-center z-40" 
       style={{
-        // transform: 'translateX(0%)' is kept but is now unnecessary as there's no initial hidden state
         transform: 'translateX(0%)',
       }}
     >
       {/* Sun SVG Container (Interactive Area) */}
       <div
         ref={sunContainerRef}
-        className= " h-[45.94px] w-[45.94px] md:w-[59px] lg:w-[45.5px]   xl:w-[64px] 2xl:w-[67.9px] md:h-[59px] lg:h-[45.5px] xl:h-[64px]  2xl:h-[67.9px]  pointer-events-auto relative flex-shrink-0"
+        className= " h-[45.94px] w-[45.94px] md:w-[59px] lg:w-[45.5px]   xl:w-[64px] 2xl:w-[67.9px] md:h-[59px] lg:h-[45.5px] xl:h-[64px]  2xl:h-[67.9px]  pointer-events-auto relative flex-shrink-0 cursor-pointer"
       >
         {/* Rotating Sun Image (Always Visible) */}
         <div className="animate-[spin_20s_linear_infinite] w-full h-full">

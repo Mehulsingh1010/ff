@@ -1,4 +1,3 @@
-
 const OrangeBox = ({
   message,
   messagePhase,

@@ -9,13 +9,8 @@ const PlusIcon = ({ rotation }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 18 18"
-    className="w-[13.13px] h-[13.13px] lg:w-[11.38px] lg:h-[11.38px] xl:h-[16px] xl:w-[16px]"
+    className={`w-[13.13px] h-[13.13px] lg:w-[11.38px] lg:h-[11.38px] xl:h-[16px] xl:w-[16px] stroke-black transition-transform duration-200 ease-out ${rotation}`}
     fill="none"
-    style={{
-      transform: rotation,
-      transition: "transform 0.2s cubic-bezier(0.4, 0, 0.6, 1)",
-      stroke: "black",
-    }}
   >
     <path
       d="M1.05469 9.40723H16.0547"
@@ -32,21 +27,13 @@ const PlusIcon = ({ rotation }) => (
   </svg>
 );
 
-function AccordionItem({
-  question,
-  isOpen,
-  onClick,
-  children,
-}) {
+function AccordionItem({ question, isOpen, onClick, children }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
   const contentRef = useRef(null);
 
-  const twistTransition = "0.2s cubic-bezier(0.4, 0, 0.6, 1)";
-  const accordionTransition = `min-height ${twistTransition}`;
-  const heightTransition = `height ${twistTransition}`;
-  const allPropertiesTransition = `all ${twistTransition}`;
+
 
   // Measure content height whenever it changes or window resizes
   useEffect(() => {
@@ -62,61 +49,56 @@ function AccordionItem({
     measureHeight();
 
     // Add resize listener
-    window.addEventListener('resize', measureHeight);
-    
+    window.addEventListener("resize", measureHeight);
+
     // Cleanup
-    return () => window.removeEventListener('resize', measureHeight);
+    return () => window.removeEventListener("resize", measureHeight);
   }, [children, isOpen]);
 
   const totalOpenHeight = contentHeight + 102;
 
-  let plusRotation = "rotate(0deg)";
+  let plusRotation = "rotate-0";
   if (isOpen) {
-    plusRotation = "rotate(45deg)";
+    plusRotation = "rotate-45";
     if (isButtonHovered) {
-      plusRotation = "rotate(135deg)";
+      plusRotation = "rotate-[135deg]";
     }
   } else if (isHovered) {
-    plusRotation = "rotate(90deg)";
+    plusRotation = "rotate-90";
   }
 
   return (
     <div
-      className="overflow-visible"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="overflow-visible transition-[min-height] duration-200 ease-out"
       style={{
         minHeight: isOpen ? `${totalOpenHeight}px` : "92px",
-        transition: accordionTransition,
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <div
-        className="relative"
+        className="relative transition-[height] duration-200 ease-out"
         style={{
           height: isOpen ? `${totalOpenHeight}px` : "92px",
-          transition: heightTransition,
         }}
       >
         {/* Top connector */}
         <div
           className={`
             absolute bg-[#F3A20F] scale-z-100 border-l-[2.5px] border-black
-            w-[130px] left-0
+            w-[130px] left-0 transition-all duration-200 ease-out
             ${
               isOpen
                 ? "h-6 top-[12.2px] lg:top-[12.5px] xl:top-[13px]"
                 : "h-6 top-[10.2px] lg:top-[8px] xl:top-[13px] 2xl:top-[12.6px]"
             }
           `}
-          style={{
-            transition: allPropertiesTransition,
-          }}
         />
 
         {/* Top left rect */}
         <div
           className={`
-            bg-[#F3A20F] border-[2.5px] border-black
+            bg-[#F3A20F] border-[2.5px] border-black transition-all duration-200 ease-out
             w-[100px] md:w-[110px] lg:w-[100px] xl:w-[130px] 2xl:w-[130px]
             ${
               isOpen
@@ -124,9 +106,6 @@ function AccordionItem({
                 : "h-[38px] lg:h-[25px] xl:h-[30px] mb-[-30px] lg:mb-0 rounded-tl-[12px] rounded-tr-[5px] lg:rounded-md"
             }
           `}
-          style={{
-            transition: allPropertiesTransition,
-          }}
         />
 
         {/* Top right rect */}
@@ -142,7 +121,8 @@ function AccordionItem({
         {/* Open space / Expanding content area */}
         <div
           className={`
-            bg-[#F3A20F] border-l-[2.5px] border-r-[2.5px] border-black overflow-hidden mb-[-10px]
+            bg-[#F3A20F] border-l-[2.5px]  border-r-[2.5px] border-black  mb-[-10px]
+            transition-all duration-200 ease-out
             ${
               isOpen
                 ? "px-[23px] pt-[8.48889px] lg:pt-0 opacity-100 lg:w-[433.775px] xl:w-[610px] 2xl:w-[650px]"
@@ -150,32 +130,30 @@ function AccordionItem({
             }
           `}
           style={{
-            height: isOpen ? `${contentHeight + 10}px` : "0px",
-            transition: allPropertiesTransition,
+            height: isOpen ? `${contentHeight}px` : "0px",
           }}
         >
           <div
             ref={contentRef}
             className={`
-              bg-white border-[1.6px] border-black rounded-t-[18px]
+              bg-white border-[1.6px] border-black rounded-t-[18px]  
               px-[14px] md:px-[15px] lg:px-[11.3778px] xl:px-[16.9778px] 2xl:px-[16.9778px]
               pt-[14px] md:pt-[15px] lg:pt-[16.9778px] xl:pt-[16.9778px] 2xl:pt-[16.9778px]
-              pb-[24px] md:pb-[28px] lg:pb-[24px] xl:pb-[32px] 2xl:pb-[32px]
+              
+              pb-[24px] md:pb-[28px] lg:pb-[20px] xl:pb-[32px] 2xl:pb-[32px]
               shadow-[6px_6px_0px_0px_rgba(0,0,0,0.2)]
               overflow-hidden
+              transition-transform duration-200 ease-out delay-100
+              ${
+                isOpen
+                  ? isButtonHovered
+                    ? "-rotate-1 translate-y-[5px]"
+                    : "-rotate-1"
+                  : "rotate-0"
+              }
             `}
-            style={{
-              transform: isOpen
-                ? isButtonHovered
-                  ? "rotate(-1deg) translateY(5px)"
-                  : "rotate(-1deg)"
-                : "rotate(0deg)",
-              transition: `transform 0.2s cubic-bezier(0.4, 0, 0.6, 1) 0.1s`,
-            }}
           >
-            <div className="w-full max-w-full break-words">
-              {children}
-            </div>
+            <div className="w-full max-w-full break-words">{children}</div>
           </div>
         </div>
 
@@ -208,13 +186,13 @@ function AccordionItem({
               lg:bottom-[43.6px] xl:bottom-[64.2px]
               opacity-100
               z-0
+              transition-[height] duration-200 ease-out
               ${
-                !isOpen && isHovered ? "h-[7px] border-b-[1.6px]" : "h-0 border-b-0"
+                !isOpen && isHovered
+                  ? "h-[7px] border-b-[1.6px]"
+                  : "h-0 border-b-0"
               }
             `}
-            style={{
-              transition: `height ${twistTransition}`,
-            }}
           />
 
           <span className="text-left">{question}</span>
@@ -268,9 +246,8 @@ export default function FAQ() {
         <div className="w-full">
           <p className="text-[11.5px] lg:text-[9.95px] md:text-[14px] xl:text-[14.8556px] 2xl:text-[14.8556px] leading-[17.2308px] md:leading-[21px] lg:leading-[14.9333px] xl:leading-[22.2833px] 2xl:leading-[22.2833px] font-quicksand break-words">
             FlowFest is hosted in{" "}
-            <span className="font-bold">Media City Gardens</span>
-            {" "}(you'll find it by searching the Blue Peter Garden on Google Maps),
-            which is an
+            <span className="font-bold">Media City Gardens</span> (you'll find
+            it by searching the Blue Peter Garden on Google Maps), which is an
             <span className="font-bold"> outdoor</span> venue. It's directly in
             front of Media City
             <span className="font-bold"> tram</span> stop, which is a great way
@@ -344,20 +321,22 @@ export default function FAQ() {
         </div>
       </div>
 
-<div className="
+      <div
+        className="
   mt-[52px] xl:mt-[10px]
   w-full mx-auto
   flex flex-col lg:flex-row
   gap-6 md:gap-7 lg:gap-0
   text-left
-  items-center
+  lg:items-start
   justify-center
-">
+"
+      >
         <div className="px-3 md:px-0 lg:px-[46px] xl:px-0 2xl:pl-[3px] w-full md:w-full lg:w-[434px] xl:w-auto 2xl:w-auto md:px-[103px] lg:max-w-none xl:max-w-none 2xl:max-w-none ml-0 md:ml-0 lg:ml-0 xl:ml-0 2xl:ml-0 mt-0 md:mt-0 lg:mt-0 xl:mt-0 2xl:mt-0 order-1 md:order-1 lg:order-2 xl:order-2 2xl:order-2 pb-[58px] lg:pb-0 mb-[-76px] md:mb-[-130px] lg:mb-0 relative bg-[#f3ecd2] z-[50] lg:border-b-0 border-b-2 lg:rounded-0 rounded-[52px] md:rounded-[110.504px]">
           {accordionData.map((item, index) => (
             <div
               key={index}
-              className="mb-[-4px] md:mb-[11px] xl:ml-[64px] lg:mb-[-18px] xl:mb-[12px] 2xl:mb-[20px] rounded-t-lg"
+              className="mb-[-4px] md:mb-[11px]  xl:ml-[64px] lg:mb-[-18px] xl:mb-[12px] 2xl:mb-[20px] rounded-t-lg"
             >
               <AccordionItem
                 question={item.question}
@@ -370,16 +349,16 @@ export default function FAQ() {
           ))}
         </div>
 
-        <div className="order-2 lg:order-1 w-full max-w-full md:w-full lg:w-[325.5px] xl:w-[456.8px] 2xl:w-[490.663px] lg:max-w-none h-[356px] md:h-[856px] lg:h-[362.925px] xl:h-[512.525px] 2xl:h-[546.713px] lg:rounded-[29.8667px] 2xl:rounded-[44.8px] lg:border-[1px] xl:border-[1.6px] overflow-hidden relative">
-  <Image
-    src="/faq.avif"
-    alt="faq img"
-    fill
-    className="object-cover"
-    sizes="(max-width: 1024px) 100vw, 490px"
-    priority={false}
-  />
-</div>
+        <div className="order-2 lg:order-1 w-full max-w-full md:w-full lg:w-[325.5px] xl:w-[456.8px] 2xl:w-[490.663px] lg:max-w-none h-[356px] md:h-[856px] lg:h-[362.925px] xl:h-[512.525px] 2xl:h-[546.713px] lg:rounded-[29.8667px] 2xl:rounded-[44.8px] lg:border-[1px] xl:border-[1.6px] overflow-hidden relative lg:sticky lg:top-0">
+          <Image
+            src="/faq.avif"
+            alt="faq img"
+            fill
+            className="object-cover"
+            sizes="(max-width: 1024px) 100vw, 490px"
+            priority={false}
+          />
+        </div>
       </div>
     </div>
   );
