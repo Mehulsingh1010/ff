@@ -24,9 +24,12 @@ function About({ onPopupChange }: any) {
       // Distance from center of viewport
       const scrollDistance = elementCenter - windowCenter;
       const maxDistance = window.innerHeight / 2 + rect.height / 2;
-      
+
       // Progress from 0 to 1 as element moves through viewport
-      const progress = Math.max(0, Math.min(1, (maxDistance - scrollDistance) / (maxDistance * 2)));
+      const progress = Math.max(
+        0,
+        Math.min(1, (maxDistance - scrollDistance) / (maxDistance * 2))
+      );
 
       // Smooth rotation: -20deg to +20deg as we scroll
       const rotationAmount = 40; // Total degrees of rotation range
@@ -163,29 +166,29 @@ function About({ onPopupChange }: any) {
     "border-[#F0BB0D]",
   ];
 
- const items = Array.from({ length: count }, (_, i) => ({
-  id: i,
-  image: [
-    "/corousel/r1.avif", // Item 1 (Right side)
-    "/corousel/r1.avif", // Item 2
-    "/corousel/r3.avif", // Item 3
-    "/corousel/r2.avif", // Item 4 (Changed from r1)
-    "/corousel/r1.avif", // Item 5 (Changed from l1)
-    "/corousel/r2.avif", // Item 6 (Changed from l2)
-    "/corousel/r3.avif", // Item 7 (Changed from l3)
-    "/corousel/r2.avif", // Item 8 (Changed from l1)
-    
-    "/corousel/l1.avif", // Item 9 (Left side)
-    "/corousel/l1.avif", // Item 10
-    "/corousel/l2.avif", // Item 11
-    "/corousel/l3.avif", // Item 12 (Changed from r1)
-    "/corousel/l1.avif", // Item 13 (Changed from l1)
-    "/corousel/l2.avif", // Item 14 (Changed from l2)
-    "/corousel/l3.avif", // Item 15 (Changed from l3)
-    "/corousel/l4.avif", // Item 16 (Changed from l1)
-  ][i],
-  borderColor: borderColors[i],
-}));
+  const items = Array.from({ length: count }, (_, i) => ({
+    id: i,
+    image: [
+      "/corousel/r1.avif", // Item 1 (Right side)
+      "/corousel/r1.avif", // Item 2
+      "/corousel/r3.avif", // Item 3
+      "/corousel/r2.avif", // Item 4 (Changed from r1)
+      "/corousel/r1.avif", // Item 5 (Changed from l1)
+      "/corousel/r2.avif", // Item 6 (Changed from l2)
+      "/corousel/r3.avif", // Item 7 (Changed from l3)
+      "/corousel/r2.avif", // Item 8 (Changed from l1)
+
+      "/corousel/l1.avif", // Item 9 (Left side)
+      "/corousel/l1.avif", // Item 10
+      "/corousel/l2.avif", // Item 11
+      "/corousel/l3.avif", // Item 12 (Changed from r1)
+      "/corousel/l1.avif", // Item 13 (Changed from l1)
+      "/corousel/l2.avif", // Item 14 (Changed from l2)
+      "/corousel/l3.avif", // Item 15 (Changed from l3)
+      "/corousel/l4.avif", // Item 16 (Changed from l1)
+    ][i],
+    borderColor: borderColors[i],
+  }));
 
   const firstHalf = items.slice(0, count / 2);
   const secondHalf = items.slice(count / 2);
@@ -280,7 +283,9 @@ function About({ onPopupChange }: any) {
         </svg>
       </div>
 
-      <div className="flex-shrink-0 cursor-write xl:text-[30px]">Sponsored by</div>
+      <div className="flex-shrink-0 cursor-write xl:text-[30px]">
+        Sponsored by
+      </div>
 
       {/* dot */}
       <div className="w-[20px] xl:w-[40px] xl:h-[40px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
@@ -419,182 +424,190 @@ function About({ onPopupChange }: any) {
           ref={containerRef}
           className="overflow-hidden bg-black  lg:pt-[130.8px] px-[13.12px] md:px-[44.2px] pt-[151.8px] lg:px-[45.5px] xl:pt-[151.8px] xl:px-[64px] 2xl:pt-[153px]  2xl:px-[72px]"
         >
-          <div
-            className=" flex items-center bg-[#3185f5] md:pl-[4.84px] w-[97.1265px] md:w-[109.06px] lg:w-[84.18px] xl:w-[125.688px] xl:pl-[6.36667px]  rounded-t-[2px] pt-[3px] pl-[5px] md:pt-[4.24444px] pb-[2px]  z-[]"
-            style={{
-              fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
-            }}
-          >
-            <svg
-              className="  h-[7.8px]  w-[7.8px] lg:h-[7.8px] xl:h-[11px] 2xl:h-[11.6722px] lg:w-[7.8px] xl:w-[11px] 2xl:w-[11.6722px] flex-shrink-0"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 14 14"
-              fill="none"
+          <div className="w-full max-w-[1392px] mx-auto flex flex-col items-start">
+            <div
+              className="bg-[#3185f5] flex items-center rounded-t-[2px] pt-[3px] pb-[2px] px-[8px] z-10"
+              style={{
+                fontFamily: 'Arial, "Helvetica Neue", Helvetica, sans-serif',
+              }}
             >
-              <rect x="1" y="1" width="12" height="12" stroke="currentColor" />
-            </svg>
-            <span className="ml-[4.24444px] text-[9.025px] md:text-[10.1285px]  lg:text-[7.8222px] xl:text-[11px] 2xl:text-[11.6722px] leading-[11.6722px]">
-              What is FlowFest?
-            </span>
-          </div>
+              <svg
+                className="h-[8px] w-[8px] xl:h-[11px] xl:w-[11px] flex-shrink-0"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 14 14"
+                fill="none"
+              >
+                <rect
+                  x="1"
+                  y="1"
+                  width="12"
+                  height="12"
+                  stroke="currentColor"
+                />
+              </svg>
+              <span className="ml-[4px] text-[9px] md:text-[10px] xl:text-[11px] leading-none whitespace-nowrap">
+                What is FlowFest?
+              </span>
+            </div>
 
-          <div className="w-full max-w-[1392px] mx-auto">
-            <div className=" h-[689.03px] md:h-[810.575px] xl:h-[509px] lg:h-[340.612px] mx-auto relative bg-black  border-[#3185f5]  justify-between flex border-[2px] overflow-hidden">
-              {/* BOTTOM carousel for mobile/tablet */}
-              <div className=" lg:hidden">
-                <div
-                  className="absolute  w-full bottom-[-160px] md:bottom-[-120px] lg:bottom-[-270px] pointer-events-none"
-                  style={{ perspective: "1000px" }}
-                >
+            <div className="w-full max-w-[1392px] mx-auto">
+              <div className=" h-[689.03px] md:h-[810.575px] xl:h-[509px] lg:h-[340.612px] mx-auto relative bg-black  border-[#3185f5]  justify-between flex border-[2px] overflow-hidden">
+                {/* BOTTOM carousel for mobile/tablet */}
+                <div className=" lg:hidden">
                   <div
-                    className="absolute inset-0 transition-transform duration-300 ease-out"
-                    style={{ transform: `rotate(${rotation}deg)` }}
+                    className="absolute  w-full bottom-[-160px] md:bottom-[-120px] lg:bottom-[-270px] pointer-events-none"
+                    style={{ perspective: "1000px" }}
                   >
-                    {renderHalfCircle(firstHalf, "top")}
-                  </div>
-                </div>
-              </div>
-
-              {/* LEFT carousel for desktop */}
-              <div className="w-[250px] hidden lg:block">
-                <div
-                  className="absolute lg:left-[-300px] xl:left-[-250px] top-0 h-full w-[250px] pointer-events-none"
-                  style={{ perspective: "1000px" }}
-                >
-                  <div
-                    className="absolute inset-0 transition-transform duration-300 ease-out"
-                    style={{ transform: `rotate(${rotation}deg)` }}
-                  >
-                    {renderHalfCircle(secondHalf, "left")}
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <div className=" pt-[196.9px] md:pt-[257px] lg:pt-[68px] xl:pt-[101px] font-heading-bold text-[36.1026px] md:text-[59.8561px] lg:text-[46.2222px] xl:text-[65px] 2xl:text-[68.9722px] text-center leading-none">
-                  <h2 className="m-0 p-0 leading-none">The No.1 Fest for:</h2>
-
-                  <div className="bg-[#F3A20F] mt-1 md:mt-0 w-[245.488px] md:w-[549.25px]  lg:w-[423.263px] xl:w-[596.2px] 2xl:w-[634px] md:h-[65.7375px] lg:h-[49.875px] xl:h-[71.125px] 2xl:h-[75.2625px] border-[1.6px] border-black text-nowrap font-heading-bold text-[36.1026px] md:text-[56.8633px] lg:text-[43.9111px] xl:text-[61.75px] 2xl:text-[65.5236px] rounded-md px-[16.3809px] rotate-[-1deg] shadow-[0px_6px_0px_0px] shadow-[#353535] mx-auto  flex items-center justify-center rotate-[-3deg] md:rotate-none">
-                    <h2 className="m-0 p-0 leading-none">
-                      Web Designers{" "}
-                      <span className="md:hidden">
-                        {" "}
-                        <br />
-                      </span>{" "}
-                      & Devs
-                    </h2>
-                  </div>
-                </div>
-
-                <div className="pt-[26.2564px] md:pt-[29.4676px] xl:pt-[31px] lg:pt-[22.7556px] w-[265.188px] md:w-[368.337px] lg:w-[284.438px] xl:w-[400] 2xl:w-[424px]  mx-auto text-center text-[13.1282px]  md:text-[14.7338px] lg:text-[11.3778px] xl:text-[16px] 2xl:text-[16.9778px] leading-[17.0667px] md:leading-[19.154px] lg:leading-[14.7911px] xl:leading-[20.8px] 2xl:leading-[22.0711px] font-[500]">
-                  {" "}
-                  <p>
-                    It's like a conference, but it's outside, with steel drums,
-                    pints and way cooler vibes. Listen to web design & dev talks
-                    whilst having a belting time.
-                  </p>
-                </div>
-                <button
-                  onClick={() => togglePopup(true)}
-                  className=" hover:translate-y-[4px] transition-transform duration-200 cursor-pointer flex items-center mt-[26.2564px] md:mt-[29.4676px] lg:mt-[22.7556px] xl:mt-[33px] mx-auto xl:w-[236.163px] w-[224.962px] md:w-[217.65px] lg:w-[167.225px] 2xl:w-[250px] h-[45.125px]  md:h-[44.2px] xl:h-[48px] lg:h-[34.125px] 2xl:h-[51px] rounded-[30px] bg-[#FFFEFB] px-[22.974px] md:px-[18.417px] lg:px-[14.22px] xl:px-[20px] 2xl:px-[22px]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 28 28"
-                    className=" h-[16px] w-[16px] mr-1 md:h-[20px] md:mr-[3px]  md:w-[20px] lg:w-[14px] lg:h-[14px] xl:w-[18px] 2xl:w-[20px] xl:h-[18px] xl:mr-[2px] 2xl:h-[20px] mb-[-1px] flex-shrink-0"
-                    fill="#F489A3"
-                    stroke="black"
-                    strokeWidth="2.5"
-                    strokeMiterlimit="10"
-                  >
-                    <path d="M4 12V4.46282C4 2.9235 5.66611 1.96122 6.99944 2.73045L13.5333 6.5L20.0639 10.2676C21.398 11.0373 21.398 12.9627 20.0639 13.7324L13.5333 17.5L6.99945 21.2696C5.66611 22.0388 4 21.0765 4 19.5372V12Z" />
-                  </svg>
-
-                  <p className="text-nowrap text-black text-[14.76px] md:text-[14.7338px] lg:text-[11.3778px] xl:text-[16px] 2xl:text-[16.9778px] m-0">
-                    Watch the 2024 Recap
-                  </p>
-                </button>
-                {isOpen && (
-                  <div
-                    className={`popup-overlay fixed inset-0 bg-black/50 flex items-center justify-center z-[50000] ${
-                      isClosing ? "closing" : ""
-                    }`}
-                    style={{ animationDuration: "0.3s" }}
-                  >
-                    <style>{styles}</style>
                     <div
-                      className={`popup-container fixed inset-0 w-screen h-screen flex items-center justify-center ${
-                        isClosing ? "closing" : ""
-                      }`}
-                      style={{ background: "#F97028" }}
+                      className="absolute inset-0 transition-transform duration-300 ease-out"
+                      style={{ transform: `rotate(${rotation}deg)` }}
                     >
-                      <div
-                        className={`video-frame  flex items-center justify-center w-[293.725px] md:w-[679.575px] lg:w-[841.95px] xl:w-[851.9px] 2xl:w-[994.4px] h-[165.225px] md:h-[382.263px] lg:h-[473.6px] xl:h-[479.2px] 2xl:h-[560px] ${
-                          isClosing ? "closing" : ""
-                        }`}
-                        style={{
-                          padding: "",
-                        }}
-                      >
-                        <iframe
-                          width="100%"
-                          height="100%"
-                          src="https://www.youtube.com/embed/0njOFCPorQc"
-                          title="FlowFest 2024"
-                          frameBorder="0"
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          style={{
-                            borderRadius: "26px",
-                            border: "1.6px solid black",
-                            boxShadow: "0 8px 0 rgba(0,0,0,0.1)",
-                          }}
-                        ></iframe>
-                      </div>
-
-                      <button
-                        onClick={handleClose}
-                        className=" cursor-pointer  absolute top-4 right-4 w-[46.6875px] h-[46.6875px] bg-white rounded-full flex items-center justify-center border-[1.6px] border-black z-10
-             shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:shadow-none"
-                        aria-label="Close"
-                      >
-                        <X
-                          size={20}
-                          className="text-black rotate-[-3deg]"
-                          strokeWidth={3}
-                        />
-                      </button>
+                      {renderHalfCircle(firstHalf, "top")}
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
 
-              {/* RIGHT carousel for desktop */}
-              <div className="w-[250px] hidden lg:block">
-                <div
-                  className="absolute lg:right-[-350px] xl:right-[-250px] top-0 h-full w-[250px] pointer-events-none"
-                  style={{ perspective: "1000px" }}
-                >
+                {/* LEFT carousel for desktop */}
+                <div className="w-[250px] hidden lg:block">
                   <div
-                    className="absolute inset-0 transition-transform duration-300 ease-out"
-                    style={{ transform: `rotate(${rotation}deg)` }}
+                    className="absolute lg:left-[-300px] xl:left-[-250px] top-0 h-full w-[250px] pointer-events-none"
+                    style={{ perspective: "1000px" }}
                   >
-                    {renderHalfCircle(firstHalf, "right")}
+                    <div
+                      className="absolute inset-0 transition-transform duration-300 ease-out"
+                      style={{ transform: `rotate(${rotation}deg)` }}
+                    >
+                      {renderHalfCircle(secondHalf, "left")}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* TOP carousel for mobile/tablet */}
-              <div className="h-[250px] lg:hidden">
-                <div
-                  className="absolute left-0 top-[-270px] md:top-[-250px] lg:top-[-270px] w-full h-[250px] pointer-events-none"
-                  style={{ perspective: "1000px" }}
-                >
-                  <div
-                    className="absolute inset-0 transition-transform duration-300 ease-out"
-                    style={{ transform: `rotate(${rotation}deg)` }}
+                <div>
+                  <div className=" pt-[196.9px] md:pt-[257px] lg:pt-[68px] xl:pt-[101px] font-heading-bold text-[36.1026px] md:text-[59.8561px] lg:text-[46.2222px] xl:text-[65px] 2xl:text-[68.9722px] text-center leading-none">
+                    <h2 className="m-0 p-0 leading-none">The No.1 Fest for:</h2>
+
+                    <div className="bg-[#F3A20F] mt-1 md:mt-0 w-[245.488px] md:w-[549.25px]  lg:w-[423.263px] xl:w-[596.2px] 2xl:w-[634px] md:h-[65.7375px] lg:h-[49.875px] xl:h-[71.125px] 2xl:h-[75.2625px] border-[1.6px] border-black text-nowrap font-heading-bold text-[36.1026px] md:text-[56.8633px] lg:text-[43.9111px] xl:text-[61.75px] 2xl:text-[65.5236px] rounded-md px-[16.3809px] rotate-[-1deg] shadow-[0px_6px_0px_0px] shadow-[#353535] mx-auto  flex items-center justify-center rotate-[-3deg] md:rotate-none">
+                      <h2 className="m-0 p-0 leading-none">
+                        Web Designers{" "}
+                        <span className="md:hidden">
+                          {" "}
+                          <br />
+                        </span>{" "}
+                        & Devs
+                      </h2>
+                    </div>
+                  </div>
+
+                  <div className="pt-[26.2564px] md:pt-[29.4676px] xl:pt-[31px] lg:pt-[22.7556px] w-[265.188px] md:w-[368.337px] lg:w-[284.438px] xl:w-[400] 2xl:w-[424px]  mx-auto text-center text-[13.1282px]  md:text-[14.7338px] lg:text-[11.3778px] xl:text-[16px] 2xl:text-[16.9778px] leading-[17.0667px] md:leading-[19.154px] lg:leading-[14.7911px] xl:leading-[20.8px] 2xl:leading-[22.0711px] font-[500]">
+                    {" "}
+                    <p>
+                      It's like a conference, but it's outside, with steel
+                      drums, pints and way cooler vibes. Listen to web design &
+                      dev talks whilst having a belting time.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => togglePopup(true)}
+                    className=" hover:translate-y-[4px] transition-transform duration-200 cursor-pointer flex items-center mt-[26.2564px] md:mt-[29.4676px] lg:mt-[22.7556px] xl:mt-[33px] mx-auto xl:w-[236.163px] w-[224.962px] md:w-[217.65px] lg:w-[167.225px] 2xl:w-[250px] h-[45.125px]  md:h-[44.2px] xl:h-[48px] lg:h-[34.125px] 2xl:h-[51px] rounded-[30px] bg-[#FFFEFB] px-[22.974px] md:px-[18.417px] lg:px-[14.22px] xl:px-[20px] 2xl:px-[22px]"
                   >
-                    {renderHalfCircle(secondHalf, "bottom")}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 28 28"
+                      className=" h-[16px] w-[16px] mr-1 md:h-[20px] md:mr-[3px]  md:w-[20px] lg:w-[14px] lg:h-[14px] xl:w-[18px] 2xl:w-[20px] xl:h-[18px] xl:mr-[2px] 2xl:h-[20px] mb-[-1px] flex-shrink-0"
+                      fill="#F489A3"
+                      stroke="black"
+                      strokeWidth="2.5"
+                      strokeMiterlimit="10"
+                    >
+                      <path d="M4 12V4.46282C4 2.9235 5.66611 1.96122 6.99944 2.73045L13.5333 6.5L20.0639 10.2676C21.398 11.0373 21.398 12.9627 20.0639 13.7324L13.5333 17.5L6.99945 21.2696C5.66611 22.0388 4 21.0765 4 19.5372V12Z" />
+                    </svg>
+
+                    <p className="text-nowrap text-black text-[14.76px] md:text-[14.7338px] lg:text-[11.3778px] xl:text-[16px] 2xl:text-[16.9778px] m-0">
+                      Watch the 2024 Recap
+                    </p>
+                  </button>
+                  {isOpen && (
+                    <div
+                      className={`popup-overlay fixed inset-0 bg-black/50 flex items-center justify-center z-[50000] ${
+                        isClosing ? "closing" : ""
+                      }`}
+                      style={{ animationDuration: "0.3s" }}
+                    >
+                      <style>{styles}</style>
+                      <div
+                        className={`popup-container fixed inset-0 w-screen h-screen flex items-center justify-center ${
+                          isClosing ? "closing" : ""
+                        }`}
+                        style={{ background: "#F97028" }}
+                      >
+                        <div
+                          className={`video-frame  flex items-center justify-center w-[293.725px] md:w-[679.575px] lg:w-[841.95px] xl:w-[851.9px] 2xl:w-[994.4px] h-[165.225px] md:h-[382.263px] lg:h-[473.6px] xl:h-[479.2px] 2xl:h-[560px] ${
+                            isClosing ? "closing" : ""
+                          }`}
+                          style={{
+                            padding: "",
+                          }}
+                        >
+                          <iframe
+                            width="100%"
+                            height="100%"
+                            src="https://www.youtube.com/embed/0njOFCPorQc"
+                            title="FlowFest 2024"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            style={{
+                              borderRadius: "26px",
+                              border: "1.6px solid black",
+                              boxShadow: "0 8px 0 rgba(0,0,0,0.1)",
+                            }}
+                          ></iframe>
+                        </div>
+
+                        <button
+                          onClick={handleClose}
+                          className=" cursor-pointer  absolute top-4 right-4 w-[46.6875px] h-[46.6875px] bg-white rounded-full flex items-center justify-center border-[1.6px] border-black z-10
+             shadow-[0_4px_0_rgba(0,0,0,0.2)] hover:shadow-none"
+                          aria-label="Close"
+                        >
+                          <X
+                            size={20}
+                            className="text-black rotate-[-3deg]"
+                            strokeWidth={3}
+                          />
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* RIGHT carousel for desktop */}
+                <div className="w-[250px] hidden lg:block">
+                  <div
+                    className="absolute lg:right-[-350px] xl:right-[-250px] top-0 h-full w-[250px] pointer-events-none"
+                    style={{ perspective: "1000px" }}
+                  >
+                    <div
+                      className="absolute inset-0 transition-transform duration-300 ease-out"
+                      style={{ transform: `rotate(${rotation}deg)` }}
+                    >
+                      {renderHalfCircle(firstHalf, "right")}
+                    </div>
+                  </div>
+                </div>
+
+                {/* TOP carousel for mobile/tablet */}
+                <div className="h-[250px] lg:hidden">
+                  <div
+                    className="absolute left-0 top-[-270px] md:top-[-250px] lg:top-[-270px] w-full h-[250px] pointer-events-none"
+                    style={{ perspective: "1000px" }}
+                  >
+                    <div
+                      className="absolute inset-0 transition-transform duration-300 ease-out"
+                      style={{ transform: `rotate(${rotation}deg)` }}
+                    >
+                      {renderHalfCircle(secondHalf, "bottom")}
+                    </div>
                   </div>
                 </div>
               </div>
