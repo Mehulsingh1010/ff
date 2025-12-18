@@ -19,9 +19,9 @@ function Testimonial() {
     // Reset cards to starting positions
     cardsRef.current.forEach((card, index) => {
       if (index === 0) {
-        gsap.set(card, { y: 0, opacity: 1 });
+        gsap.set(card, { y: 0});
       } else {
-        gsap.set(card, { y: "100%", opacity: 0 }); 
+        gsap.set(card, { y: "200%",  }); 
       }
     });
 

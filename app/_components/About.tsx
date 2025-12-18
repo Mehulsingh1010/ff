@@ -262,7 +262,7 @@ function About({ onPopupChange }: any) {
   const sponsorContent = (
     <>
       {/* dot */}
-      <div className="w-[20px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
+      <div className="w-[20px] xl:w-[40px] xl:h-[40px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
         <svg viewBox="0 0 25 25" fill="none">
           <circle
             cx="12.5"
@@ -275,10 +275,10 @@ function About({ onPopupChange }: any) {
         </svg>
       </div>
 
-      <div className="flex-shrink-0 cursor-write">Sponsored by</div>
+      <div className="flex-shrink-0 cursor-write xl:text-[30px]">Sponsored by</div>
 
       {/* dot */}
-      <div className="w-[20px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
+      <div className="w-[20px] xl:w-[40px] xl:h-[40px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
         <svg viewBox="0 0 25 25" fill="none">
           <circle
             cx="12.5"
@@ -292,7 +292,7 @@ function About({ onPopupChange }: any) {
       </div>
 
       {/* Osmos logo */}
-      <div className="w-[88.225px] 2xl:w-[128.387px] h-[19.6875px] 2xl:h-[28.65px] flex-shrink-0 cursor-pointer">
+      <div className="w-[88.225px] xl:w-[121px] xl:h-[27px] 2xl:w-[128.387px] h-[19.6875px] 2xl:h-[28.65px] flex-shrink-0 cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
@@ -323,7 +323,7 @@ function About({ onPopupChange }: any) {
       </div>
 
       {/* dot */}
-      <div className="w-[20px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
+      <div className="w-[20px] xl:w-[40px] xl:h-[40px]  2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
         <svg viewBox="0 0 25 25" fill="none">
           <circle
             cx="12.5"
@@ -337,7 +337,7 @@ function About({ onPopupChange }: any) {
       </div>
 
       {/* Webflow logo */}
-      <div className="w-[106.963px] 2xl:w-[150.887px] h-[18.05px] 2xl:h-[25.4625px] flex-shrink-0 flex items-center justify-center cursor-pointer">
+      <div className="w-[106.963px] xl:w-[142.212px] xl:h-[24px] 2xl:w-[150.887px] h-[18.05px] 2xl:h-[25.4625px] flex-shrink-0 flex items-center justify-center cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
@@ -393,8 +393,8 @@ function About({ onPopupChange }: any) {
     <div className="">
       <div className="overflow-hidden mt-[-1340px] md:mt-[-1130px] lg:mt-[-1520px] xl:mt-[-1250px] 2xl:mt-[-1170px] ">
         <style>{styles}</style>
-        <div className="pt-[178px] w-[1398.82px] md:w-[1992px] 2xl:w-[120%] ">
-          <div className="relative h[75.5625px] md:h-[85.2px] lg:h-[66.66px] xl:h-[92.8px] 2xl:h-[98.6625px] w- bg-[#F3A20F] text-white text-[21.3333px] 2xl:text-[31.8333px] font-heading-bold border-t-[1.6px] border-b-[1.6px] border-black shadow-[0px_6px_0px_0px] shadow-[rgb(0,0,0,0.2)] overflow-hidden">
+        <div className="pt-[178px] w-[1398.82px] md:w-[1992px] xl:w-[2164px] 2xl:w-[120%] ">
+          <div className="relative h[75.5625px] md:h-[85.2px] lg:h-[66.66px] xl:h-[96px] 2xl:h-[98.6625px] w- bg-[#F3A20F] text-white text-[21.3333px] 2xl:text-[31.8333px] font-heading-bold border-t-[1.6px] border-b-[1.6px] border-black shadow-[0px_6px_0px_0px] shadow-[rgb(0,0,0,0.2)] overflow-hidden">
             <div className="animate-slide flex items-center  gap-[19.6923px] 2xl:gap-[47.75px] h-full whitespace-nowrap">
               {sponsorContent}
               {sponsorContent}
