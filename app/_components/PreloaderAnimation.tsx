@@ -14,12 +14,14 @@ import FloatingSunMinimal from './SunHome';
 import OrangeBox from './OrangeBox';
 
 const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef }) => {
-  const [currentMessage, setCurrentMessage] = useState("");
+  const [currentMessage, setCurrentMessage] = useState(messages[0]);
   const [messagePhase, setMessagePhase] = useState(0);
   const [animationProgress, setAnimationProgress] = useState(0);
   const [preloaderBgVisible, setPreloaderBgVisible] = useState(true);
   const [showCursor, setShowCursor] = useState(true);
   const containerRef = useRef(null);
+  const sunRef = useRef(null);
+  const messageBoxRef = useRef(null);
   const timelineRef = useRef(null);
   const startTimeRef = useRef(null);
   const animationFrameRef = useRef(null);
@@ -30,7 +32,9 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
     }
 
     const elapsedSinceStart = timestamp - startTimeRef.current;
-    const effectiveElapsed = Math.max(0, elapsedSinceStart - PRELOADER_START_DELAY);
+    // Add extra 1500ms delay before stripes start falling (on top of existing PRELOADER_START_DELAY)
+    const extraStripDelay = 1500;
+    const effectiveElapsed = Math.max(0, elapsedSinceStart - (PRELOADER_START_DELAY + extraStripDelay));
     const totalTimelineDuration =
        TOTAL_ANIMATION_DURATION + (STRIP_COUNT - 1) * STAGGER_DELAY_PER_STRIP;
 
@@ -64,16 +68,21 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
     document.body.style.position = "fixed";
     document.body.style.width = "100%";
 
+    // Set initial opacity to 0 for sun and message box
+    if (sunRef.current) {
+      gsap.set(sunRef.current, { opacity: 0 });
+    }
+    if (messageBoxRef.current) {
+      gsap.set(messageBoxRef.current, { opacity: 0 });
+    }
+
     // Start stripe animation
     animationFrameRef.current = requestAnimationFrame(animate);
 
     const tl = gsap.timeline({
       onComplete: () => {
         setTimeout(() => {
-          // Unlock scroll
-          document.body.style.overflow = "auto";
-          document.body.style.height = "auto";
-          document.body.style.position = "static";
+          // Just call onComplete callback
           if (onComplete) onComplete();
         }, 100);
       },
@@ -108,10 +117,12 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
     };
 
     // Animation timeline
-    tl.to({}, { duration: 0.3 })
-      // Type "..."
-      .to({}, typeText(messages[0], 0.1))
-      .to({}, { duration: 0.5 })
+    tl
+      // Fade in the sun and message box with dots already showing
+      .to(sunRef.current, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0)
+      .to(messageBoxRef.current, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0)
+      .to({}, { duration: 1.5 })
+      // Erase "..."
       .to({}, eraseText(messages[0]))
       .to({}, { duration: 0.2 })
       // Type "hi friends"
@@ -142,6 +153,16 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
         { y: 0, duration: 1.2, ease: "power2.inOut" },
         "slideIn"
       )
+      // Unlock scroll right after slide animations complete and change to absolute positioning
+      .call(() => {
+        document.body.style.overflow = "auto";
+        document.body.style.height = "auto";
+        document.body.style.position = "static";
+        // Change container to absolute so it scrolls with page content
+        if (containerRef.current) {
+          containerRef.current.style.position = "absolute";
+        }
+      })
       // Erase "we are back"
       .to({}, eraseText(messages[2]))
       .to({}, { duration: 0.2 })
@@ -229,18 +250,20 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
       {/* Preloader Message Container */}
       <div
         ref={containerRef}
-        className="fixed left-1/2 -translate-x-1/2 -translate-y-1/2 z-[80] flex items-center gap-[6px] md:gap-[10px] lg:gap-[10px]"
+        className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 z-[80] flex items-center gap-[6px] md:gap-[10px] lg:gap-[10px]"
         style={{ top: "50vh" }}
       >
-        <div className=" md:max-h-[59px] lg:max-h-[64px]">
+        <div ref={sunRef} className=" md:max-h-[59px] lg:max-h-[64px]" style={{ opacity: 0 }}>
           <FloatingSunMinimal />
         </div>
-        <OrangeBox
-          message={currentMessage}
-          messagePhase={messagePhase}
-          isPreloader={true}
-          showCursor={showCursor}
-        />
+        <div ref={messageBoxRef} style={{ opacity: 0 }}>
+          <OrangeBox
+            message={currentMessage}
+            messagePhase={messagePhase}
+            isPreloader={true}
+            showCursor={showCursor}
+          />
+        </div>
       </div>
     </>
   );
