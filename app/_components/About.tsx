@@ -31,7 +31,7 @@ function About({ onPopupChange }: any) {
       // Smooth rotation: -20deg to +20deg as we scroll
       const rotationAmount = 40; // Total degrees of rotation range
       const newRotation = (progress - 0.5) * rotationAmount;
-      setRotation(newRotation);
+      setRotation(-newRotation);
     };
 
     handleScroll(); // Initial calculation
