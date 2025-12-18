@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: "Join us for FlowFest 2025 - the ultimate festival experience in Manchester",
     images: [
       {
-        url: "/meta.png",
+        url: "https://i.ibb.co/5WLTppNv/meta.png",
         width: 1200,
         height: 630,
         alt: "FlowFest 2025",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FlowFest 2025 - Friday 8th August, Manchester, UK",
     description: "Join us for FlowFest 2025 - the ultimate festival experience in Manchester",
-    images: ["/meta.png"], 
+    images: ["https://i.ibb.co/5WLTppNv/meta.png"], 
   },
 };
 
