@@ -25,8 +25,8 @@ function About({ onPopupChange }: any) {
       const maxDistance = window.innerHeight / 2 + rect.height / 2;
       const progress = -scrollDistance / maxDistance;
 
-      const initialOffset = 30;
-      const newRotation = -progress * 1 + initialOffset ;
+      const initialOffset = 10;
+      const newRotation = -progress * 30 + initialOffset ;
       setRotation(newRotation);
     };
 
