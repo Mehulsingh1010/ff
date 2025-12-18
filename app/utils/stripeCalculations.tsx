@@ -38,7 +38,7 @@ export const calculatePreloaderStyles = (
 };
 
 export const calculateSidePathStyles = (baseLength, index, isLeft, scrollPercent) => {
-  const scrollMultiplier = 8.0;
+  const scrollMultiplier = 9.3;
   const amplifiedScroll = scrollPercent * scrollMultiplier;
 
   const totalAnimationDistance = sideBaseLengths[0] + 137 * 3;
@@ -58,7 +58,7 @@ export const calculateSidePathStyles = (baseLength, index, isLeft, scrollPercent
 };
 
 export const calculateVerticalStripStyles = (baseLength, index, scrollPercent) => {
-  const verticalScrollMultiplier = 1.7;
+  const verticalScrollMultiplier = 1.9;
   const amplifiedScroll = scrollPercent * verticalScrollMultiplier;
 
   const totalAnimationDistance = verticalStripBaseLengths[0] + verticalStripTriggerOffset * (VERTICAL_STRIP_COUNT - 1);

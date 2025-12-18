@@ -14,18 +14,9 @@ export const PRELOADER_START_DELAY = 1000;
 
 export const messages = ["...", "hi friends", "we are back"];
 
-export const ORANGE_BOX_STYLES = {
-  fontSize: "16.9778px",
-  lineHeight: "22.0711px",
-  padding: "0px 12.7333px",
-  minHeight: "35.6px",
-  borderRadius: "14.86px",
-  borderWidth: "1.6px",
-  tracking: "-0.424444px",
-};
 
 export const verticalStripBaseLengths = [600, 600, 600, 600, 600, 600, 600, 600, 600];
-export const verticalStripTriggerOffset = 190;
+export const verticalStripTriggerOffset = 20;
 export const VERTICAL_STRIP_COUNT = verticalStripBaseLengths.length;
 
 export const verticalStrips = [

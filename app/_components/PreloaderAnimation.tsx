@@ -32,7 +32,7 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
     const elapsedSinceStart = timestamp - startTimeRef.current;
     const effectiveElapsed = Math.max(0, elapsedSinceStart - PRELOADER_START_DELAY);
     const totalTimelineDuration =
-      TOTAL_ANIMATION_DURATION + (STRIP_COUNT - 1) * STAGGER_DELAY_PER_STRIP;
+       TOTAL_ANIMATION_DURATION + (STRIP_COUNT - 1) * STAGGER_DELAY_PER_STRIP;
 
     let progress = Math.min(1, effectiveElapsed / totalTimelineDuration);
 

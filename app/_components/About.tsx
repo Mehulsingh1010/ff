@@ -25,8 +25,8 @@ function About({ onPopupChange }: any) {
       const maxDistance = window.innerHeight / 2 + rect.height / 2;
       const progress = -scrollDistance / maxDistance;
 
-      const initialOffset = 10;
-      const newRotation = -progress * 60 + initialOffset;
+      const initialOffset = 30;
+      const newRotation = -progress * 1 + initialOffset ;
       setRotation(newRotation);
     };
 
@@ -61,7 +61,7 @@ function About({ onPopupChange }: any) {
 
 .animate-slide {
   display: flex;
-  animation: slideLeft 15s linear infinite;
+  animation: slideLeft 8s linear infinite;
 }
 
   @keyframes popIn {
@@ -158,28 +158,29 @@ function About({ onPopupChange }: any) {
     "border-[#F0BB0D]",
   ];
 
-  const items = Array.from({ length: count }, (_, i) => ({
-    id: i,
-    image: [
-      "/corousel/r1.avif",
-      "/corousel/r2.avif",
-      "/corousel/r3.avif",
-      "/corousel/r1.avif",
-      "/corousel/l1.avif",
-      "/corousel/l2.avif",
-      "/corousel/l3.avif",
-      "/corousel/l1.avif",
-      "/corousel/r1.avif",
-      "/corousel/r2.avif",
-      "/corousel/r3.avif",
-      "/corousel/r1.avif",
-      "/corousel/l1.avif",
-      "/corousel/l2.avif",
-      "/corousel/l3.avif",
-      "/corousel/l1.avif",
-    ][i],
-    borderColor: borderColors[i],
-  }));
+ const items = Array.from({ length: count }, (_, i) => ({
+  id: i,
+  image: [
+    "/corousel/r1.avif", // Item 1 (Right side)
+    "/corousel/r1.avif", // Item 2
+    "/corousel/r3.avif", // Item 3
+    "/corousel/r2.avif", // Item 4 (Changed from r1)
+    "/corousel/r1.avif", // Item 5 (Changed from l1)
+    "/corousel/r2.avif", // Item 6 (Changed from l2)
+    "/corousel/r3.avif", // Item 7 (Changed from l3)
+    "/corousel/r2.avif", // Item 8 (Changed from l1)
+    
+    "/corousel/l1.avif", // Item 9 (Left side)
+    "/corousel/l1.avif", // Item 10
+    "/corousel/l2.avif", // Item 11
+    "/corousel/l3.avif", // Item 12 (Changed from r1)
+    "/corousel/l1.avif", // Item 13 (Changed from l1)
+    "/corousel/l2.avif", // Item 14 (Changed from l2)
+    "/corousel/l3.avif", // Item 15 (Changed from l3)
+    "/corousel/l4.avif", // Item 16 (Changed from l1)
+  ][i],
+  borderColor: borderColors[i],
+}));
 
   const firstHalf = items.slice(0, count / 2);
   const secondHalf = items.slice(count / 2);
