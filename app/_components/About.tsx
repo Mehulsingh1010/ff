@@ -21,15 +21,20 @@ function About({ onPopupChange }: any) {
       const elementCenter = rect.top + rect.height / 2;
       const windowCenter = window.innerHeight / 2;
 
+      // Distance from center of viewport
       const scrollDistance = elementCenter - windowCenter;
       const maxDistance = window.innerHeight / 2 + rect.height / 2;
-      const progress = -scrollDistance / maxDistance;
+      
+      // Progress from 0 to 1 as element moves through viewport
+      const progress = Math.max(0, Math.min(1, (maxDistance - scrollDistance) / (maxDistance * 2)));
 
-      const initialOffset = 10;
-      const newRotation = -progress * 30 + initialOffset ;
+      // Smooth rotation: -20deg to +20deg as we scroll
+      const rotationAmount = 40; // Total degrees of rotation range
+      const newRotation = (progress - 0.5) * rotationAmount;
       setRotation(newRotation);
     };
 
+    handleScroll(); // Initial calculation
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -234,13 +239,12 @@ function About({ onPopupChange }: any) {
         return (
           <div
             key={item.id}
-            className="absolute "
+            className="absolute transition-transform duration-100 ease-out"
             style={{
               left: "50%",
               top: "50%",
               transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) rotate(${-rotation}deg)`,
               width: "144px",
-              // zIndex: 50,
             }}
           >
             <div
@@ -443,7 +447,7 @@ function About({ onPopupChange }: any) {
                   style={{ perspective: "1000px" }}
                 >
                   <div
-                    className="absolute inset-0"
+                    className="absolute inset-0 transition-transform duration-300 ease-out"
                     style={{ transform: `rotate(${rotation}deg)` }}
                   >
                     {renderHalfCircle(firstHalf, "top")}
@@ -458,7 +462,7 @@ function About({ onPopupChange }: any) {
                   style={{ perspective: "1000px" }}
                 >
                   <div
-                    className="absolute inset-0"
+                    className="absolute inset-0 transition-transform duration-300 ease-out"
                     style={{ transform: `rotate(${rotation}deg)` }}
                   >
                     {renderHalfCircle(secondHalf, "left")}
@@ -572,7 +576,7 @@ function About({ onPopupChange }: any) {
                   style={{ perspective: "1000px" }}
                 >
                   <div
-                    className="absolute inset-0"
+                    className="absolute inset-0 transition-transform duration-300 ease-out"
                     style={{ transform: `rotate(${rotation}deg)` }}
                   >
                     {renderHalfCircle(firstHalf, "right")}
@@ -587,7 +591,7 @@ function About({ onPopupChange }: any) {
                   style={{ perspective: "1000px" }}
                 >
                   <div
-                    className="absolute inset-0"
+                    className="absolute inset-0 transition-transform duration-300 ease-out"
                     style={{ transform: `rotate(${rotation}deg)` }}
                   >
                     {renderHalfCircle(secondHalf, "bottom")}
