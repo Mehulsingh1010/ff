@@ -40,7 +40,7 @@ function App() {
     <div className='overflow-hidden'>
    
 
-      <SunPage svgSrc="/svg/sun.svg" />
+      {/* <SunPage svgSrc="/svg/sun.svg" />
       <StripesHomeMain onPreloaderComplete={()=>{setPreloaderComplete(true)}} />
    
       <About onPopupChange={setIsPopupOpen} />
@@ -50,7 +50,7 @@ function App() {
       <Community/>  
 
       
-      <Testimonial />
+      <Testimonial /> */}
       <FAQ/>
       <CTO/>
     

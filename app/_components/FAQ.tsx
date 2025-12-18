@@ -2,6 +2,7 @@
 
 "use client";
 
+import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 
 const PlusIcon = ({ rotation }) => (
@@ -369,13 +370,16 @@ export default function FAQ() {
           ))}
         </div>
 
-        <div className="order-2 lg:order-1 w-full md:w-full max-w-full lg:w-[325.5px] xl:w-[456.8px] 2xl:w-[490.663px] lg:max-w-none h-[356px] md:h-[856px] lg:h-[362.925px] xl:h-[512.525px] 2xl:h-[546.713px] lg:rounded-[29.8667px] 2xl:rounded-[44.8px] lg:border-[1px] xl:border-[1.6px] overflow-hidden relative">
-          <img
-            src="https://cdn.prod.website-files.com/682310547ba9eeb97324a89e/682dc19153bdaa746c0b423a_event-image-7.avif"
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <div className="order-2 lg:order-1 w-full max-w-full md:w-full lg:w-[325.5px] xl:w-[456.8px] 2xl:w-[490.663px] lg:max-w-none h-[356px] md:h-[856px] lg:h-[362.925px] xl:h-[512.525px] 2xl:h-[546.713px] lg:rounded-[29.8667px] 2xl:rounded-[44.8px] lg:border-[1px] xl:border-[1.6px] overflow-hidden relative">
+  <Image
+    src="/faq.avif"
+    alt="faq img"
+    fill
+    className="object-cover"
+    sizes="(max-width: 1024px) 100vw, 490px"
+    priority={false}
+  />
+</div>
       </div>
     </div>
   );

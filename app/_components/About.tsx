@@ -244,6 +244,7 @@ function About({ onPopupChange }: any) {
               alt={item.name}
               className="h-full w-full object-cover rounded-lg"
             />
+          {/* no nextjs img coz blob doesnt take that type or src (string) */}
                      {" "}
           </div>
         </div>
