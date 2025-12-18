@@ -312,6 +312,7 @@ const sponsorContent = (
 
     
       <div
+      id="about"
         ref={containerRef}
         className="overflow-hidden bg-black  lg:pt-[130.8px] px-[13.12px] md:px-[44.2px] pt-[151.8px] lg:px-[45.5px] xl:pt-[151.8px] xl:px-[64px] 2xl:pt-[153px]  2xl:px-[72px]"
       >

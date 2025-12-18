@@ -81,7 +81,7 @@ function WTE() {
 
   return (
     <>
-      <div className="h-[60px]  bg-black lg:bg-[linear-gradient(to_right,black_50%,#F97028_50%)]">
+      <div   id="activities" className="h-[60px]  bg-black lg:bg-[linear-gradient(to_right,black_50%,#F97028_50%)]">
       </div>
       <div className="lg:pl-[45px] xl:pl-[64px] 2xl:pl-[67px]   bg-black lg:flex font-heading-bold relative" style={{ zIndex: 1 }}>
         <div className="text-white lg:px-[30px] xl:px-[41px] 2xl:px-11 lg:py-[80px] xl:py-[112px] 2xl:py-[118px] h-[240.225px]  lg:h-[341px] xl:h-[480px] 2xl:h-[509px] box-border flex justify-center items-center">

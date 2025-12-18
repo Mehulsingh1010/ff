@@ -535,7 +535,7 @@ function SunPage({ svgSrc }) {
   return (
     <div
       ref={componentRef}
-      className="fixed  xl:bottom-[33px] md:bottom-[28px] md:left-[28px] bottom-[17px] left-[12px] xl:left-[33px] z-40 flex items-center -translate-x-[400%]"
+      className="fixed  xl:bottom-[33px] md:bottom-[28px] md:left-[28px] bottom-[17px] left-[12px] xl:left-[33px] z-[999] flex items-center -translate-x-[400%]"
     >
       <div
         ref={sunContainerRef}

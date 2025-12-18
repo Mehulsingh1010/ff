@@ -11,16 +11,28 @@ const Navbar = React.forwardRef<HTMLDivElement, any>((props, ref) => (
     <div className="flex items-center justify-between w-full max-w-[1920px] mx-auto">
       <div className="hidden md:hidden lg:flex flex-1">
         <ul className="flex gap-[29.8667px] lg:gap-[19px] xl:gap-[28px] 2xl:gap-[29.1515px] list-none p-0 m-0 cursor-pointer">
-          <li className="nav-bar__li">
-            <div className="nav-link font-medium">About</div>
-          </li>
-          <li className="nav-bar__li">
-            <div className="nav-link font-medium">Speakers</div>
-          </li>
-          <li className="nav-bar__li">
-            <div className="nav-link font-medium">Activities</div>
-          </li>
-        </ul>
+  <li
+    className="nav-bar__li"
+    onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+  >
+    <div className="nav-link font-medium">About</div>
+  </li>
+
+  <li
+    className="nav-bar__li"
+    onClick={() => document.getElementById("speakers")?.scrollIntoView({ behavior: "smooth" })}
+  >
+    <div className="nav-link font-medium">Speakers</div>
+  </li>
+
+  <li
+    className="nav-bar__li"
+    onClick={() => document.getElementById("activities")?.scrollIntoView({ behavior: "smooth" })}
+  >
+    <div className="nav-link font-medium">Activities</div>
+  </li>
+</ul>
+
       </div>
 
       {/* 2. Logo */}
