@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local"; 
 import "./globals.css";
+import LenisProvider from "./_components/LenisProvider";
 
 const normalText = localFont({
   src: "../public/fonts/normal-text.woff2",
@@ -56,7 +57,10 @@ export default function RootLayout({
       <body
         className={`${normalText.variable} ${headingBold.variable} ${headingXBold.variable} antialiased`}
       >
-        {children}
+         <LenisProvider>  
+          {children}
+         </LenisProvider>
+        
       </body>
     </html>
   );

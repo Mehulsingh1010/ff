@@ -13,6 +13,7 @@ import Team from "./_components/Team";
 import About from "./_components/About";
 import SunPage from "./_components/Sun";
 import StripesHomeMain from "./_components/StripesHome";
+import LenisProvider from "./_components/LenisProvider";
 
 function App() {
   const [navVisible, setNavVisible] = useState(false);
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div className="overflow-hidden">
+       <LenisProvider>
       <SunPage 
         svgSrc="/svg/sun.svg" 
         isPreloaderComplete={preloaderComplete}
@@ -54,7 +56,7 @@ function App() {
       <FAQ />
       <CTO />
 
-      <Footer />
+      <Footer /></LenisProvider>
     </div>
   );
 }
