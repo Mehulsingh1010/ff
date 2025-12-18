@@ -19,9 +19,9 @@ function Testimonial() {
     // Reset cards to starting positions
     cardsRef.current.forEach((card, index) => {
       if (index === 0) {
-        gsap.set(card, { y: 0});
+        gsap.set(card, { y: 0, opacity: 1 });
       } else {
-        gsap.set(card, { y: "200%",  }); 
+        gsap.set(card, { y: "200%", opacity: 0.8 }); 
       }
     });
 
@@ -32,8 +32,9 @@ function Testimonial() {
         end: "+=300%", 
         scrub: 1,
         pin: true,
-        pinSpacing: true, 
+        pinSpacing: true,
         anticipatePin: 1,
+        invalidateOnRefresh: true,
       },
     });
 
@@ -47,7 +48,13 @@ function Testimonial() {
       }, (index - 1) * 0.75);
     });
 
+    // Refresh ScrollTrigger after a brief delay to recalculate positions
+    const refreshTimeout = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+
     return () => {
+      clearTimeout(refreshTimeout);
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
@@ -55,9 +62,9 @@ function Testimonial() {
   const cardContainerStyle = "absolute left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 w-[293.75px] md:w-[412.538px] lg:w-[432.35px] xl:w-[604.8px] 2xl:w-[641.95px] h-[175.35px] md:h-[245.725px] lg:h-[256.812px] xl:h-[358.337px] 2xl:h-[380.35px]";
 
   return (
-    <section ref={containerRef} className="pt-0 mt-0 relative overflow-hidden px-[13px] md:px-[44.2px] lg:px-[45px] xl:px-[67px] lg:mt-[165px] md:mt-[185.338px] text-black">
+    <section ref={containerRef} className="relative overflow-hidden px-[13px] md:px-[44.2px] lg:px-[45px] xl:px-[67px] lg:mt-[165px] md:mt-[185.338px] text-black">
       
-      <div ref={pinWrapperRef} className="min-h-screen flex items-center justify-center">
+      <div ref={pinWrapperRef} className="relative min-h-screen flex items-center justify-center will-change-transform">
         <div className="relative lg:px-[72px] xl:px-[101px] 2xl:px-[109px] w-full max-w-[1440px] mx-auto">
           
           {[1, 2, 3, 4, 5].map((num, i) => (
@@ -70,7 +77,7 @@ function Testimonial() {
               <img
                 src={`/twitter/${num}.jpg`}
                 alt=""
-                className={`w-full h-full object-cover rounded-[39.3846px] md:rounded-[60px] border-[1.6px] shadow-[0px_8px_0px_0px_rgba(0,0,0,0.15)] top-[96px] md:top-[-55px] md:left-[146px] lg:left-[180px] xl:left-[265px] absolute 
+                className={`w-full h-full object-cover rounded-[39.3846px] md:rounded-[60px] border-[1.6px] shadow-[0px_8px_0px_0px_rgba(0,0,0,0.15)] top-[96px] md:top-[-55px] md:left-[146px] lg:left-[180px] xl:left-[265px] absolute will-change-transform
                   ${i === 0 ? 'rotate-4' : i === 1 ? 'rotate-2' : i === 3 ? 'rotate-[-2deg]' : i === 4 ? 'rotate-[-4deg]' : ''}`}
               />
             </div>
