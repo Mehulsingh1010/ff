@@ -33,40 +33,21 @@ const HeroTwinStrokes = () => {
   );
 
   return (
-    <>
-    <div className="hidden md:hidden lg:block">
-      <style>{`
-        .rainbow-sides__right {
-          position: fixed;
-          top: 0;
-          right: -4.75em;
-          z-index: 1;
-          pointer-events: none;
-          display: block;
-        }
-        .rainbow-sides__left {
-          position: fixed;
-          bottom: 0;
-          left: -4.5em;
-          z-index: 1;
-          pointer-events: none;
-          display: block;
-        }
-      `}</style>
-      
-
+    <div className="hidden lg:block">
+      {/* Right Side Stroke */}
       <SideStrokesSVG
-        sideClass="rainbow-sides__right relative"
+        sideClass="fixed top-0 right-[-4.75em] z-[-1] pointer-events-none block"
         isLeft={false}
         calculateStyles={getHeroSideStyles}
       />
+
+      {/* Left Side Stroke */}
       <SideStrokesSVG
-        sideClass="rainbow-sides__left"
+        sideClass="fixed bottom-0 left-[-4.5em] z-[-1] pointer-events-none block"
         isLeft={true}
         calculateStyles={getHeroSideStyles}
       />
-      </div>
-    </>
+    </div>
   );
 };
 

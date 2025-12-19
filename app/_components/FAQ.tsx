@@ -312,10 +312,10 @@ export default function FAQ() {
 
   return (
     <div className="mt-[50px] 2xl:px-[68px] md:mt-[9px] lg:mt-[10px] xl:mt-[10px] 2xl:mt-[10px] text-black text-center">
-      <div className="  md:pb-7 lg:pb-8 xl:pb-[67px] 2xl:pb-[67px] flex flex-col items-center w-full md:px-0 lg:px-0 xl:px-[450px] 2xl:px-[450px]">
-        <div className="h-auto md:h-auto lg:h-[46.2222px] xl:h-[137px] 2xl:h-[137px] font-heading-bold text-black text-[41.0256px] md:text-[59.8561px] lg:text-[46.2222px] xl:text-[68.9722px] 2xl:text-[68.9722px] leading-[36px] md:leading-[52px] lg:leading-[58px] xl:leading-[62.075px] 2xl:leading-[62.075px] text-center md:text-center lg:text-nowrap xl:text-nowrap 2xl:text-nowrap w-full">
+      <div className="  md:pb-7 lg:pb-8 xl:pb-[64px] 2xl:pb-[67px] flex flex-col items-center w-full md:px-0 lg:px-0 xl:px-[450px] 2xl:px-[450px]">
+        <div className="h-auto md:h-auto lg:h-[46.2222px] xl:h-[137px] 2xl:h-[137px] font-heading-bold text-black text-[41.0256px] md:text-[59.8561px] lg:text-[46.2222px] xl:text-[65px] 2xl:text-[68.9722px] leading-[36px] md:leading-[52px] lg:leading-[58px] xl:leading-[62.075px] 2xl:leading-[62.075px] text-center md:text-center lg:text-nowrap xl:text-nowrap 2xl:text-nowrap w-full">
           Frequently Asked
-          <div className="text-center mx-auto rotate-[2deg] border-2 shadow-[rgb(0,0,0,0.15)] shadow-[0px_6px_0px_0px_#000] text-white bg-[#F97028] w-[189.65px] md:w-[260px] lg:w-[190.675px] xl:w-[288.66px] 2xl:w-[288.66px] max-w-full border-black rounded-sm text-[41.0256px] md:text-[54px] lg:text-[41.6px] xl:text-[62.075px] 2xl:text-[62.075px] leading-[36px] md:leading-[50px] lg:leading-[37.44px] xl:leading-[55.8675px] 2xl:leading-[55.8675px] pt-[8.20513px] md:pt-[3.36691px] lg:pt-[2.6px] xl:pt-[9.31125px] 2xl:pt-[9.31125px] pb-[2.5px] md:pb-[2.8px] lg:pb-[2.08px] xl:pb-[3.10375px] 2xl:pb-[3.10375px] px-[12px] md:px-[14px] lg:px-[10.4px] xl:px-[15.5188px] 2xl:px-[15.5188px] mt-2 md:mt-2 lg:mt-0 xl:mt-0 2xl:mt-0">
+          <div className="text-center mx-auto rotate-[2deg] border-2 shadow-[rgb(0,0,0,0.15)] shadow-[0px_6px_0px_0px_#000] text-white bg-[#F97028] w-[189.65px] md:w-[260px] lg:w-[190.675px] xl:w-[272.24px] 2xl:w-[288.66px] max-w-full border-black rounded-sm text-[41.0256px] md:text-[54px] lg:text-[41.6px] xl:text-[58.5px] 2xl:text-[62.075px] leading-[36px] md:leading-[50px] lg:leading-[37.44px] xl:leading-[55.8675px] 2xl:leading-[55.8675px] pt-[8.20513px] md:pt-[3.36691px] lg:pt-[2.6px] xl:pt-[9.31125px] 2xl:pt-[9.31125px] pb-[2.5px] md:pb-[2.8px] lg:pb-[2.08px] xl:pb-[3.10375px] 2xl:pb-[3.10375px] px-[12px] md:px-[14px] lg:px-[10.4px] xl:px-[14.625px] 2xl:px-[15.5188px] mt-2 md:mt-2 lg:mt-0 xl:mt-0 2xl:mt-0">
             Questions
           </div>
         </div>

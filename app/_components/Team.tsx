@@ -75,7 +75,7 @@ function Team() {
 
   return (
     <>
-      <div   id="speakers" className="px-[13.12px] overflow-hidden md:px-[42.2px] lg:px-[45.51px] xl:px-[64px] 2xl:px-[68px] mt-[-34px] rounded-bl-[60px] rounded-br-[60px] text-black mb-[-60px] relative bg-[#F3ECD2]">
+      <div   id="speakers" className="border-b-[2px] border-black px-[13.12px] overflow-hidden md:px-[42.2px] lg:px-[45.51px] xl:px-[64px] 2xl:px-[68px] mt-[-34px] rounded-bl-[60px] rounded-br-[60px] text-black mb-[-60px] relative bg-[#F3ECD2]">
         <div className=" w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[1400px] md:gap-x-[55.2518px] lg:gap-x-[42.6667px] xl:gap-x-[60px] 2xl:gap-x-[64px] h-full">
           
           {/* Item 1 - Text Section */}

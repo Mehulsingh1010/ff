@@ -122,10 +122,10 @@ function WTE() {
         className="h-[60px]  bg-black lg:bg-[linear-gradient(to_right,black_50%,#F97028_50%)]"
       ></div>
       <div
-        className="lg:pl-[45px] xl:pl-[64px] 2xl:pl-[67px]   bg-black lg:flex font-heading-bold relative"
+        className="lg:pl-[45px] xl:pl-[64px] 2xl:pl-[67px] mx-auto justify-center max-w-[1560px] bg-black lg:flex font-heading-bold relative"
         style={{ zIndex: 1 }}
       >
-        <div className="text-white lg:px-[30px] xl:px-[41px] 2xl:px-11 lg:py-[80px] xl:py-[112px] 2xl:py-[118px] h-[240.225px]  lg:h-[341px] xl:h-[480px] 2xl:h-[509px] box-border flex justify-center items-center">
+        <div className="text-white lg:px-[30px] xl:px-[58px] 2xl:px-11 lg:py-[80px] xl:py-[112px] 2xl:py-[118px] h-[240.225px]  lg:h-[341px] xl:h-[480px] 2xl:h-[509px] box-border flex justify-center items-center">
           <div className=" 2xl:h-[272px]  lg:w-[82px] 2xl:w-[122px] font-heading-bold flex justify-center items-center">
             <h2
               className="
@@ -166,7 +166,7 @@ function WTE() {
                 zIndex: 10,
               }}
             >
-              <div className="lg:h-[46px] t text-[32.82px] md:text-[44.2014px] leading-[29.5385px] lg:text-[34.1333px] xl:text-[48px] 2xl:text-[50.9333px] lg:leading-[45.84px] whitespace-nowrap text-[#FFFEFB] w-full text-center  lg:w-auto">
+              <div className="lg:h-[46px] xl:pr-[64px] 2xl:pr-[67px] text-[32.82px] md:text-[44.2014px] leading-[29.5385px] lg:text-[34.1333px] xl:text-[48px] 2xl:text-[50.9333px] lg:leading-[45.84px] whitespace-nowrap text-[#FFFEFB] w-full text-center  lg:w-auto">
                 {bar.title}
               </div>
 

@@ -4,14 +4,14 @@
 export default function Community() {
   return (
     <>
-      <div className=" border-t-[1.6px]  lg:border-none text-black rounded-tl-[60px]  rounded-tr-[60px] mt-[-60px] relative bg-[#F3ECD2] ">
+      <div className=" border-t-[1.6px]   text-black rounded-tl-[60px]  rounded-tr-[60px] mt-[-60px] relative bg-[#F3ECD2] ">
         {" "}
         <div className=" pt-[78px] md:pt-[117px] 2xl:pt-[170px]"></div>
-        <div className=" relative 2xl:h-[472px] xl:h-[445.425px] lg:h-[319.73px] 2xl:gap-[68.2667px] 2xl:pl-[68px]  lg:flex lg:pl-[45px] xl:pl-[64px]  lg:border-t-3 lg:border-b-3 border-[#D2CCB6] ">
-          <div className="block absolute h-[16px] mt-[704px] ml-0 md:mt-[620px] md:h-[20px] md:ml-[0px] lg:h-[14px] lg:ml-[-44px] xl:h-[22px] w-screen  xl:ml-[-70px] lg:mt-[142.6px] xl:mt-[200px] 2xl:mt-[215px] top-2 border-t-3 border-b-3 text-[transparent] border-[#D2CCB6]">
+        <div className=" max-w-[1536px] mx-auto relative 2xl:h-[472px] xl:h-[445.425px] lg:h-[319.73px] 2xl:gap-[68.2667px] 2xl:pl-[68px]  lg:flex lg:pl-[45px] xl:pl-[64px]  lg:border-t-3 lg:border-b-3 border-[#D2CCB6] ">
+          <div className="w-full block absolute h-[16px] mt-[704px] ml-0 md:mt-[620px] md:h-[20px] md:ml-[0px] lg:h-[14px] lg:ml-[-44px] xl:h-[22px]  xl:ml-[-65px] lg:mt-[142.6px] xl:mt-[200px] 2xl:mt-[215px] top-2 border-t-3 border-b-3 text-[transparent] border-[#D2CCB6]">
             a
           </div>
-          <div className="md:hidden absolute h-[16px] mt-[540px] ml-0 md:mt-[620px] md:h-[20px] md:ml-[0px] lg:h-[14px] lg:ml-[-44px] xl:h-[22px] w-screen  xl:ml-[-70px] lg:mt-[142.6px] xl:mt-[200px] 2xl:mt-[215px] top-2 border-t-3 border-b-3 text-[transparent] border-[#D2CCB6]">
+          <div className="w-full md:hidden absolute h-[16px] mt-[540px] ml-0 md:mt-[620px] md:h-[20px] md:ml-[0px] lg:h-[14px] lg:ml-[-44px] xl:h-[22px]  xl:ml-[-70px] lg:mt-[142.6px] xl:mt-[200px] 2xl:mt-[215px] top-2 border-t-3 border-b-3 text-[transparent] border-[#D2CCB6]">
             a
           </div>
 
@@ -39,7 +39,7 @@ export default function Community() {
             </div>
             <div className="mt-[26px] 2xl:mt-[33px]"></div>
 
-            <div className="h-[68.25px] md:h-[57.45px] xl:h-[62.4px] 2xl:h-[66px] w-[293.75px] md:w-[412.538px] lg:w-[318.575px] xl:w-[448px] 2xl:w-[475px] mx-auto text-center lg:text-left text-[13.1282px] md:text-[14.7338px] lg:text-[11.3778px] xl:text-[16px] 2xl:text-[16.9778px] leading-[17.0667px] md:leading-[19.154px] lg:leading-[14.7911px] xl:leading-[20.8px] 2xl:leading-[22.0711px] font-regular">
+            <div className="h-[68.25px] md:h-[57.45px] xl:h-[62.4px] 2xl:h-[66px] w-[293.75px] md:w-[412.538px] lg:w-[318.575px] xl:w-[448px] 2xl:w-[475px] mx-auto lg:mx-0 text-center lg:text-left text-[13.1282px] md:text-[14.7338px] lg:text-[11.3778px] xl:text-[16px] 2xl:text-[16.9778px] leading-[17.0667px] md:leading-[19.154px] lg:leading-[14.7911px] xl:leading-[20.8px] 2xl:leading-[22.0711px] font-regular">
               <p className="font-quicksand">
                 This is a <span className="font-bold">non-profit</span> event
                 run by
