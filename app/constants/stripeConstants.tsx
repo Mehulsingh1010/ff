@@ -10,9 +10,9 @@ export const sidePaths = [
 export const STRIP_COUNT = sideBaseLengths.length;
 export const TOTAL_ANIMATION_DURATION = 1000;
 export const STAGGER_DELAY_PER_STRIP = 100;
-export const PRELOADER_START_DELAY = 800;
+export const PRELOADER_START_DELAY = 0;
 
-export const messages = ["...", "hi friends", "we are back"];
+export const messages = ["...", "Hi friends!", "We are back..."];
 
 
 export const verticalStripBaseLengths = [600, 600, 600, 600, 600, 600, 600, 600, 600];
