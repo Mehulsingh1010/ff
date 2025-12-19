@@ -14,6 +14,7 @@ import About from "./_components/About";
 import SunPage from "./_components/Sun";
 import StripesHomeMain from "./_components/StripesHome";
 import LenisProvider from "./_components/LenisProvider";
+import FAQsvg from "./_components/FAQsvg";
 
 function App() {
   const [navVisible, setNavVisible] = useState(false);
@@ -53,10 +54,12 @@ function App() {
       <Community />
 
       <Testimonial />
-      <FAQ />
+      {/* <FAQ /> */}
+        <FAQsvg/>
       <CTO />
 
-      <Footer /></LenisProvider>
+      <Footer />
+      </LenisProvider>
     </div>
   );
 }
