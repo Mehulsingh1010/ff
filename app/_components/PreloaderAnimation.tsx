@@ -33,7 +33,7 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
 
     const elapsedSinceStart = timestamp - startTimeRef.current;
     // Add extra 1500ms delay before stripes start falling (on top of existing PRELOADER_START_DELAY)
-    const extraStripDelay = 1500;
+    const extraStripDelay = 0;
     const effectiveElapsed = Math.max(0, elapsedSinceStart - (PRELOADER_START_DELAY + extraStripDelay));
     const totalTimelineDuration =
        TOTAL_ANIMATION_DURATION + (STRIP_COUNT - 1) * STAGGER_DELAY_PER_STRIP;
@@ -121,7 +121,7 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
       // Fade in the sun and message box with dots already showing
       .to(sunRef.current, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0)
       .to(messageBoxRef.current, { opacity: 1, duration: 0.5, ease: "power2.out" }, 0)
-      .to({}, { duration: 1.5 })
+      .to({}, { duration: 0.1 })
       // Erase "..."
       .to({}, eraseText(messages[0]))
       .to({}, { duration: 0.2 })
@@ -144,7 +144,7 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
      
       .to(
         navbarRef.current,
-        { y: 0, duration: 1.2, ease: "power2.inOut" },
+        { y: 0, duration: 0.6, ease: "power2.inOut" },
         "slideIn"
       )
       // Slide home content up from bottom
