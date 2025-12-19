@@ -32,7 +32,7 @@ body {
 }
 
 body {
-  cursor: url("/cursor/normal.svg") 16 16, auto;
+  cursor: url("/cursor/normal.svg") 1 1, auto;
 }
 
 /* ---------------------- */
@@ -40,27 +40,27 @@ body {
 /* ---------------------- */
 @layer utilities {
   .cursor-normal {
-    cursor: url("/cursor/normal.svg") 16 16, auto;
+    cursor: url("/cursor/normal.svg") 1 1, auto;
   }
 
   .cursor-write {
-    cursor: url("/cursor/write.svg") 16 16, text;
+    cursor: url("/cursor/write.svg") 1 1, text;
   }
 
   .cursor-pointer {
-    cursor: url("/cursor/point.svg") 16 16, pointer;
+    cursor: url("/cursor/point.svg") 1 1, pointer;
   }
 
   .cursor-open {
-    cursor: url("/cursor/open.svg") 16 16, grab;
+    cursor: url("/cursor/open.svg") 1 1, grab;
   }
 
   .cursor-clinch {
-    cursor: url("/cursor/clinch.svg") 16 16, grabbing;
+    cursor: url("/cursor/clinch.svg") 1 1, grabbing;
   }
 
   .cursor-blind {
-    cursor: url("/cursor/blind.svg") 16 16, auto;
+    cursor: url("/cursor/blind.svg") 1 1, auto;
   }
 }
 
