@@ -234,7 +234,7 @@ export default function FAQ() {
             event.
           </p>
 
-          <button className="cursor-pointer flex items-center justify-center border-2 border-[#121212] rounded-[170.667px] w-[120px] md:w-[130px] lg:w-[92.32px] xl:w-[138.5px] 2xl:w-[138.5px] h-[42px] md:h-[44px] lg:h-[31.2875px] xl:h-[46.925px] 2xl:h-[46.925px] px-[18px] md:px-[20px] lg:px-[21.3333px] xl:px-[21.3333px] 2xl:px-[21.3333px] py-[1.70667px] text-[#12112] text-[15px] md:text-[16px] lg:text-[11.37px] xl:text-[17.0667px] 2xl:text-[17.0667px] font-normal leading-[17.0667px] bg-[#f489a3] whitespace-nowrap shadow-[0px_4.26667px_0px_0px_rgba(0,0,0,0.15)] transition-all duration-200 ease-out hover:translate-y-[4.26667px] hover:shadow-none active:translate-y-[4.26667px] active:shadow-none">
+          <button className="cursor-pointer mb-[20px] flex items-center justify-center border-2 border-[#121212] rounded-[170.667px] w-[120px] md:w-[130px] lg:w-[92.32px] xl:w-[138.5px] 2xl:w-[138.5px] h-[42px] md:h-[44px] lg:h-[31.2875px] xl:h-[46.925px] 2xl:h-[46.925px] px-[18px] md:px-[20px] lg:px-[21.3333px] xl:px-[21.3333px] 2xl:px-[21.3333px] py-[1.70667px] text-[#12112] text-[15px] md:text-[16px] lg:text-[11.37px] xl:text-[17.0667px] 2xl:text-[17.0667px] font-normal leading-[17.0667px] bg-[#f489a3] whitespace-nowrap shadow-[0px_4.26667px_0px_0px_rgba(0,0,0,0.15)] transition-all duration-200 ease-out hover:translate-y-[4.26667px] hover:shadow-none active:translate-y-[4.26667px] active:shadow-none">
             Buy Tickets
           </button>
         </div>

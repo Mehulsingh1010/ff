@@ -401,7 +401,7 @@ function About({ onPopupChange }: any) {
 
   return (
     <div className="">
-      <div className="overflow-hidden mt-[-1340px] md:mt-[-1130px] lg:mt-[-1520px] xl:mt-[-1250px] 2xl:mt-[-1170px] ">
+      <div className="overflow-hidden mt-[-1340px] md:mt-[-1130px] lg:mt-[-1490px] xl:mt-[-1250px] 2xl:mt-[-1170px] ">
         <style>{styles}</style>
         <div className="pt-[178px] w-[1398.82px] md:w-[1992px] xl:w-[2164px] 2xl:w-[120%] ">
           <div className="relative h[75.5625px] md:h-[85.2px] lg:h-[66.66px] xl:h-[96px] 2xl:h-[98.6625px] w- bg-[#F3A20F] text-white text-[21.3333px] 2xl:text-[31.8333px] font-heading-bold border-t-[1.6px] border-b-[1.6px] border-black shadow-[0px_6px_0px_0px] shadow-[rgb(0,0,0,0.2)] overflow-hidden">
