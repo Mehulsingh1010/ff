@@ -21,7 +21,7 @@ function SunHomeInline() {
     gsap.set(face, { 
         x: 0, 
         y: 0, 
-        rotation: -10, 
+        rotation: -5, 
         transformOrigin: "50% 50%" 
     });
     
@@ -104,9 +104,15 @@ function SunHomeInline() {
             <circle ref={rightEyeRef} cx="230" cy="180" r="11" fill="#121212"/> 
 
             {/* Wink (Right Eye Position) */}
-            <g ref={winkRef} transform="translate(222, 175) scale(1.5)">
-               <path d="M0 5 Q5 0 10 5" stroke="#121212" strokeWidth="4" fill="none" strokeLinecap="round"/>
-            </g>
+            <g ref={winkRef} transform="translate(220, 180)">
+      <line 
+        x1="0" y1="0" 
+        x2="20" y2="0" 
+        stroke="#121212" 
+        strokeWidth="10" 
+        strokeLinecap="round" 
+      />
+    </g>
 
             {/* Smile */}
             <path d="M160 240 Q200 270 240 240" stroke="#121212" strokeWidth="9" fill="none" strokeLinecap="round"/>
