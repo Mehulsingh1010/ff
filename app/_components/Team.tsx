@@ -117,7 +117,7 @@ function Team() {
 
           {/* Item 2 - Casie Evans */}  
           <div className="order-4 md:order-4 lg:order-4 border-l-[3px] border-r-[3px] border-[#D2CCB6] max-w-[420px]  md:mt-[-100px] lg:mt-[-82px] xl:mt-[-104px] lg:mt-0 pb-[50.76px] md:pb-[117.8px]">
-            <div className="xl:h-[44px] lg:h-[31.29px] h-[36.1px] w-[93.6px] px-[13.128px] text-[13.1282px] mb-[-18.0513px] 2xl:mb-[-23px] bg-white border-[1.6px] z-10 mx-auto rounded-lg  flex items-center justify-center relative">
+            <div className="xl:text-[16px] xl:px-[10px] xl:w-[113.5px] 2xl:h-[47px] xl:h-[44px] 2xl:w-[120.7px]  lg:h-[31.29px] h-[36.1px] w-[93.6px] px-[13.128px] text-[13.1282px] mb-[-18.0513px] 2xl:text-[17.0667px] 2xl:mb-[-23px] bg-white border-[1.6px] z-10 mx-auto rounded-lg  flex items-center justify-center relative">
               Animation
             </div>
             <div className="cursor-blind relative">
@@ -236,7 +236,7 @@ function Team() {
 
           {/* Item 4 - Stephanie Bruce */}
           <div className="order-5 md:order-5 lg:order-5 border-l-[3px] border-r-[3px] border-[#D2CCB6] max-w-[420px]   md:mt-[-62px] lg:mt-[-189px] xl:mt-[-217px] lg:mt-0  pb-[50.76px] md:pb-[117.8px]">
-            <div className="xl:h-[44px] lg:h-[31.29px] h-[36.1px] w-[72.33px] px-[13.128px] text-[13.1282px] mb-[-18.0513px] 2xl:mb-[-23px] bg-white border-[1.6px] z-10 mx-auto rounded-lg 2xl:text-[16.9778px] flex items-center justify-center relative">
+            <div className="2xl:h-[47px] xl:h-[44px] xl:w-[87.45px] lg:h-[31.29px] h-[36.1px] 2xl:w-[93px] w-[72.33px] px-[13.128px] text-[13.1282px] mb-[-18.0513px] 2xl:mb-[-23px] bg-white border-[1.6px] z-10 mx-auto rounded-lg 2xl:text-[17.0667px] xl:text-[16.9778px] flex items-center justify-center relative">
               Design
             </div>
             <div className="cursor-blind relative">
@@ -356,7 +356,7 @@ function Team() {
 
           {/* Item 6 - Ross Plaskow */}
           <div className=" order-6 md:order-6 lg:order-6 border-l-[3px] border-r-[3px] border-[#D2CCB6]  md:mt-[-167px] lg:mt-[-73px] xl:mt-[-57px] 2xl:mt-0 max-w-[420px]  pb-[78.76px] md:pb-[117.8px]">
-            <div className="xl:h-[44px] lg:h-[31.29px] h-[36.1px] w-[93.6px] px-[13.128px] text-[13.1282px] mb-[-18.0513px] 2xl:mb-[-23px] bg-white border-[1.6px] z-10 mx-auto rounded-lg 2xl:text-[16.9778px] flex items-center justify-center relative">
+            <div className="xl:h-[44px]  2xl:h-[47px] xl:text-[16px] xl:w-[113.5px] 2xl:w-[120.7px] lg:h-[31.29px] h-[36.1px] w-[93.6px] px-[13.128px] text-[13.1282px] mb-[-18.0513px] 2xl:mb-[-23px] bg-white border-[1.6px] z-10 mx-auto rounded-lg 2xl:text-[16.9778px] flex items-center justify-center relative">
               Animation
             </div>
             <div className="cursor-blind relative">

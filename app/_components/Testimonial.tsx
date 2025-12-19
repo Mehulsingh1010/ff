@@ -21,7 +21,7 @@ function Testimonial() {
       if (index === 0) {
         gsap.set(card, { y: 0, opacity: 1 });
       } else {
-        gsap.set(card, { y: "200%", opacity: 0.8 }); 
+        gsap.set(card, { y: "800%", opacity: 0.8 }); 
       }
     });
 
