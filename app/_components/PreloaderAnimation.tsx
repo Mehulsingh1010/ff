@@ -33,7 +33,7 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
 
     const elapsedSinceStart = timestamp - startTimeRef.current;
     // Add extra 1500ms delay before stripes start falling (on top of existing PRELOADER_START_DELAY)
-    const extraStripDelay = 0;
+    const extraStripDelay = 550;
     const effectiveElapsed = Math.max(0, elapsedSinceStart - (PRELOADER_START_DELAY + extraStripDelay));
     const totalTimelineDuration =
        TOTAL_ANIMATION_DURATION + (STRIP_COUNT - 1) * STAGGER_DELAY_PER_STRIP;
