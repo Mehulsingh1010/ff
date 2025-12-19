@@ -9,7 +9,7 @@ const VERTICAL_STRIP_COUNT = verticalStripBaseLengths.length;
 
 
 const calculateVerticalStripStyles = (baseLength, index, scrollPercent) => {
-  const verticalScrollMultiplier = 8.7;
+  const verticalScrollMultiplier = 9.7;
   const amplifiedScroll = scrollPercent * verticalScrollMultiplier;
 
   const totalAnimationDistance =

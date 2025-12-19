@@ -36,7 +36,7 @@ const HeroTwinStrokes = () => {
     <div className="hidden lg:block">
       {/* Right Side Stroke */}
       <SideStrokesSVG
-        sideClass="fixed top-0 right-[-4.75em] z-[-1] pointer-events-none block"
+        sideClass="fixed  right-[-4.75em] z-[-1] pointer-events-none block"
         isLeft={false}
         calculateStyles={getHeroSideStyles}
       />

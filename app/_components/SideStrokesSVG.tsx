@@ -11,8 +11,8 @@ const SideStrokesSVG = ({ sideClass, isLeft, calculateStyles, isPreloader = fals
       ${sideClass}
       2xl:w-[342.4px] xl:w-[321px] lg:w-[228.262px] 
       ${isLeft
-        ? "2xl:top-[22.2em]  lg:ml-[19px] 2xl:ml-[-10px] lg:top-[17.3em] xl:top-[20.9em]  xl:ml-[-5px]    xl:scale-[-1] 2xl:scale-[-1] lg:scale-[-1]"
-        : "   xl:m-0  xl:top-[1.05rem] lg:mr-[19.7px] xl:mr-0 2xl:mr-[-5px]   2xl:scale-[1]"
+        ? "2xl:bottom-0   lg:ml-[19px] 2xl:ml-[-10px] lg:top-[17.3em] xl:top-[20.9em]  xl:ml-[-5px]    xl:scale-[-1] 2xl:scale-[-1] lg:scale-[-1]"
+        : "   xl:m-0 lg:top-0 xl:top-[0rem] 2xl:top-0 lg:mr-[19.7px] xl:mr-0 2xl:mr-[-5px]   2xl:scale-[1]"
       }
     `}
   >
