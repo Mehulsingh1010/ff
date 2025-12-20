@@ -128,17 +128,17 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
       // Type "hi friends"
       .call(() => setMessagePhase(1))
       .to({}, typeText(messages[1]))
-      .to({}, { duration: 0.6 })
+      .to({}, { duration: 0.7 })
       .to({}, eraseText(messages[1]))
       .to({}, { duration: 0.2 })
       // Type "we are back"
       .call(() => setMessagePhase(2))
       .to({}, typeText(messages[2]))
-      .to({}, { duration: 0.7 })
+      .to({}, { duration: 0 })
       .call(() => setPreloaderBgVisible(false))
       .to(
   containerRef.current,
-  { top: getResponsiveTop(), duration: 1.2, ease: "power2.inOut" },
+  { top: getResponsiveTop(), duration: 1.1, ease: "power2.inOut" },
   "slideIn"
 )
      
@@ -150,7 +150,7 @@ const PreloaderAnimation = ({ onComplete, navbarRef, homeContentRef, sunDateRef 
       // Slide home content up from bottom
       .to(
         homeContentRef.current,
-        { y: 0, duration: 1.2, ease: "power2.inOut" },
+        { y: 0, duration: 1.1, ease: "power2.inOut" },
         "slideIn"
       )
       // Unlock scroll right after slide animations complete and change to absolute positioning

@@ -659,7 +659,7 @@ const HomeContent = React.forwardRef<
       {/* tab */}
       <div
         data-hero="true"
-        className="hidden  md:flex lg:hidden mt-[254px]  h-[300px] w-[679.6px] z-[1]  justify-center items-center mx-auto text-[102.4px] relative "
+        className="hidden  sm:flex lg:hidden mt-[254px]  h-[300px] w-[679.6px] z-[1]  justify-center items-center mx-auto text-[102.4px] relative "
       >
         <div className="absolute top-[-3px] left-[8px]">
           <svg
