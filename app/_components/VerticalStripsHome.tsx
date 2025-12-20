@@ -1,118 +1,131 @@
-/* eslint-disable react-hooks/set-state-in-effect */
-import React, { useState, useEffect, useCallback, useRef } from "react";
+"use client";
+
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { verticalStrips } from "../constants/stripeConstants";
 
-const verticalStripBaseLengths = [600, 600, 600, 600, 600, 600, 600, 600, 600];
-const verticalStripTriggerOffset = 100;
-const VERTICAL_STRIP_COUNT = verticalStripBaseLengths.length;
+/* ============ CONFIG ============ */
 
+const STRIPS = [
+  { x: 452, color: "#F97028" },
+  { x: 402, color: "#F489A3" },
+  { x: 352, color: "#F0BB0D" },
+  { x: 302, color: "#F3A20F" },
+  { x: 252, color: "#F97028" },
+  { x: 202, color: "#F489A3" },
+  { x: 152, color: "#F0BB0D" },
+  { x: 102, color: "#F3A20F" },
+  { x: 52,  color: "#F97028" },
+];
 
-const calculateVerticalStripStyles = (baseLength, index, scrollPercent) => {
-  const verticalScrollMultiplier = 9.7;
-  const amplifiedScroll = scrollPercent * verticalScrollMultiplier;
+const SVG_WIDTH = 482.125;
+const TOTAL_HEIGHT = 1200;
 
-  const totalAnimationDistance =
-    verticalStripBaseLengths[0] + verticalStripTriggerOffset * (VERTICAL_STRIP_COUNT - 1);
-  const totalScroll = amplifiedScroll * totalAnimationDistance;
-  const startPoint = index * verticalStripTriggerOffset;
-  const stripScroll = Math.max(0, totalScroll - startPoint);
+const BG_WIDTH = 52;
+const FG_WIDTH = 48;
 
-  const currentLength = Math.min(baseLength, stripScroll);
-  const gap = baseLength - currentLength;
-  const dashArray = `${currentLength.toFixed(3)}, ${gap.toFixed(3)}`;
+const SCROLL_MULTIPLIER = 20;
+const BASE_OFFSET = 90;
+const BASE_DURATION = 1400;
 
-  return {
-    strokeDasharray: dashArray,
-    strokeDashoffset: 0,
-  };
-};
+/* ============ COMPONENT ============ */
 
-const VerticalScrollStripsSVG = ({ calculateStyles }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="100%"
-    viewBox="0 0 452 600"
-    fill="none"
-    preserveAspectRatio="none"
-    style={{ height: "1200px" }}
-  >
-    {/* Black strokes (background) */}
-    {verticalStrips.map((strip, index) => {
-      const baseLength = verticalStripBaseLengths[index];
-      const styles = calculateStyles(baseLength, index);
+export default function GSAPVerticalStrips() {
+  const svgRef = useRef(null);
+  const containerRef = useRef(null);
+  const [stripLengths, setStripLengths] = useState(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
-      return (
-        <motion.path
-          key={`vertical-black-${index}`}
-          d={`M${strip.x} 0V600`}
-          stroke="black"
-          strokeWidth="52"
-          strokeDasharray={styles.strokeDasharray}
-          strokeDashoffset={styles.strokeDashoffset}
-        />
-      );
-    })}
+  // Calculate total length of each strip on mount
+  useEffect(() => {
+    if (!svgRef.current) return;
 
-    {/* Colored strokes (foreground) */}
-    {verticalStrips.map((strip, index) => {
-      const baseLength = verticalStripBaseLengths[index];
-      const styles = calculateStyles(baseLength, index);
+    const lengths = STRIPS.map((_, i) => {
+      const path = svgRef.current?.querySelector(`#strip-bg-${i}`);
+      return path ? path.getTotalLength() : TOTAL_HEIGHT;
+    });
 
-      return (
-        <motion.path
-          key={`vertical-color-${index}`}
-          d={`M${strip.x} 0V600`}
-          stroke={strip.colorFill}
-          strokeWidth="48"
-          strokeDasharray={styles.strokeDasharray}
-          strokeDashoffset={styles.strokeDashoffset}
-        />
-      );
-    })}
-  </svg>
-);
+    setStripLengths(lengths);
+  }, []);
 
-export default function ScrollTriggerStrips() {
-  const [verticalScrollPercent, setVerticalScrollPercent] = useState(0);
-  const verticalContainerRef = useRef(null);
+  // Handle scroll events
+  const handleScroll = useCallback(() => {
+    if (typeof window === "undefined" || !containerRef.current) return;
 
-  const handleVerticalScroll = useCallback(() => {
-    if (
-      typeof window !== "undefined" &&
-      document.documentElement.scrollHeight > window.innerHeight
-    ) {
-      const newScrollPercent =
-        window.scrollY /
-        (document.documentElement.scrollHeight - window.innerHeight);
-      setVerticalScrollPercent(newScrollPercent);
-    }
+    const container = containerRef.current;
+    const rect = container.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+
+    // How far the container has scrolled into view (0 to 1)
+    const scrolled = Math.max(0, 1 - rect.bottom / viewportHeight);
+    setScrollProgress(scrolled);
   }, []);
 
   useEffect(() => {
-    handleVerticalScroll();
-    window.addEventListener("scroll", handleVerticalScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleVerticalScroll);
-    };
-  }, [handleVerticalScroll]);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // Initial call
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
-  const getVerticalStripStyles = useCallback(
-    (baseLength, index) =>
-      calculateVerticalStripStyles(baseLength, index, verticalScrollPercent),
-    [verticalScrollPercent]
+  // Calculate dash offset for each strip
+  const getStripStyles = (index) => {
+    if (!stripLengths) return { strokeDashoffset: stripLengths?.[index] || TOTAL_HEIGHT };
+
+    const length = stripLengths[index];
+    const offset = (index * BASE_OFFSET) / SCROLL_MULTIPLIER;
+    const duration = BASE_DURATION / SCROLL_MULTIPLIER;
+
+    // Scroll position relative to this strip's trigger
+    const relativeScroll = Math.max(0, scrollProgress * TOTAL_HEIGHT - offset);
+    const progress = Math.min(1, relativeScroll / duration);
+
+    // Animate from full offset to 0
+    const dashOffset = length * (1 - progress);
+
+    return { strokeDashoffset: dashOffset };
+  };
+
+  return (
+    <div className="relative flex justify-center px-20">
+      <motion.div
+        ref={containerRef}
+        className="flex justify-center"
+      >
+        <svg
+          ref={svgRef}
+          width={SVG_WIDTH}
+          viewBox={`0 0 ${SVG_WIDTH} ${TOTAL_HEIGHT}`}
+          preserveAspectRatio="none"
+          style={{ height: `${TOTAL_HEIGHT}px` }}
+        >
+          {/* BLACK STRIPS */}
+          {STRIPS.map((s, i) => (
+            <motion.path
+              key={`bg-${i}`}
+              id={`strip-bg-${i}`}
+              d={`M${s.x} 0V${TOTAL_HEIGHT}`}
+              stroke="black"
+              strokeWidth={BG_WIDTH}
+              strokeDasharray={stripLengths?.[i] || TOTAL_HEIGHT}
+              strokeDashoffset={getStripStyles(i).strokeDashoffset}
+              style={{ transition: "stroke-dashoffset 0.016s linear" }}
+            />
+          ))}
+
+          {/* COLOR STRIPS */}
+          {STRIPS.map((s, i) => (
+            <motion.path
+              key={`fg-${i}`}
+              id={`strip-fg-${i}`}
+              d={`M${s.x} 0V${TOTAL_HEIGHT}`}
+              stroke={s.color}
+              strokeWidth={FG_WIDTH}
+              strokeDasharray={stripLengths?.[i] || TOTAL_HEIGHT}
+              strokeDashoffset={getStripStyles(i).strokeDashoffset}
+              style={{ transition: "stroke-dashoffset 0.016s linear" }}
+            />
+          ))}
+        </svg>
+      </motion.div>
+    </div>
   );
-return (
-  <div className="flex flex-col items-center">
-    <motion.div
-      ref={verticalContainerRef}
-      className="mx-auto  flex justify-center m-0 w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px]"
-    >
-      <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
-    </motion.div>
-
-    <div className="h-96" />
-  </div>
-);
-
 }
