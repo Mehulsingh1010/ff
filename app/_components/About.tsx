@@ -614,7 +614,7 @@ function About({ onPopupChange }: any) {
             </div>
           </div>
           <div className="h-[230px] ">
-            <div className="mt-[-60px] ">
+            <div className="mt-[-80px] ">
               <ScrollTriggerStrips2 />
             </div>
           </div>
