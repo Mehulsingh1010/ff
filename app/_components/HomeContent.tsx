@@ -3169,7 +3169,7 @@ const HomeContent = React.forwardRef<
           <h2 className="m-0 p-0 leading-none">FlowFest is back.</h2>
         </div>
       </div>
-      <div className=" mx-auto mb-[-1489px] lg:mb-[-1470px]  ">
+      <div className=" mx-auto mb-[-1489px] lg:mb-[-1100px]  ">
         <ScrollTriggerStrips />
       </div>
 

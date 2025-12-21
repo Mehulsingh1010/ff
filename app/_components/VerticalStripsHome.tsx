@@ -1,118 +1,114 @@
-/* eslint-disable react-hooks/set-state-in-effect */
-import React, { useState, useEffect, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
-import { verticalStrips } from "../constants/stripeConstants";
+    "use client";
 
-const verticalStripBaseLengths = [600, 600, 600, 600, 600, 600, 600, 600, 600];
-const verticalStripTriggerOffset = 100;
-const VERTICAL_STRIP_COUNT = verticalStripBaseLengths.length;
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 
-const calculateVerticalStripStyles = (baseLength, index, scrollPercent) => {
-  const verticalScrollMultiplier = 9.7;
-  const amplifiedScroll = scrollPercent * verticalScrollMultiplier;
+/* ---------------- CONFIG ---------------- */
 
-  const totalAnimationDistance =
-    verticalStripBaseLengths[0] + verticalStripTriggerOffset * (VERTICAL_STRIP_COUNT - 1);
-  const totalScroll = amplifiedScroll * totalAnimationDistance;
-  const startPoint = index * verticalStripTriggerOffset;
-  const stripScroll = Math.max(0, totalScroll - startPoint);
+const STRIPS = [
+  { x: 452, color: "#F97028" },
+  { x: 402, color: "#F489A3" },
+  { x: 352, color: "#F0BB0D" },
+  { x: 302, color: "#F3A20F" },
+  { x: 252, color: "#F97028" },
+  { x: 202, color: "#F489A3" },
+  { x: 152, color: "#F0BB0D" },
+  { x: 102, color: "#F3A20F" },
+  { x: 52,  color: "#F97028" },
+];
 
-  const currentLength = Math.min(baseLength, stripScroll);
-  const gap = baseLength - currentLength;
-  const dashArray = `${currentLength.toFixed(3)}, ${gap.toFixed(3)}`;
+const SVG_WIDTH = 482.125;
+const TOTAL_HEIGHT = 1200;
 
-  return {
-    strokeDasharray: dashArray,
-    strokeDashoffset: 0,
-  };
-};
+const BG_WIDTH = 52;
+const FG_WIDTH = 48;
 
-const VerticalScrollStripsSVG = ({ calculateStyles }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="100%"
-    viewBox="0 0 452 600"
-    fill="none"
-    preserveAspectRatio="none"
-    style={{ height: "1200px" }}
-  >
-    {/* Black strokes (background) */}
-    {verticalStrips.map((strip, index) => {
-      const baseLength = verticalStripBaseLengths[index];
-      const styles = calculateStyles(baseLength, index);
+/*  CONTROL THIS */
+const SCROLL_MULTIPLIER = 2   // ↑ faster, ↓ slower
 
-      return (
-        <motion.path
-          key={`vertical-black-${index}`}
-          d={`M${strip.x} 0V600`}
-          stroke="black"
-          strokeWidth="52"
-          strokeDasharray={styles.strokeDasharray}
-          strokeDashoffset={styles.strokeDashoffset}
-        />
-      );
-    })}
+const BASE_OFFSET = 130;
+const BASE_DURATION = 1880;
 
-    {/* Colored strokes (foreground) */}
-    {verticalStrips.map((strip, index) => {
-      const baseLength = verticalStripBaseLengths[index];
-      const styles = calculateStyles(baseLength, index);
+/* ---------------- COMPONENT ---------------- */
 
-      return (
-        <motion.path
-          key={`vertical-color-${index}`}
-          d={`M${strip.x} 0V600`}
-          stroke={strip.colorFill}
-          strokeWidth="48"
-          strokeDasharray={styles.strokeDasharray}
-          strokeDashoffset={styles.strokeDashoffset}
-        />
-      );
-    })}
-  </svg>
-);
-
-export default function ScrollTriggerStrips() {
-  const [verticalScrollPercent, setVerticalScrollPercent] = useState(0);
-  const verticalContainerRef = useRef(null);
-
-  const handleVerticalScroll = useCallback(() => {
-    if (
-      typeof window !== "undefined" &&
-      document.documentElement.scrollHeight > window.innerHeight
-    ) {
-      const newScrollPercent =
-        window.scrollY /
-        (document.documentElement.scrollHeight - window.innerHeight);
-      setVerticalScrollPercent(newScrollPercent);
-    }
-  }, []);
+export default function GSAPVerticalStrips() {
+  const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    handleVerticalScroll();
-    window.addEventListener("scroll", handleVerticalScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleVerticalScroll);
-    };
-  }, [handleVerticalScroll]);
+    if (!svgRef.current) return;
 
-  const getVerticalStripStyles = useCallback(
-    (baseLength, index) =>
-      calculateVerticalStripStyles(baseLength, index, verticalScrollPercent),
-    [verticalScrollPercent]
+    STRIPS.forEach((_, i) => {
+      const bg = svgRef.current!.querySelector(
+        `#strip-bg-${i}`
+      ) as SVGPathElement;
+
+      const fg = svgRef.current!.querySelector(
+        `#strip-fg-${i}`
+      ) as SVGPathElement;
+
+      if (!bg || !fg) return;
+
+      const length = bg.getTotalLength();
+
+      // start hidden
+      gsap.set([bg, fg], {
+        strokeDasharray: length,
+        strokeDashoffset: length,
+      });
+
+      // apply multiplier
+      const offset = (i * BASE_OFFSET) / SCROLL_MULTIPLIER;
+      const duration = BASE_DURATION / SCROLL_MULTIPLIER;
+
+      gsap.to([bg, fg], {
+        strokeDashoffset: 0,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: svgRef.current,
+          start: `top+=${offset} 170%`,
+          end: `top+=${offset + duration} 0%`,
+          scrub: true,
+        },
+      });
+    });
+
+    return () => ScrollTrigger.getAll().forEach(t => t.kill());
+  }, []);
+
+  return (
+    <div className="relative flex  justify-center px-20 ">
+      <svg
+        ref={svgRef}
+        width={SVG_WIDTH}
+        viewBox={`0 0 ${SVG_WIDTH} ${TOTAL_HEIGHT}`}
+        preserveAspectRatio="none"
+        style={{ height: `${TOTAL_HEIGHT}px` }}
+      >
+        {/* BLACK STRIPS */}
+        {STRIPS.map((s, i) => (
+          <path
+            key={`bg-${i}`}
+            id={`strip-bg-${i}`}
+            d={`M${s.x} 0V${TOTAL_HEIGHT}`}
+            stroke="black"
+            strokeWidth={BG_WIDTH}
+          />
+        ))}
+
+        {/* COLOR STRIPS */}
+        {STRIPS.map((s, i) => (
+          <path
+            key={`fg-${i}`}
+            id={`strip-fg-${i}`}
+            d={`M${s.x} 0V${TOTAL_HEIGHT}`}
+            stroke={s.color}
+            strokeWidth={FG_WIDTH}
+          />
+        ))}
+      </svg>
+    </div>
   );
-return (
-  <div className="flex flex-col items-center relative ">
-    <motion.div
-      ref={verticalContainerRef}
-      className="mx-auto  flex justify-center m-0 w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px]"
-    >
-      <VerticalScrollStripsSVG calculateStyles={getVerticalStripStyles} />
-    </motion.div>
-
-    <div className="h-96" />
-  </div>
-);
-
 }
