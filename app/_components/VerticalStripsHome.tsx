@@ -41,40 +41,56 @@ export default function GSAPVerticalStrips() {
   useEffect(() => {
     if (!svgRef.current) return;
 
-    for (let i = 0; i < STRIP_COUNT; i++) {
-      const bg = svgRef.current.querySelector(
-        `#strip-bg-${i}`
-      ) as SVGPathElement;
+    const mm = gsap.matchMedia();
 
-      const fg = svgRef.current.querySelector(
-        `#strip-fg-${i}`
-      ) as SVGPathElement;
+    mm.add(
+      {
+        mobile: "(max-width: 767px)",
+        desktop: "(min-width: 768px)",
+      },
+      (context) => {
+        const { mobile } = context.conditions;
 
-      if (!bg || !fg) continue;
+        for (let i = 0; i < STRIP_COUNT; i++) {
+          const bg = svgRef.current!.querySelector(
+            `#strip-bg-${i}`
+          ) as SVGPathElement;
 
-      const length = bg.getTotalLength();
+          const fg = svgRef.current!.querySelector(
+            `#strip-fg-${i}`
+          ) as SVGPathElement;
 
-      gsap.set([bg, fg], {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-      });
+          if (!bg || !fg) continue;
 
-      const offset = (i * BASE_OFFSET) / SCROLL_MULTIPLIER;
-      const duration = BASE_DURATION / SCROLL_MULTIPLIER;
+          const length = bg.getTotalLength();
 
-      gsap.to([bg, fg], {
-        strokeDashoffset: 0,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: svgRef.current,
-          start: `top+=${offset} 170%`,
-          end: `top+=${offset + duration} 0%`,
-          scrub: true,
-        },
-      });
-    }
+          gsap.set([bg, fg], {
+            strokeDasharray: length,
+            strokeDashoffset: length,
+          });
 
-    return () => ScrollTrigger.getAll().forEach(t => t.kill());
+          const offset = (i * BASE_OFFSET) / SCROLL_MULTIPLIER;
+          const duration = BASE_DURATION / SCROLL_MULTIPLIER;
+
+          gsap.to([bg, fg], {
+            strokeDashoffset: 0,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: svgRef.current,
+              start: mobile
+                ? `top+=${offset} 150%`
+                : `top+=${offset} 170%`,
+              end: `top+=${offset + duration} 0%`,
+              scrub: true,
+            },
+          });
+        }
+      }
+    );
+
+    return () => {
+      mm.revert();
+    };
   }, []);
 
   /* ---- FULL WIDTH MATH ---- */
@@ -84,7 +100,7 @@ export default function GSAPVerticalStrips() {
   const START_X = SVG_WIDTH - STEP / 2;
 
   return (
-    <div className="w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px]  mx-auto">
+    <div className="w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px] mx-auto">
       <div className="relative mx-auto flex justify-center">
         <svg
           ref={svgRef}
