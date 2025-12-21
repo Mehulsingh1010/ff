@@ -1,4 +1,4 @@
-    "use client";
+"use client";
 
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
@@ -8,28 +8,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ---------------- CONFIG ---------------- */
 
-const STRIPS = [
-  { x: 452, color: "#F97028" },
-  { x: 402, color: "#F489A3" },
-  { x: 352, color: "#F0BB0D" },
-  { x: 302, color: "#F3A20F" },
-  { x: 252, color: "#F97028" },
-  { x: 202, color: "#F489A3" },
-  { x: 152, color: "#F0BB0D" },
-  { x: 102, color: "#F3A20F" },
-  { x: 52,  color: "#F97028" },
+const STRIP_COUNT = 9;
+
+const COLORS = [
+  "#F97028",
+  "#F489A3",
+  "#F0BB0D",
+  "#F3A20F",
+  "#F97028",
+  "#F489A3",
+  "#F0BB0D",
+  "#F3A20F",
+  "#F97028",
 ];
 
 const SVG_WIDTH = 482.125;
 const TOTAL_HEIGHT = 1200;
 
-const BG_WIDTH = 52;
-const FG_WIDTH = 48;
+/* overlap factor = no gaps */
+const OVERLAP = 1.05;
 
-/*  CONTROL THIS */
-const SCROLL_MULTIPLIER = 2   // ↑ faster, ↓ slower
-
-const BASE_OFFSET = 130;
+/* Scroll tuning */
+const SCROLL_MULTIPLIER = 2.6;
+const BASE_OFFSET = 156;
 const BASE_DURATION = 1880;
 
 /* ---------------- COMPONENT ---------------- */
@@ -40,26 +41,24 @@ export default function GSAPVerticalStrips() {
   useEffect(() => {
     if (!svgRef.current) return;
 
-    STRIPS.forEach((_, i) => {
-      const bg = svgRef.current!.querySelector(
+    for (let i = 0; i < STRIP_COUNT; i++) {
+      const bg = svgRef.current.querySelector(
         `#strip-bg-${i}`
       ) as SVGPathElement;
 
-      const fg = svgRef.current!.querySelector(
+      const fg = svgRef.current.querySelector(
         `#strip-fg-${i}`
       ) as SVGPathElement;
 
-      if (!bg || !fg) return;
+      if (!bg || !fg) continue;
 
       const length = bg.getTotalLength();
 
-      // start hidden
       gsap.set([bg, fg], {
         strokeDasharray: length,
         strokeDashoffset: length,
       });
 
-      // apply multiplier
       const offset = (i * BASE_OFFSET) / SCROLL_MULTIPLIER;
       const duration = BASE_DURATION / SCROLL_MULTIPLIER;
 
@@ -73,42 +72,58 @@ export default function GSAPVerticalStrips() {
           scrub: true,
         },
       });
-    });
+    }
 
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
 
-  return (
-    <div className="relative flex  justify-center px-20 ">
-      <svg
-        ref={svgRef}
-        width={SVG_WIDTH}
-        viewBox={`0 0 ${SVG_WIDTH} ${TOTAL_HEIGHT}`}
-        preserveAspectRatio="none"
-        style={{ height: `${TOTAL_HEIGHT}px` }}
-      >
-        {/* BLACK STRIPS */}
-        {STRIPS.map((s, i) => (
-          <path
-            key={`bg-${i}`}
-            id={`strip-bg-${i}`}
-            d={`M${s.x} 0V${TOTAL_HEIGHT}`}
-            stroke="black"
-            strokeWidth={BG_WIDTH}
-          />
-        ))}
+  /* ---- FULL WIDTH MATH ---- */
+  const STEP = SVG_WIDTH / STRIP_COUNT;
+  const STROKE_BG = STEP * OVERLAP;
+  const STROKE_FG = STROKE_BG * 0.92;
+  const START_X = SVG_WIDTH - STEP / 2;
 
-        {/* COLOR STRIPS */}
-        {STRIPS.map((s, i) => (
-          <path
-            key={`fg-${i}`}
-            id={`strip-fg-${i}`}
-            d={`M${s.x} 0V${TOTAL_HEIGHT}`}
-            stroke={s.color}
-            strokeWidth={FG_WIDTH}
-          />
-        ))}
-      </svg>
+  return (
+    <div className="w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px]  mx-auto">
+      <div className="relative mx-auto flex justify-center">
+        <svg
+          ref={svgRef}
+          width="100%"
+          viewBox={`0 0 ${SVG_WIDTH} ${TOTAL_HEIGHT}`}
+          preserveAspectRatio="none"
+          style={{ height: `${TOTAL_HEIGHT}px`, display: "block" }}
+        >
+          {/* BLACK STRIPS */}
+          {Array.from({ length: STRIP_COUNT }).map((_, i) => {
+            const x = START_X - i * STEP;
+
+            return (
+              <path
+                key={`bg-${i}`}
+                id={`strip-bg-${i}`}
+                d={`M${x} 0V${TOTAL_HEIGHT}`}
+                stroke="black"
+                strokeWidth={STROKE_BG}
+              />
+            );
+          })}
+
+          {/* COLOR STRIPS */}
+          {Array.from({ length: STRIP_COUNT }).map((_, i) => {
+            const x = START_X - i * STEP;
+
+            return (
+              <path
+                key={`fg-${i}`}
+                id={`strip-fg-${i}`}
+                d={`M${x} 0V${TOTAL_HEIGHT}`}
+                stroke={COLORS[i]}
+                strokeWidth={STROKE_FG}
+              />
+            );
+          })}
+        </svg>
+      </div>
     </div>
   );
 }

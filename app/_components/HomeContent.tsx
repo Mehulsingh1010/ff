@@ -34,7 +34,7 @@ const HomeContent = React.forwardRef<
       {/* phone */}
       <div
         data-hero="true"
-        className="flex sm:hidden  mt-[182px]  h-[146.5px]  w-[299px]  z-[1]  justify-center items-center mx-auto text-[102.4px] relative "
+        className="flex sm:hidden  mt-[182px]  h-[146.5px]  w-[299px]  z-[2]  justify-center items-center mx-auto text-[102.4px] relative "
       >
         <div className="absolute top-[-10px] left-[1.8px] with-shado-sm">
           <svg
@@ -659,7 +659,7 @@ const HomeContent = React.forwardRef<
       {/* tab */}
       <div
         data-hero="true"
-        className="hidden  sm:flex lg:hidden mt-[254px]  h-[300px] w-[679.6px] z-[1]  justify-center items-center mx-auto text-[102.4px] relative "
+        className="hidden  sm:flex lg:hidden mt-[254px]  h-[300px] w-[679.6px] z-[2]  justify-center items-center mx-auto text-[102.4px] relative "
       >
         <div className="absolute top-[-3px] left-[8px]">
           <svg
@@ -1285,7 +1285,7 @@ const HomeContent = React.forwardRef<
       {/* lg pc */}
       <div
         data-hero="true"
-        className="hidden  lg:flex xl:hidden mt-[217px] h-[122.85px]   w-[682.662px] z-[1]  justify-center items-center mx-auto text-[102.4px] relative "
+        className="hidden  lg:flex xl:hidden mt-[217px] h-[122.85px]   w-[682.662px] z-[2]  justify-center items-center mx-auto text-[102.4px] relative "
       >
         <div className="absolute top-[-4px] left-[27px] with-shadow">
           <svg
@@ -1911,7 +1911,7 @@ const HomeContent = React.forwardRef<
       {/* xl pc */}
       <div
         data-hero="true"
-        className="hidden xl:flex 2xl:hidden mt-[269px] h-[172.8px]   w-[960px] z-[1]  justify-center items-center mx-auto text-[102.4px] relative "
+        className="hidden xl:flex 2xl:hidden mt-[269px] h-[172.8px]   w-[960px] z-[2]  justify-center items-center mx-auto text-[102.4px] relative "
       >
            <div className="absolute top-[-4px] left-[38px] with-shadow">
           <svg
@@ -2538,7 +2538,7 @@ const HomeContent = React.forwardRef<
       {/* 2xlpc */}
       <div
         data-hero="true"
-        className="hidden 2xl:flex mt-[294px] h-[184.3px]   w-[1024px] z-[1]  justify-center items-center mx-auto text-[102.4px] relative "
+        className="hidden 2xl:flex mt-[294px] h-[184.3px]   w-[1024px] z-[2]  justify-center items-center mx-auto text-[102.4px] relative "
       >
         <div className="absolute top-[-9px] left-[40px] with-shadow">
           <svg
@@ -3165,11 +3165,11 @@ const HomeContent = React.forwardRef<
         className="flex justify-center items-center w-full relative mt-[-12px] md:mt-[5px] lg:mt-[1px] mb-[-30px] lg:mb-[-40px]"
         style={{}}
       >
-        <div className="bg-[#F3A20F] text-white w-[300.96px] md:w-[672.4px] lg:w-[431.2px] xl:w-[607.362px] 2xl:w-[644.263px] h-[40.975px] md:h-[93.1875px] lg:h-[58.475px] xl:h-[83.2px] 2xl:h-[88.075px] leading-[76.4px] md:leading-[79.5626px] px-[23px] pt-[3.93846px] lg:pt-[5.68889px] 2xl:pt-[11px] text-[39.384px] md:text-[88.4029px] lg:text-[56.8889px] xl:text-[80px] 2xl:text-[84.8889px]   border md:border-[1.6px] border-black text-nowrap font-heading-bold rounded-md rotate-[-3.5deg] shadow-[0px_8.5px_0px_0px] shadow-[rgba(0,0,0,0.15)] mx-auto flex items-center justify-center relative z-[5]">
+        <div className="bg-[#F3A20F] text-white w-[300.96px] md:w-[672.4px] lg:w-[431.2px] xl:w-[607.362px] 2xl:w-[644.263px] h-[40.975px] md:h-[93.1875px] lg:h-[58.475px] xl:h-[83.2px] 2xl:h-[88.075px] leading-[76.4px] md:leading-[79.5626px] px-[23px] pt-[3.93846px] lg:pt-[5.68889px] 2xl:pt-[11px] text-[39.384px] md:text-[88.4029px] lg:text-[56.8889px] xl:text-[80px] 2xl:text-[84.8889px]   border md:border-[1.6px] border-black text-nowrap font-heading-bold rounded-md rotate-[-3.5deg] shadow-[0px_8.5px_0px_0px] shadow-[rgba(0,0,0,0.15)] mx-auto flex items-center justify-center relative z-[1]">
           <h2 className="m-0 p-0 leading-none">FlowFest is back.</h2>
         </div>
       </div>
-      <div className=" mx-auto mb-[-1489px] lg:mb-[-1100px]  ">
+      <div className=" mx-auto mb-[-1100px] lg:mb-[-1100px]  ">
         <ScrollTriggerStrips />
       </div>
 
