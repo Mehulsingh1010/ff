@@ -8,17 +8,19 @@ gsap.registerPlugin(ScrollTrigger);
 
 /* ---------------- CONFIG ---------------- */
 
-const STRIPS = [
-  { x: 452, color: "#F97028" },
-  { x: 402, color: "#F489A3" },
-  { x: 352, color: "#F0BB0D" },
-  { x: 302, color: "#F3A20F" },
-  { x: 252, color: "#F97028" },
-  { x: 202, color: "#F489A3" },
-  { x: 152, color: "#F0BB0D" },
-  { x: 102, color: "#F3A20F" },
-  { x: 52,  color: "#F97028" },
+const COLORS = [
+  "#F97028",
+  "#F489A3",
+  "#F0BB0D",
+  "#F3A20F",
+  "#F97028",
+  "#F489A3",
+  "#F0BB0D",
+  "#F3A20F",
+  "#F97028",
 ];
+
+const STRIP_COUNT = COLORS.length;
 
 const SVG_WIDTH = 480.125;
 const TOTAL_HEIGHT = 100;        // GSAP math height
@@ -26,6 +28,9 @@ const RENDER_HEIGHT = 391.325;   // visual height
 
 const BG_WIDTH = 52;
 const FG_WIDTH = 48;
+
+/* 🔧 STRIPE SPACING CONTROL */
+const COMPRESSION = .94; // smaller = closer stripes
 
 /* Scroll tuning */
 const SCROLL_MULTIPLIER = 11;
@@ -43,20 +48,19 @@ export default function GSAPVerticalStrips() {
     const OFFSET_STEP = BASE_OFFSET / SCROLL_MULTIPLIER;
     const DURATION = BASE_DURATION / SCROLL_MULTIPLIER;
 
-    STRIPS.forEach((_, i) => {
-      const bg = svgRef.current!.querySelector(
+    for (let i = 0; i < STRIP_COUNT; i++) {
+      const bg = svgRef.current.querySelector(
         `#strip-bg-${i}`
       ) as SVGPathElement;
 
-      const fg = svgRef.current!.querySelector(
+      const fg = svgRef.current.querySelector(
         `#strip-fg-${i}`
       ) as SVGPathElement;
 
-      if (!bg || !fg) return;
+      if (!bg || !fg) continue;
 
       const length = bg.getTotalLength();
 
-      // start hidden
       gsap.set([bg, fg], {
         strokeDasharray: length,
         strokeDashoffset: length,
@@ -74,19 +78,23 @@ export default function GSAPVerticalStrips() {
           scrub: true,
         },
       });
-    });
+    }
 
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
 
-return (
-    <div className="relative z-0">  
-      <div className="overflow-hidden flex items-center justify-center">
-        <div>
-          
-        </div>
+  /* -------- CENTERING + SPACING MATH -------- */
+  const STEP = (SVG_WIDTH / STRIP_COUNT) * COMPRESSION;
+  const START_X = SVG_WIDTH / 2 + STEP * ((STRIP_COUNT - 1) / 2);
+
+  return (
+    <div className="relative z-0 mx-auto ">
+      <div className=" flex items-center justify-center">
         {/* Perspective container */}
-        <div className="[perspective:245px] " style={{ width: `${SVG_WIDTH}px` }}>
+        <div
+          className="2xl:[perspective:200px] xl:[perspective:240px] lg:[perspective:170px] md:[perspective:170px] [perspective:150px] 2xl:w-[482.125px] xl:w-[452px] lg:w-[321.413px] md:w-[416.225px] w-[247.238px] flex justify-center"
+          
+        >
           <svg
             ref={svgRef}
             width={SVG_WIDTH}
@@ -95,31 +103,40 @@ return (
             preserveAspectRatio="none"
             className="
               block
+              mx-auto
               [transform-style:preserve-3d]
               [transform:rotateX(45deg)]
             "
           >
-            {/* Black strips */}
-            {STRIPS.map((s, i) => (
-              <path
-                key={`bg-${i}`}
-                id={`strip-bg-${i}`}
-                d={`M${s.x} 0V${TOTAL_HEIGHT}`}
-                stroke="black"
-                strokeWidth={BG_WIDTH}
-              />
-            ))}
+            {/* BLACK STRIPS */}
+            {Array.from({ length: STRIP_COUNT }).map((_, i) => {
+              const x = START_X - i * STEP;
 
-            {/* Color strips */}
-            {STRIPS.map((s, i) => (
-              <path
-                key={`fg-${i}`}
-                id={`strip-fg-${i}`}
-                d={`M${s.x} 0V${TOTAL_HEIGHT}`}
-                stroke={s.color}
-                strokeWidth={FG_WIDTH}
-              />
-            ))}
+              return (
+                <path
+                  key={`bg-${i}`}
+                  id={`strip-bg-${i}`}
+                  d={`M${x} 0V${TOTAL_HEIGHT}`}
+                  stroke="black"
+                  strokeWidth={BG_WIDTH}
+                />
+              );
+            })}
+
+            {/* COLOR STRIPS */}
+            {Array.from({ length: STRIP_COUNT }).map((_, i) => {
+              const x = START_X - i * STEP;
+
+              return (
+                <path
+                  key={`fg-${i}`}
+                  id={`strip-fg-${i}`}
+                  d={`M${x} 0V${TOTAL_HEIGHT}`}
+                  stroke={COLORS[i]}
+                  strokeWidth={FG_WIDTH}
+                />
+              );
+            })}
           </svg>
         </div>
       </div>

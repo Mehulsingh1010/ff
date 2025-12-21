@@ -34,7 +34,6 @@ const BASE_OFFSET = 156;
 const BASE_DURATION = 1880;
 
 /* ---------------- COMPONENT ---------------- */
-
 export default function GSAPVerticalStrips() {
   const svgRef = useRef<SVGSVGElement>(null);
 
@@ -45,11 +44,23 @@ export default function GSAPVerticalStrips() {
 
     mm.add(
       {
-        mobile: "(max-width: 767px)",
-        desktop: "(min-width: 768px)",
+        base: "(max-width: 767px)",          
+        md: "(min-width: 768px) and (max-width: 1023px)",
+        lg: "(min-width: 1024px) and (max-width: 1279px)",
+        xl: "(min-width: 1280px) and (max-width: 1535px)",
+        xxl: "(min-width: 1536px)",           
       },
       (context) => {
-        const { mobile } = context.conditions;
+        const { base, md, lg, xl, xxl } = context.conditions;
+
+        // 🔧 choose start value per breakpoint
+        const getStart = (offset: number) => {
+          if (xxl) return `top+=${offset} 177%`;
+          if (xl)  return `top+=${offset} 181%`;
+          if (lg)  return `top+=${offset} 159%`;
+          if (md)  return `top+=${offset} 198%`;
+          return `top+=${offset} 155%`; // base (mobile)
+        };
 
         for (let i = 0; i < STRIP_COUNT; i++) {
           const bg = svgRef.current!.querySelector(
@@ -77,9 +88,7 @@ export default function GSAPVerticalStrips() {
             ease: "power3.out",
             scrollTrigger: {
               trigger: svgRef.current,
-              start: mobile
-                ? `top+=${offset} 150%`
-                : `top+=${offset} 170%`,
+              start: getStart(offset),
               end: `top+=${offset + duration} 0%`,
               scrub: true,
             },
@@ -89,7 +98,7 @@ export default function GSAPVerticalStrips() {
     );
 
     return () => {
-      mm.revert();
+      mm.revert(); // 🔥 cleans everything on resize/unmount
     };
   }, []);
 
@@ -143,3 +152,4 @@ export default function GSAPVerticalStrips() {
     </div>
   );
 }
+
