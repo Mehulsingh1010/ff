@@ -5,10 +5,10 @@ import React from "react";
 const Navbar = React.forwardRef<HTMLDivElement, any>((props, ref) => (
   <nav
     ref={ref}
-    className="fixed top-0 left-0 w-full bg-[#f3ecd2] text-black text-[17.0667px] lg:text-[11.3778px] xl:text-[16px] 2xl:text-[17.0667px] lg:tracking-[-0.113778px] h-[61px] md:h-[68px] lg:h-[53px] xl:h-[74px] 2xl:h-[78.925px] px-[13px]   md:px-[44px] lg:px-[45px] xl:px-[64px] 2xl:px-[68.2667px]  flex border-b-2 lg:border-b-2 2xl:border-b-2 border-black z-[5000]"
+    className="fixed  top-0 left-0 w-full bg-[#f3ecd2]  text-black text-[17.0667px] lg:text-[11.3778px] xl:text-[16px] 2xl:text-[17.0667px] lg:tracking-[-0.113778px] h-[61px] md:h-[68px] lg:h-[53px] xl:h-[74px] 2xl:h-[78.925px] px-[13px]   md:px-[44px] lg:px-[45px] xl:px-[64px] 2xl:px-[68.2667px]  flex border-b-2 lg:border-b-2 2xl:border-b-2 border-black z-[5000]"
     style={{ transform: "translateY(-100%)" }}
   >
-    <div className="flex items-center justify-between w-full max-w-[1920px] mx-auto">
+    <div className="max-w-[1749.35px]  flex items-center justify-between w-full  mx-auto">
       <div className="hidden md:hidden lg:flex flex-1">
         <ul className="flex gap-[29.8667px] lg:gap-[19px] xl:gap-[28px] 2xl:gap-[29.1515px] list-none p-0 m-0 cursor-pointer">
   <li

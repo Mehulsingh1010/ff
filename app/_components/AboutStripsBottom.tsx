@@ -20,9 +20,9 @@ const STRIPS = [
   { x: 52,  color: "#F97028" },
 ];
 
-const SVG_WIDTH = 482.125;
+const SVG_WIDTH = 480.125;
 const TOTAL_HEIGHT = 100;        // GSAP math height
-const RENDER_HEIGHT = 341.325;   // visual height
+const RENDER_HEIGHT = 391.325;   // visual height
 
 const BG_WIDTH = 52;
 const FG_WIDTH = 48;
@@ -69,7 +69,7 @@ export default function GSAPVerticalStrips() {
         ease: "power3.out",
         scrollTrigger: {
           trigger: svgRef.current,
-          start: `top+=${offset} 105%`,
+          start: `top+=${offset} 103%`,
           end: `top+=${offset + DURATION} 20%`,
           scrub: true,
         },
@@ -79,49 +79,50 @@ export default function GSAPVerticalStrips() {
     return () => ScrollTrigger.getAll().forEach(t => t.kill());
   }, []);
 
-  return (
-    <div>
-    <div className="overflow-hidden  flex items-center justify-center ">
-      <div>
-        
-      </div>
-      {/* Perspective container */}
-      <div className="[perspective:355px]">
-        <svg
-          ref={svgRef}
-          width={SVG_WIDTH}
-          viewBox={`0 0 ${SVG_WIDTH} ${TOTAL_HEIGHT}`}
-          preserveAspectRatio="none"
-          style={{ height: `${RENDER_HEIGHT}px` }}
-          className="
-            [transform-style:preserve-3d]
-            [transform:rotateX(45deg)]
-          "
-        >
-          {/* Black strips */}
-          {STRIPS.map((s, i) => (
-            <path
-              key={`bg-${i}`}
-              id={`strip-bg-${i}`}
-              d={`M${s.x} 0V${TOTAL_HEIGHT}`}
-              stroke="black"
-              strokeWidth={BG_WIDTH}
-            />
-          ))}
+return (
+    <div className="relative z-0">  
+      <div className="overflow-hidden flex items-center justify-center">
+        <div>
+          
+        </div>
+        {/* Perspective container */}
+        <div className="[perspective:245px] " style={{ width: `${SVG_WIDTH}px` }}>
+          <svg
+            ref={svgRef}
+            width={SVG_WIDTH}
+            height={RENDER_HEIGHT}
+            viewBox={`0 0 ${SVG_WIDTH} ${TOTAL_HEIGHT}`}
+            preserveAspectRatio="none"
+            className="
+              block
+              [transform-style:preserve-3d]
+              [transform:rotateX(45deg)]
+            "
+          >
+            {/* Black strips */}
+            {STRIPS.map((s, i) => (
+              <path
+                key={`bg-${i}`}
+                id={`strip-bg-${i}`}
+                d={`M${s.x} 0V${TOTAL_HEIGHT}`}
+                stroke="black"
+                strokeWidth={BG_WIDTH}
+              />
+            ))}
 
-          {/* Color strips */}
-          {STRIPS.map((s, i) => (
-            <path
-              key={`fg-${i}`}
-              id={`strip-fg-${i}`}
-              d={`M${s.x} 0V${TOTAL_HEIGHT}`}
-              stroke={s.color}
-              strokeWidth={FG_WIDTH}
-            />
-          ))}
-        </svg>
+            {/* Color strips */}
+            {STRIPS.map((s, i) => (
+              <path
+                key={`fg-${i}`}
+                id={`strip-fg-${i}`}
+                d={`M${s.x} 0V${TOTAL_HEIGHT}`}
+                stroke={s.color}
+                strokeWidth={FG_WIDTH}
+              />
+            ))}
+          </svg>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

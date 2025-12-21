@@ -103,7 +103,7 @@ export default function ScrollTriggerStrips() {
     [verticalScrollPercent]
   );
 return (
-  <div className="flex flex-col items-center">
+  <div className="flex flex-col items-center relative ">
     <motion.div
       ref={verticalContainerRef}
       className="mx-auto  flex justify-center m-0 w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px]"

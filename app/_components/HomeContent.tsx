@@ -3165,11 +3165,11 @@ const HomeContent = React.forwardRef<
         className="flex justify-center items-center w-full relative mt-[-12px] md:mt-[5px] lg:mt-[1px] mb-[-30px] lg:mb-[-40px]"
         style={{}}
       >
-        <div className="bg-[#F3A20F] text-white w-[300.96px] md:w-[672.4px] lg:w-[431.2px] xl:w-[607.362px] 2xl:w-[644.263px] h-[40.975px] md:h-[93.1875px] lg:h-[58.475px] xl:h-[83.2px] 2xl:h-[88.075px] leading-[76.4px] md:leading-[79.5626px] px-[23px] pt-[3.93846px] lg:pt-[5.68889px] 2xl:pt-[11px] text-[39.384px] md:text-[88.4029px] lg:text-[56.8889px] xl:text-[80px] 2xl:text-[84.8889px]   border md:border-[1.6px] border-black text-nowrap font-heading-bold rounded-md rotate-[-3.5deg] shadow-[0px_8.5px_0px_0px] shadow-[rgba(0,0,0,0.15)] mx-auto flex items-center justify-center">
+        <div className="bg-[#F3A20F] text-white w-[300.96px] md:w-[672.4px] lg:w-[431.2px] xl:w-[607.362px] 2xl:w-[644.263px] h-[40.975px] md:h-[93.1875px] lg:h-[58.475px] xl:h-[83.2px] 2xl:h-[88.075px] leading-[76.4px] md:leading-[79.5626px] px-[23px] pt-[3.93846px] lg:pt-[5.68889px] 2xl:pt-[11px] text-[39.384px] md:text-[88.4029px] lg:text-[56.8889px] xl:text-[80px] 2xl:text-[84.8889px]   border md:border-[1.6px] border-black text-nowrap font-heading-bold rounded-md rotate-[-3.5deg] shadow-[0px_8.5px_0px_0px] shadow-[rgba(0,0,0,0.15)] mx-auto flex items-center justify-center relative z-[5]">
           <h2 className="m-0 p-0 leading-none">FlowFest is back.</h2>
         </div>
       </div>
-      <div className=" mx-auto mb-[-1489px] lg:mb-[-1470px]">
+      <div className=" mx-auto mb-[-1489px] lg:mb-[-1470px]  ">
         <ScrollTriggerStrips />
       </div>
 

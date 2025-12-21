@@ -270,7 +270,7 @@ function About({ onPopupChange }: any) {
   const sponsorContent = (
     <>
       {/* dot */}
-      <div className="w-[20px] xl:w-[40px] xl:h-[40px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
+      <div className="w-[20px] md:w-[35px] md:h-[35px] lg:h-[30px] lg:w-[30px] xl:w-[40px] xl:h-[40px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
         <svg viewBox="0 0 25 25" fill="none">
           <circle
             cx="12.5"
@@ -283,12 +283,12 @@ function About({ onPopupChange }: any) {
         </svg>
       </div>
 
-      <div className="flex-shrink-0 cursor-write xl:text-[30px]">
+      <div className="flex-shrink-0 cursor-write xl:text-[30px] lg:text-[21.3333px] md:text-[27.6259px]">
         Sponsored by
       </div>
 
       {/* dot */}
-      <div className="w-[20px] xl:w-[40px] xl:h-[40px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
+      <div className="w-[20px] md:w-[35px] md:h-[35px] lg:h-[30px] lg:w-[30px] xl:w-[40px] xl:h-[40px] 2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
         <svg viewBox="0 0 25 25" fill="none">
           <circle
             cx="12.5"
@@ -302,7 +302,7 @@ function About({ onPopupChange }: any) {
       </div>
 
       {/* Osmos logo */}
-      <div className="w-[88.225px] xl:w-[121px] xl:h-[27px] 2xl:w-[128.387px] h-[19.6875px] 2xl:h-[28.65px] flex-shrink-0 cursor-pointer">
+      <div className="w-[88.225px] md:h-[24.8625px] md:w-[111.412px] lg:w-[86.0375px] lg:h-[19.2px] xl:w-[121px] xl:h-[27px] 2xl:w-[128.387px] h-[19.6875px] 2xl:h-[28.65px] flex-shrink-0 cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
@@ -333,7 +333,7 @@ function About({ onPopupChange }: any) {
       </div>
 
       {/* dot */}
-      <div className="w-[20px] xl:w-[40px] xl:h-[40px]  2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
+      <div className="w-[20px] md:w-[35px] md:h-[35px] lg:h-[30px] lg:w-[30px] xl:w-[40px] xl:h-[40px]  2xl:h-[40px] h-[20px] 2xl:w-[40px] flex-shrink-0 flex items-center justify-center">
         <svg viewBox="0 0 25 25" fill="none">
           <circle
             cx="12.5"
@@ -347,7 +347,7 @@ function About({ onPopupChange }: any) {
       </div>
 
       {/* Webflow logo */}
-      <div className="w-[106.963px] xl:w-[142.212px] xl:h-[24px] 2xl:w-[150.887px] h-[18.05px] 2xl:h-[25.4625px] flex-shrink-0 flex items-center justify-center cursor-pointer">
+      <div className="w-[106.963px] md:h-[height22.1px] md:w-[130.962px] lg:w-[101.1px] lg:h-[17.0625px] xl:w-[142.212px] xl:h-[24px] 2xl:w-[150.887px] h-[18.05px] 2xl:h-[25.4625px] flex-shrink-0 flex items-center justify-center cursor-pointer">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="100%"
@@ -404,7 +404,7 @@ function About({ onPopupChange }: any) {
       <div className="overflow-hidden mt-[-1340px] md:mt-[-1130px] lg:mt-[-1490px] xl:mt-[-1250px] 2xl:mt-[-1170px] ">
         <style>{styles}</style>
         <div className="pt-[178px] w-[1398.82px] md:w-[1992px] xl:w-[2164px] 2xl:w-[120%] ">
-          <div className="relative h[75.5625px] md:h-[85.2px] lg:h-[66.66px] xl:h-[96px] 2xl:h-[98.6625px] w- bg-[#F3A20F] text-white text-[21.3333px] 2xl:text-[31.8333px] font-heading-bold border-t-[1.6px] border-b-[1.6px] border-black shadow-[0px_6px_0px_0px] shadow-[rgb(0,0,0,0.2)] overflow-hidden">
+          <div className="relative h-[75.5625px] md:h-[85.2px] lg:h-[66.66px] xl:h-[96px] 2xl:h-[98.6625px] w- bg-[#F3A20F] text-white text-[21.3333px] 2xl:text-[31.8333px] font-heading-bold border-t-[1.6px] border-b-[1.6px] border-black shadow-[0px_6px_0px_0px] shadow-[rgb(0,0,0,0.2)] overflow-hidden">
             <div className="animate-slide flex items-center  gap-[19.6923px] 2xl:gap-[47.75px] h-full whitespace-nowrap">
               {sponsorContent}
               {sponsorContent}
@@ -422,7 +422,7 @@ function About({ onPopupChange }: any) {
         <div
           id="about"
           ref={containerRef}
-          className="overflow-hidden bg-black  lg:pt-[130.8px] px-[13.12px] md:px-[44.2px] pt-[151.8px] lg:px-[45.5px] xl:pt-[151.8px] xl:px-[64px] 2xl:pt-[153px]  2xl:px-[72px]"
+          className="overflow-hidden bg-black  lg:pt-[130.8px] px-[13.12px] md:px-[44.2px] pt-[151.8px] lg:px-[45.5px] xl:pt-[151.8px] xl:px-[64px] 2xl:pt-[153px]  2xl:px-[72px] "
         >
           <div className="w-full max-w-[1392px] mx-auto flex flex-col items-start">
             <div
@@ -451,7 +451,7 @@ function About({ onPopupChange }: any) {
             </div>
 
             <div className="w-full max-w-[1392px] mx-auto">
-              <div className=" h-[689.03px] md:h-[810.575px] xl:h-[509px] lg:h-[340.612px] mx-auto relative bg-black  border-[#3185f5]  justify-between flex border-[2px] overflow-hidden">
+              <div className=" h-[689.03px] md:h-[810.575px] xl:h-[509px] lg:h-[340.612px] mx-auto relative bg-black  border-[#3185f5]  justify-between flex border-[2px] relative overflow-hidden z-[1]" >
                 {/* BOTTOM carousel for mobile/tablet */}
                 <div className=" lg:hidden">
                   <div
@@ -613,8 +613,8 @@ function About({ onPopupChange }: any) {
               </div>
             </div>
           </div>
-          <div className="h-[230px] ">
-            <div className="mt-[-80px] ">
+          <div className="h-[388px] z-[0]">
+            <div className="mt-[-210px]  ">
               <ScrollTriggerStrips2 />
             </div>
           </div>
