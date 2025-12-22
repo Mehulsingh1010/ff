@@ -75,29 +75,29 @@ function Team() {
 
   return (
     <>
-      <div   id="speakers" className="border-b-[2px] border-t-[3.5px] border-black px-[13.12px] overflow-hidden md:px-[42.2px] lg:px-[45.51px] xl:px-[64px] 2xl:px-[68px] mt-[-34px] rounded-bl-[60px] rounded-br-[60px] text-black mb-[-60px] relative bg-[#F3ECD2]">
+      <div   id="speakers" className="border-b-[2px] border-t-[3.5px] border-black px-[13.12px] overflow-hidden md:px-[42.2px] lg:px-[45.51px] xl:px-[64px] 2xl:px-[68px] mt-[-34px] rounded-bl-[60px] rounded-br-[60px] text-black mb-[-60px] relative bg-[#F3ECD2] ">
         <div className=" w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-[1400px] md:gap-x-[55.2518px] lg:gap-x-[42.6667px] xl:gap-x-[60px] 2xl:gap-x-[64px] h-full">
           
           {/* Item 1 - Text Section */}
-          <div className="order-1 md:order-1 lg:order-1 border-l-[3px] border-r-[3px] border-[#D2CCB6] max-w-[420px] pt-[78px] md:pt-[209px] lg:pt-[184px] xl:pt-[262px]  pb-[50.76px] md:pb-[189.8px]">
+          <div className="order-1  md:order-1 lg:order-1 border-l-[3px] border-r-[3px] border-[#D2CCB6] max-w-[420px] pt-[78px] md:pt-[209px] lg:pt-[184px] xl:pt-[262px] 2xl:pt-[230px] pb-[50.76px] md:pb-[189.8px]">
             <div className="px-4 flex  flex-col items-center text-center md:px-[29.46px] md:items-start md:text-left lg:px-[22.75px] xl:pl-[30px] 2xl:pl-[33px] md:pr-[122px]">
-              <h2 className="cursor-write mb-[-14px] md:mb-[-16px]  2xl:mb-0 xk:mb-[-25px] text-[45.9487px] md:text-[59.8561px] lg:text-[46.2222px] xl:text-[65px] 2xl:text-[68.9722px] font-heading-bold text-nowrap">
+              <h2 className="cursor-write mb-[-14px] md:mb-[-16px]   2xl:mb-[-23px] xk:mb-[-25px] text-[45.9487px] md:text-[59.8561px] lg:text-[46.2222px] xl:text-[65px] 2xl:text-[68.9722px] font-heading-bold text-nowrap">
                 Our 2025
               </h2>
               <div>
               <div className="lg:w-[170.11px] xl:w-[256.663px] relative inline-flex items-center justify-center">
-                <h2 className="leading-none z-20 px-[10.9128px] pt-[6.54769px] md:px-[14.2158px] md:pt-[8.5295px] text-[43.6513px] md:text-[56.8633px] lg:text-[43.9111px] lg:px-[10.9778px] lg:pt-[6.58667px] xl:text-[61.75px] 2xl:text-[65.5326px] shadow-[0px_6px_0px_0px] shadow-[rgba(0,0,0,0.2)] font-heading-bold text-white bg-[#F3A20F] border-[1.6] border-black rounded-sm rotate-[-1deg] text-center">
-                  Speaker
+                <h2 className="leading-none z-20 px-[10.9128px] pt-[6.54769px] md:px-[14.2158px] md:pt-[8.5295px] text-[43.6513px] md:text-[56.8633px] lg:text-[43.9111px] lg:px-[10.9778px] lg:pt-[6.58667px] xl:text-[61.75px] 2xl:text-[65.8667px] 2xl:px-[16.4667px] shadow-[0px_6px_0px_0px] shadow-[rgba(0,0,0,0.2)] font-heading-bold text-white bg-[#F3A20F] border-[1.6] border-black rounded-sm rotate-[-1deg] text-center">
+                  Speaker 
                 </h2>
               </div>
 
               <div>
-                <h2 className="pt-[6.58667px] px-[10.9128px] md:px-[14.2158px] inline-block ml-2 rotate-[2deg] text-[43.6513px] md:text-[56.8633px] lg:text-[43.9111px] xl:text-[61.75px] 2xl:text-[65.5326px] leading-none font-heading-bold text-white bg-[#F97028] border-[1.6] border-black rounded-sm lg:px-[10.9778px] xl:px-[16px]">
+                <h2 className="pt-[6.58667px] px-[10.9128px] md:px-[14.2158px] inline-block ml-2 rotate-[2deg] text-[43.6513px] md:text-[56.8633px] lg:text-[43.9111px] xl:text-[61.75px] 2xl:text-[65.8667px] leading-none font-heading-bold text-white bg-[#F97028] border-[1.6] border-black rounded-sm lg:px-[10.9778px] xl:px-[16px]">
                   Lineup
                 </h2>
               </div></div>
               
-              <div className="w-[254.363px] mb-[19px] text-[13.1282px] leading-[17.0667px] w-[267.5px] leading-[17.0667px] lg:h-[68.25px] text-[13.1282px] text-center md:text-left md:w-[235.738px]  md:text-[14.7338px] md:leading-[19.154px] mt-[19.6923px] md:mt-[31px] cursor-write md:leading-[19.154px] lg:leading-[14.7911px] xl:leading-[20.8px] 2xl:leading-[22.0711px] md:text-[14.7338px] lg:text-[11.37778px] xl:text-[16px] 2xl:text-[16.9778px] md:w-[235.738px] lg:w-[182.038px] xl:w-[256px] 2xl:w-[271.638px]">
+              <div className="w-[254.363px]  mb-[19px] text-[13.1282px] leading-[17.0667px] w-[267.5px] leading-[17.0667px] lg:h-[68.25px] text-[13.1282px] text-center md:text-left md:w-[235.738px]  md:text-[14.7338px] md:leading-[19.154px] mt-[19.6923px] md:mt-[31px] cursor-write md:leading-[19.154px] lg:leading-[14.7911px] xl:leading-[20.8px] 2xl:leading-[22.0711px] md:text-[14.7338px] lg:text-[11.37778px] xl:text-[16px] 2xl:text-[16.9778px] md:w-[235.738px] lg:w-[182.038px] xl:w-[256px] 2xl:w-[271.638px] mt-[34.1333px]">
                 <p className="font-quicksand">
                   Yep, we got <span className="font-bold">Vladdy Daddy</span>{" "}
                   for the keynote. Plus some absolute
@@ -108,7 +108,7 @@ function Team() {
               </div>
 
              
-                <button className="md:mt-2 lg:mt-[14px] xl:mt-[42px] cursor-pointer flex items-center justify-center border-2 border-[#121212] rounded-[170.667px] w-[129.312px] md:w-[119.988px] lg:w-[91.7875px] xl:w-[138.5px] xl:h-[46.925px] lg:px-[14.2222px] h-[45.125px] md:h-[40.5125px] lg:h-[31.2875px] xl:px-[21.3333px] xl:py-[1.70667px] text-[#121212] text-[14.7692px] md:text-[14.7338px] lg:text-[11.3778px] xl:text-[17.0667px] font-normal xl:leading-[17.0667px] bg-[#f489a3] whitespace-nowrap shadow-[0px_4.26667px_0px_0px_rgba(0,0,0,0.15)] transition-all duration-200 ease-out hover:translate-y-[4.26667px] hover:shadow-none active:translate-y-[4.26667px] active:shadow-none">
+                <button className="md:mt-2 lg:mt-[14px] xl:mt-[42px] 2xl:mt-[54.1333px] cursor-pointer flex items-center justify-center border-2 border-[#121212] rounded-[170.667px] w-[129.312px] md:w-[119.988px] lg:w-[91.7875px] xl:w-[138.5px] xl:h-[46.925px] lg:px-[14.2222px] h-[45.125px] md:h-[40.5125px] lg:h-[31.2875px] xl:px-[21.3333px] xl:py-[1.70667px] text-[#121212] text-[14.7692px] md:text-[14.7338px] lg:text-[11.3778px] xl:text-[17.0667px] font-normal xl:leading-[17.0667px] bg-[#f489a3] whitespace-nowrap shadow-[0px_4.26667px_0px_0px_rgba(0,0,0,0.15)] transition-all duration-200 ease-out hover:translate-y-[4.26667px] hover:shadow-none active:translate-y-[4.26667px] active:shadow-none">
                   Buy Tickets
                 </button>
              
