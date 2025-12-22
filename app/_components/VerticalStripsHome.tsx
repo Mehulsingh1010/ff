@@ -22,13 +22,13 @@ const COLORS = [
 ];
 
 const SVG_WIDTH = 482.125;
-const TOTAL_HEIGHT = 1200;
+const TOTAL_HEIGHT = 1070;
 
 const OVERLAP = 1.05;
 
-const SCROLL_MULTIPLIER = 2.6;
-const BASE_OFFSET = 156;
-const BASE_DURATION = 1880;
+const SCROLL_MULTIPLIER = 2.3;
+const BASE_OFFSET = 176;
+const BASE_DURATION = 2480;
 
 export default function GSAPVerticalStrips() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -76,7 +76,7 @@ export default function GSAPVerticalStrips() {
             strokeDashoffset: length,
           });
 
-          const offset = (i * BASE_OFFSET) / SCROLL_MULTIPLIER;
+          const offset = (i * (BASE_OFFSET)) / SCROLL_MULTIPLIER;
           const duration = BASE_DURATION / SCROLL_MULTIPLIER;
 
           gsap.to([bg, fg], {
@@ -104,7 +104,7 @@ export default function GSAPVerticalStrips() {
   const START_X = SVG_WIDTH - STEP / 2;
 
   return (
-    <div ref={containerRef} className="w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px] mx-auto">
+    <div ref={containerRef} className=" w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px] mx-auto">
       <div className="relative mx-auto flex justify-center">
         <svg
           ref={svgRef}
