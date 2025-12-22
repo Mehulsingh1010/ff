@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useRef, useEffect } from "react";
@@ -5,8 +6,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-
-/* ---------------- CONFIG ---------------- */
 
 const STRIP_COUNT = 9;
 
@@ -25,17 +24,15 @@ const COLORS = [
 const SVG_WIDTH = 482.125;
 const TOTAL_HEIGHT = 1200;
 
-/* overlap factor = no gaps */
 const OVERLAP = 1.05;
 
-/* Scroll tuning */
 const SCROLL_MULTIPLIER = 2.6;
 const BASE_OFFSET = 156;
 const BASE_DURATION = 1880;
 
-/* ---------------- COMPONENT ---------------- */
 export default function GSAPVerticalStrips() {
   const svgRef = useRef<SVGSVGElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!svgRef.current) return;
@@ -44,22 +41,21 @@ export default function GSAPVerticalStrips() {
 
     mm.add(
       {
-        base: "(max-width: 767px)",          
+        base: "(max-width: 767px)",
         md: "(min-width: 768px) and (max-width: 1023px)",
         lg: "(min-width: 1024px) and (max-width: 1279px)",
         xl: "(min-width: 1280px) and (max-width: 1535px)",
-        xxl: "(min-width: 1536px)",           
+        xxl: "(min-width: 1536px)",
       },
       (context) => {
         const { base, md, lg, xl, xxl } = context.conditions;
 
-        // 🔧 choose start value per breakpoint
         const getStart = (offset: number) => {
-          if (xxl) return `top+=${offset} 177%`;
-          if (xl)  return `top+=${offset} 181%`;
-          if (lg)  return `top+=${offset} 159%`;
-          if (md)  return `top+=${offset} 198%`;
-          return `top+=${offset} 155%`; // base (mobile)
+          if (xxl) return `top+=${offset} 0%`;
+          if (xl) return `top+=${offset} 0%`;
+          if (lg) return `top+=${offset} 0%`;
+          if (md) return `top+=${offset} 0%`;
+          return `top+=${offset} 0%`;
         };
 
         for (let i = 0; i < STRIP_COUNT; i++) {
@@ -87,9 +83,9 @@ export default function GSAPVerticalStrips() {
             strokeDashoffset: 0,
             ease: "power3.out",
             scrollTrigger: {
-              trigger: svgRef.current,
-              start: getStart(offset),
-              end: `top+=${offset + duration} 0%`,
+              trigger: "body",
+              start: `top+=${offset} top`,
+              end: `top+=${offset + duration} top`,
               scrub: true,
             },
           });
@@ -98,18 +94,17 @@ export default function GSAPVerticalStrips() {
     );
 
     return () => {
-      mm.revert(); // 🔥 cleans everything on resize/unmount
+      mm.revert();
     };
   }, []);
 
-  /* ---- FULL WIDTH MATH ---- */
   const STEP = SVG_WIDTH / STRIP_COUNT;
   const STROKE_BG = STEP * OVERLAP;
   const STROKE_FG = STROKE_BG * 0.92;
   const START_X = SVG_WIDTH - STEP / 2;
 
   return (
-    <div className="w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px] mx-auto">
+    <div ref={containerRef} className="w-[247.238px] md:w-[416.225px] lg:w-[321.413px] xl:w-[452px] 2xl:w-[482.125px] mx-auto">
       <div className="relative mx-auto flex justify-center">
         <svg
           ref={svgRef}
@@ -152,4 +147,3 @@ export default function GSAPVerticalStrips() {
     </div>
   );
 }
-
