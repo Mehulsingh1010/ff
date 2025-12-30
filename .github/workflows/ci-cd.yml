@@ -1,0 +1,104 @@
+name: CI/CD with Discord Notification
+
+on:
+  push:
+    branches: [ main ]
+
+env:
+  AWS_REGION: ap-south-1                  # Change if needed
+  ECS_CLUSTER: ecs-cluster
+  ECS_SERVICE: ecs-service
+  TASK_DEFINITION: task-definition.json
+  CONTAINER_NAME: flowfest-container     # Must match name in task-definition.json
+  IMAGE_NAME: mehulsingh1010/flowfest    # Your Docker Hub repo
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Discord - Deployment Started
+        uses: IlshatM/discord-webhook-action@v1
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          content: "[INIT] **FlowFest** deployment started!\nCommit: ${{ github.event.head_commit.message }}\nBy: ${{ github.actor }}"
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        id: build-push
+        run: |
+          IMAGE_TAG=${{ github.sha }}
+          docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest -t $IMAGE_NAME:test .
+          docker push $IMAGE_NAME:$IMAGE_TAG
+          docker push $IMAGE_NAME:latest
+          docker push $IMAGE_NAME:test
+          echo "image=$IMAGE_NAME:$IMAGE_TAG" >> $GITHUB_OUTPUT
+
+      - name: Update task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.TASK_DEFINITION }}
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ steps.build-push.outputs.image }}
+
+      - name: Deploy to ECS
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v2
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
+
+      - name: Discord - Success
+        if: success()
+        uses: IlshatM/discord-webhook-action@v1
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          embed: |
+            [
+              {
+                "title": "[SUCCESS] FlowFest Deployed Successfully!",
+                "description": "New version live on AWS ECS",
+                "color": 3066993,
+                "fields": [
+                  { "name": "Commit", "value": "[${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})", "inline": true },
+                  { "name": "Pushed by", "value": "${{ github.actor }}", "inline": true },
+                  { "name": "Image", "value": "mehulsingh1010/flowfest:${{ github.sha }}" }
+                ]
+              }
+            ]
+
+      - name: Discord - Failed
+        if: failure()
+        uses: IlshatM/discord-webhook-action@v1
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          embed: |
+            [
+              {
+                "title": "[ERROR] FlowFest Deployment Failed",
+                "description": "Something went wrong during deploy",
+                "color": 15158332,
+                "fields": [
+                  { "name": "Commit", "value": "[${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})", "inline": true },
+                  { "name": "Pushed by", "value": "${{ github.actor }}", "inline": true },
+                  { "name": "Logs", "value": "[View here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" }
+                ]
+              }
+            ]

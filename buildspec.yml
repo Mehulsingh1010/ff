@@ -1,0 +1,8 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo "This is a placeholder buildspec.yml"
+      - echo "Actual CI/CD is handled by GitHub Actions"
+      - echo "In a real CodePipeline, we would update ECS task definition here"

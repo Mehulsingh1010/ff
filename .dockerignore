@@ -1,0 +1,26 @@
+# Ignore huge folders
+node_modules
+.next
+out
+
+# Git stuff
+.git
+.gitignore
+
+# Logs and temp
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Optional: if you have large unused folders
+dist
+build

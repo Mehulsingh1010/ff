@@ -1,0 +1,28 @@
+{
+  "family": "flowfest-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["EC2"],
+  "cpu": "256",
+  "memory": "512",
+  "containerDefinitions": [
+    {
+      "name": "flowfest-container",
+      "image": "mehulsingh1010/flowfest:test",
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/flowfest",
+          "awslogs-region": "ap-south-1",   
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+  ]
+}
