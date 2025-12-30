@@ -5,12 +5,12 @@ on:
     branches: [ main ]
 
 env:
-  AWS_REGION: ap-south-1                  # Change if needed
+  AWS_REGION: ap-south-1
   ECS_CLUSTER: ecs-cluster
   ECS_SERVICE: ecs-service
   TASK_DEFINITION: task-definition.json
-  CONTAINER_NAME: flowfest-container     # Must match name in task-definition.json
-  IMAGE_NAME: mehulsingh1010/flowfest    # Your Docker Hub repo
+  CONTAINER_NAME: flowfest-container
+  IMAGE_NAME: mehulsingh1010/flowfest
 
 jobs:
   build-and-deploy:
@@ -21,10 +21,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Discord - Deployment Started
-        uses: IlshatM/discord-webhook-action@v1
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          content: "[INIT] **FlowFest** deployment started!\nCommit: ${{ github.event.head_commit.message }}\nBy: ${{ github.actor }}"
+          args: '🚀 **[INIT] FlowFest deployment started!**\nCommit: ${{ github.event.head_commit.message }}\nBy: ${{ github.actor }}'
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -67,38 +68,16 @@ jobs:
 
       - name: Discord - Success
         if: success()
-        uses: IlshatM/discord-webhook-action@v1
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          embed: |
-            [
-              {
-                "title": "[SUCCESS] FlowFest Deployed Successfully!",
-                "description": "New version live on AWS ECS",
-                "color": 3066993,
-                "fields": [
-                  { "name": "Commit", "value": "[${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})", "inline": true },
-                  { "name": "Pushed by", "value": "${{ github.actor }}", "inline": true },
-                  { "name": "Image", "value": "mehulsingh1010/flowfest:${{ github.sha }}" }
-                ]
-              }
-            ]
+          args: '✅ **[SUCCESS] FlowFest Deployed Successfully!**\nNew version live on AWS ECS\nCommit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\nPushed by: ${{ github.actor }}\nImage: mehulsingh1010/flowfest:${{ github.sha }}'
 
       - name: Discord - Failed
         if: failure()
-        uses: IlshatM/discord-webhook-action@v1
+        uses: Ilshidur/action-discord@master
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          embed: |
-            [
-              {
-                "title": "[ERROR] FlowFest Deployment Failed",
-                "description": "Something went wrong during deploy",
-                "color": 15158332,
-                "fields": [
-                  { "name": "Commit", "value": "[${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})", "inline": true },
-                  { "name": "Pushed by", "value": "${{ github.actor }}", "inline": true },
-                  { "name": "Logs", "value": "[View here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})" }
-                ]
-              }
-            ]
+          args: '❌ **[ERROR] FlowFest Deployment Failed**\nSomething went wrong during deploy\nCommit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\nPushed by: ${{ github.actor }}\nLogs: [View here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})'
