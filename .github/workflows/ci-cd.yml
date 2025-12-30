@@ -25,7 +25,7 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: '🚀 **[INIT] FlowFest deployment started!**\nCommit: ${{ github.event.head_commit.message }}\nBy: ${{ github.actor }}'
+          args: ' **[INIT] FlowFest deployment started!**\nCommit: ${{ github.event.head_commit.message }}\nBy: ${{ github.actor }}'
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -64,7 +64,7 @@ jobs:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
-          wait-for-service-stability: true
+          wait-for-service-stability: false
 
       - name: Discord - Success
         if: success()
@@ -72,7 +72,7 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: '✅ **[SUCCESS] FlowFest Deployed Successfully!**\nNew version live on AWS ECS\nCommit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\nPushed by: ${{ github.actor }}\nImage: mehulsingh1010/flowfest:${{ github.sha }}'
+          args: ' **[SUCCESS] FlowFest Deployed Successfully!**\nNew version live on AWS ECS\nCommit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\nPushed by: ${{ github.actor }}\nImage: mehulsingh1010/flowfest:${{ github.sha }}'
 
       - name: Discord - Failed
         if: failure()
@@ -80,4 +80,4 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: '❌ **[ERROR] FlowFest Deployment Failed**\nSomething went wrong during deploy\nCommit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\nPushed by: ${{ github.actor }}\nLogs: [View here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})'
+          args: ' **[ERROR] FlowFest Deployment Failed**\nSomething went wrong during deploy\nCommit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\nPushed by: ${{ github.actor }}\nLogs: [View here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})'
