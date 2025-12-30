@@ -25,7 +25,12 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: ' **[INIT] FlowFest deployment started!**\nCommit: ${{ github.event.head_commit.message }}\nBy: ${{ github.actor }}'
+          args: |-
+            **[INIT] FlowFest Deployment Started**
+
+            Commit: ${{ github.event.head_commit.message }}
+            Author: ${{ github.actor }}
+            Branch: main
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -72,7 +77,14 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: ' **[SUCCESS] FlowFest Deployed Successfully!**\nNew version live on AWS ECS\nCommit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\nPushed by: ${{ github.actor }}\nImage: mehulsingh1010/flowfest:${{ github.sha }}'
+          args: |-
+            **[SUCCESS] Deployment Successful**
+
+            The latest version of FlowFest has been deployed to AWS ECS.
+
+            Commit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+            Author: ${{ github.actor }}
+            Image: mehulsingh1010/flowfest:${{ github.sha }}
 
       - name: Discord - Failed
         if: failure()
@@ -80,4 +92,12 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: ' **[ERROR] FlowFest Deployment Failed**\nSomething went wrong during deploy\nCommit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\nPushed by: ${{ github.actor }}\nLogs: [View here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})'
+          args: |-
+            **[ERROR] Deployment Failed**
+
+            An error occurred during deployment.
+
+            Commit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
+            Author: ${{ github.actor }}
+
+            Logs: [View here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
