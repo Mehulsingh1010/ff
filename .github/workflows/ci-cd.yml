@@ -1,4 +1,4 @@
-name: CI/CD with Discord Notification
+name: CI/CD to ECS with Discord Notification
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
 
 env:
   AWS_REGION: ap-south-1
-  ECS_CLUSTER: ecs-cluster
-  ECS_SERVICE: ecs-service
+  ECS_CLUSTER: flowfest-cluster          
+  ECS_SERVICE: flowfest-service          
   TASK_DEFINITION: task-definition.json
   CONTAINER_NAME: flowfest-container
   IMAGE_NAME: mehulsingh1010/flowfest
@@ -15,7 +15,6 @@ env:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -25,9 +24,8 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: |-
+          args: |
             **[INIT] FlowFest Deployment Started**
-
             Commit: ${{ github.event.head_commit.message }}
             Author: ${{ github.actor }}
             Branch: main
@@ -49,13 +47,12 @@ jobs:
         id: build-push
         run: |
           IMAGE_TAG=${{ github.sha }}
-          docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest -t $IMAGE_NAME:test .
+          docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest .
           docker push $IMAGE_NAME:$IMAGE_TAG
           docker push $IMAGE_NAME:latest
-          docker push $IMAGE_NAME:test
           echo "image=$IMAGE_NAME:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-      - name: Update task definition
+      - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
@@ -63,13 +60,13 @@ jobs:
           container-name: ${{ env.CONTAINER_NAME }}
           image: ${{ steps.build-push.outputs.image }}
 
-      - name: Deploy to ECS
+      - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v2
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
           service: ${{ env.ECS_SERVICE }}
           cluster: ${{ env.ECS_CLUSTER }}
-          wait-for-service-stability: false
+          wait-for-service-stability: true  
 
       - name: Discord - Success
         if: success()
@@ -77,15 +74,12 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: |-
-            **[SUCCESS] Deployment Successful**
-
-            The latest version of FlowFest has been deployed to AWS ECS.
-
+          args: |
+            **[SUCCESS] FlowFest Deployed Successfully!**
             Commit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
             Author: ${{ github.actor }}
-            Visit : "https://ff-three-orpin.vercel.app/"
-            Image: mehulsingh1010/flowfest:${{ github.sha }}
+            Image: ${{ env.IMAGE_NAME }}:${{ github.sha }}
+            🚀 Live at: http://<YOUR-EC2-PUBLIC-DNS>.ap-south-1.compute.amazonaws.com
 
       - name: Discord - Failed
         if: failure()
@@ -93,12 +87,8 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK_URL }}
         with:
-          args: |-
+          args: |
             **[ERROR] Deployment Failed**
-
-            An error occurred during deployment.
-
             Commit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
             Author: ${{ github.actor }}
-
-            Logs: [View here](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
+            Logs: [View GitHub Actions](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})
