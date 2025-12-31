@@ -79,7 +79,7 @@ jobs:
             Commit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
             Author: ${{ github.actor }}
             Image: ${{ env.IMAGE_NAME }}:${{ github.sha }}
-            🚀 Live at: http://<YOUR-EC2-PUBLIC-DNS>.ap-south-1.compute.amazonaws.com
+            Live at: http://ec2-43-204-215-90.ap-south-1.compute.amazonaws.com
 
       - name: Discord - Failed
         if: failure()
